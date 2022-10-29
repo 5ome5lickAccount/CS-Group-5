@@ -1,7 +1,30 @@
 
 import abc
 import os
+from stat import SF_SNAPSHOT
+
+from numpy import double
 class Employee:
+    def __init__(self,emp_id,first_name,last_name,address,
+    city,state,zipcode,dob,ssn,start_date,pay_info,is_manager,
+    is_archived,emp_title,department) -> None:
+        self.emp_id = emp_id
+        self.first_name = first_name
+        self.last_name = last_name
+        self.address = address
+        self.city = city
+        self.state = state
+        self.zipcode = zipcode
+        self.classification = False
+        self.dob = dob
+        self.ssn = ssn
+        self.start_date = start_date
+        self.pay_info = pay_info
+        self.is_manager = is_manager
+        self.is_archived = is_archived
+        self.emp_title = emp_title
+        self.department = department
+
     def __init__(self,emp_id,first_name,last_name,address,city,state,zipcode) -> None:
         self.emp_id = emp_id
         self.first_name = first_name
@@ -11,6 +34,7 @@ class Employee:
         self.state = state
         self.zipcode = zipcode
         self.classification = False
+        
     def make_hourly(self,rate):
         self.classification=Hourly(rate)
     def make_salaried(self,salary):
