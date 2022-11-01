@@ -6,7 +6,7 @@ from stat import SF_SNAPSHOT
 from numpy import double
 class Employee:
     def __init__(self,emp_id,first_name,last_name,address,
-    city,state,zipcode,dob,ssn,start_date,pay_info,is_manager,
+    city,state,zipcode,route,account,dob,ssn,start_date,pay_info,is_manager,
     is_archived,emp_title,department) -> None:
         self.emp_id = emp_id
         self.first_name = first_name
@@ -16,6 +16,8 @@ class Employee:
         self.state = state
         self.zipcode = zipcode
         self.classification = False
+        self.route = route
+        self.account = account
         self.dob = dob
         self.ssn = ssn
         self.start_date = start_date
@@ -25,6 +27,7 @@ class Employee:
         self.emp_title = emp_title
         self.department = department
 
+    #Old Init - shouldn't be used
     def __init__(self,emp_id,first_name,last_name,address,city,state,zipcode) -> None:
         self.emp_id = emp_id
         self.first_name = first_name
@@ -116,7 +119,18 @@ def load_employees():
             salary=float(line[8])
             commission=float(line[9])
             hourly=float(line[10])
-            x=Employee(id,first_name,last_name,address,city,state,zip)
+            
+            route = line[11]
+            account = line[12]
+            dob = line[13]
+            ssn = line[14]
+            start_date = line[15]
+            pay_info = line[16]
+            is_manager = line[17]
+            is_archived = bool(line[18])
+            emp_title = line[19]
+            department = line[20]
+            x=Employee(id,first_name,last_name,address,city,state,zip,route,account,dob,ssn,start_date,pay_info,is_manager,is_archived,emp_title,department)
             if classification==1:
                 x.make_hourly(hourly)
             elif classification==2:
@@ -169,3 +183,5 @@ def run_payroll():
     for emp in employees:      # employees is the global list of Employee objects 
         emp.issue_payment()        # issue_payment calls a method in the classification 
       # object to compute the pay
+
+
