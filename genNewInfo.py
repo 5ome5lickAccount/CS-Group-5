@@ -16,7 +16,7 @@ for line in lines:
     dob =str(day)+"/"+str(month)+"/"+str(year)
     ssn =str(rand.randrange(100, 999)) + "-" + str(rand.randrange(10,99)) + "-"+str(rand.randrange(1000,9999))
     startdate = str(rand.randrange(1, 30)) + "/" + str(rand.randrange(1,12)) + "/"+str(rand.randrange(2000,2021))
-    has_dd=str(rand.randrange(0,2))
+    #has_dd=str(rand.randrange(0,2))
     routing_num=str(rand.randrange(100000000,999999999))
     acct_num=str(rand.randrange(100000000,999999999))
     ismanager=str(rand.randrange(0,2))
@@ -31,7 +31,7 @@ for line in lines:
     for item in data:
         newData += item+","
     newData = newData[0:-2]
-    newData +=','+dob+','+ssn+','+startdate+','+has_dd+','+routing_num+','+acct_num+','+ismanager
+    newData +=','+dob+','+ssn+','+startdate+','+routing_num+','+acct_num+','+ismanager
     newData += ','+isarchived+','+emptitle+','+department+','+officephone+','+officeemail+'\n'
     newLine.append(newData)
 

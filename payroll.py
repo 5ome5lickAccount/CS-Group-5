@@ -6,8 +6,8 @@ from stat import SF_SNAPSHOT
 from numpy import double
 class Employee:
     def __init__(self,emp_id,first_name,last_name,address,
-    city,state,zipcode,route,account,dob,ssn,start_date,pay_info,is_manager,
-    is_archived,emp_title,department) -> None:
+    city,state,zipcode,route,account,dob,ssn,start_date,routing_number,acct_number,is_manager,
+    is_archived,emp_title,department,office_phone,office_email) -> None:
         self.emp_id = emp_id
         self.first_name = first_name
         self.last_name = last_name
@@ -21,11 +21,14 @@ class Employee:
         self.dob = dob
         self.ssn = ssn
         self.start_date = start_date
-        self.pay_info = pay_info
+        self.routing_number = routing_number
+        self.acct_number = acct_number
         self.is_manager = is_manager
         self.is_archived = is_archived
         self.emp_title = emp_title
         self.department = department
+        self.office_phone = office_phone
+        self.office_email = office_email
 
     #Old Init - shouldn't be used
     def __init__(self,emp_id,first_name,last_name,address,city,state,zipcode) -> None:
@@ -99,7 +102,7 @@ def find_employee_by_id(id):
             return emp
 def load_employees():
     '''
-    id,first_name,last_name,address,city,state,zip,classification,salary,commission,hourly
+    id,first_name-last_name,address,city,state,zip,classification,salary,commission,hourly
     51-4678119,Issie,Scholard,11 Texas Court,Columbia,Missouri,65218,3,134386.51,34,91.06
     '''
     filename="employees.csv"
@@ -109,28 +112,35 @@ def load_employees():
         for line in lines:
             line=line.split(',')
             id=line[0]
-            first_name=line[1]
-            last_name=line[2]
-            address=line[3]
-            city=line[4]
-            state=line[5]
-            zip=line[6]
-            classification = int(line[7])
+            first_name=line[1].split(' ')[0:-1]
+            last_name=line[1].split(' ')[-1]
+            address=line[2]
+            city=line[3]
+            state=line[4]
+            zip=line[5]
+            classification = int(line[6])
+
+            #PayMethod - identify how this should be tracked what it is for
+            payMethod=int(line[7])
+
             salary=float(line[8])
-            commission=float(line[9])
-            hourly=float(line[10])
+            commission=float(line[10])
+            hourly=float(line[9])
             
-            route = line[11]
-            account = line[12]
-            dob = line[13]
-            ssn = line[14]
-            start_date = line[15]
-            pay_info = line[16]
-            is_manager = line[17]
-            is_archived = bool(line[18])
-            emp_title = line[19]
-            department = line[20]
-            x=Employee(id,first_name,last_name,address,city,state,zip,route,account,dob,ssn,start_date,pay_info,is_manager,is_archived,emp_title,department)
+            route=line[11]
+            account=line[12]
+            dob=line[13]
+            ssn=line[14]
+            start_date=line[15]
+            routing_number=line[17]
+            acct_number=line[18]
+            is_manager=bool(line[19])
+            is_archived=bool(line[20])
+            emp_title=line[21]
+            department=line[22]
+            office_phone = line[23]
+            office_email = line[24]
+            x=Employee(id,first_name,last_name,address,city,state,zip,route,account,dob,ssn,start_date,routing_number,acct_number,is_manager,is_archived,emp_title,department,office_phone,office_email)
             if classification==1:
                 x.make_hourly(hourly)
             elif classification==2:
