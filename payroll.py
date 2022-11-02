@@ -139,7 +139,7 @@ def load_employees():
             classification = int(line[6])
 
             #PayMethod - identify how this should be tracked what it is for
-            payMethod=int(line[7])
+            pay_method=int(line[7])
 
             salary=float(line[8])
             commission=float(line[10])
@@ -159,7 +159,7 @@ def load_employees():
             office_phone=line[23]
             office_email=line[24]
             password=line[25]
-            x=Employee(id,first_name,last_name,address,city,state,zip,route,account,dob,ssn,start_date,routing_number,acct_number,is_manager,is_archived,emp_title,department,office_phone,office_email,password)
+            x=Employee(id,first_name,last_name,address,city,state,zip,pay_method,route,account,dob,ssn,start_date,routing_number,acct_number,is_manager,is_archived,emp_title,department,office_phone,office_email,password)
             if classification==1:
                 x.make_hourly(hourly)
             elif classification==2:
