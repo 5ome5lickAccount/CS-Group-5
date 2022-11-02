@@ -2,12 +2,13 @@
 import abc
 import os
 from stat import SF_SNAPSHOT
+from copy import deepcopy
 
 from numpy import double
 class Employee:
     def __init__(self,emp_id,first_name,last_name,address,
-    city,state,zipcode,route,account,dob,ssn,start_date,routing_number,acct_number,is_manager,
-    is_archived,emp_title,department,office_phone,office_email) -> None:
+    city,state,zipcode,pay_method,route,account,dob,ssn,start_date,routing_number,acct_number,is_manager,
+    is_archived,emp_title,department,office_phone,office_email,password) -> None:
         self.emp_id = emp_id
         self.first_name = first_name
         self.last_name = last_name
@@ -16,6 +17,7 @@ class Employee:
         self.state = state
         self.zipcode = zipcode
         self.classification = False
+        self.pay_method = pay_method
         self.route = route
         self.account = account
         self.dob = dob
@@ -29,6 +31,7 @@ class Employee:
         self.department = department
         self.office_phone = office_phone
         self.office_email = office_email
+        self.password=password
 
     #Old Init - shouldn't be used
     def __init__(self,emp_id,first_name,last_name,address,city,state,zipcode) -> None:
@@ -92,9 +95,24 @@ class Commissioned(Salaried):
         r = self.commission_rate*hours/100.0
         return round(sal + r,2)
 
+
+############################################
+#
+# Global Variables
+#
+###########################################
 PAY_LOGFILE = 'payroll.txt'
-pay_logfile = 'payroll.txt'
+EMPLOYEE_FILE = "employees.csv"
 employees = []
+employees_by_id = {}
+current_user = None
+
+
+###########################################
+#
+#Functions
+#
+###########################################
 
 def find_employee_by_id(id):
     for emp in employees:
@@ -102,10 +120,10 @@ def find_employee_by_id(id):
             return emp
 def load_employees():
     '''
-    id,first_name-last_name,address,city,state,zip,classification,salary,commission,hourly
+    id,full name,address,city,state,zip,classification,paymethod,salary,commission,hourly,Route,Account,DOB,SSN,StartDate,RoutingNum,AcctNum,IsManager,IsArchived,EmpTitle,Department,OfficePhone,OfficeEmail,Password
     51-4678119,Issie,Scholard,11 Texas Court,Columbia,Missouri,65218,3,134386.51,34,91.06
     '''
-    filename="employees.csv"
+    filename=EMPLOYEE_FILE
     with open(filename,'r') as f:
         lines=f.readlines()
         lines.pop(0)
@@ -138,9 +156,10 @@ def load_employees():
             is_archived=bool(line[20])
             emp_title=line[21]
             department=line[22]
-            office_phone = line[23]
-            office_email = line[24]
-            x=Employee(id,first_name,last_name,address,city,state,zip,route,account,dob,ssn,start_date,routing_number,acct_number,is_manager,is_archived,emp_title,department,office_phone,office_email)
+            office_phone=line[23]
+            office_email=line[24]
+            password=line[25]
+            x=Employee(id,first_name,last_name,address,city,state,zip,route,account,dob,ssn,start_date,routing_number,acct_number,is_manager,is_archived,emp_title,department,office_phone,office_email,password)
             if classification==1:
                 x.make_hourly(hourly)
             elif classification==2:
@@ -151,6 +170,8 @@ def load_employees():
                 print('classification error:')
                 print(classification)
             employees.append(x)
+            employees_by_id[x.emp_id] = x
+
 def process_timecards():
     '''
     51-4678119,7.6,3.1,1.4,4.1,6.4,7.7,6.6
@@ -194,4 +215,57 @@ def run_payroll():
         emp.issue_payment()        # issue_payment calls a method in the classification 
       # object to compute the pay
 
+
+#New Functions
+
+def update_file():
+    pass
+
+def search_full_name(term):
+    pass
+
+def search_first_name(term):
+    pass
+
+def search_last_name(term):
+    pass
+
+def search_id(term):
+    if term in employees_by_id.keys():
+        return [deepcopy(employees_by_id[term])]
+    
+    
+
+def update_employee(new_emp):
+    pass
+
+def validate_fields(emp):
+    pass
+
+def login(id, password):
+    if id in employees_by_id.keys():
+        if employees_by_id[id].password == password:
+            current_user = employees_by_id[id]
+            return deepcopy(current_user)
+    return False
+
+
+def logout():
+    current_user = None
+    return True
+
+def pay_report(include_archived):
+    if current_user.isManager is False:
+        return False #Change this later when determined better way to send this error
+    pass
+
+def other_report(include_archived):
+    if current_user.isManager is False:
+        return False #Change this later when determined better way to send this error
+    pass
+
+def add_employee(new_emp): #can only be called by manager - and will throw error if non manager user is currently active
+    if current_user.isManager is False:
+        return False #Change this later when determined better way to send this error
+    pass
 

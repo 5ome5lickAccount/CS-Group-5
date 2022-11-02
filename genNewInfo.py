@@ -27,12 +27,13 @@ for line in lines:
     firstname = data[1].split(" ")[0]
     lastname = data[1].split(" ")[1]
     officeemail=lastname+firstname+"@uvu.edu"
+    password = str(rand.randrange(350,1000))+rand.choice(["Terran", "Zerg", "Protoss"])+rand.choice(['#','$','@','*'])
     newData= ""
     for item in data:
         newData += item+","
     newData = newData[0:-2]
     newData +=','+dob+','+ssn+','+startdate+','+routing_num+','+acct_num+','+ismanager
-    newData += ','+isarchived+','+emptitle+','+department+','+officephone+','+officeemail+'\n'
+    newData += ','+isarchived+','+emptitle+','+department+','+officephone+','+officeemail+','+password+'\n'
     newLine.append(newData)
 
 with open("employeestest.csv", 'w') as w:
