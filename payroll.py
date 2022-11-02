@@ -222,20 +222,37 @@ def update_file():
     pass
 
 def search_full_name(term):
-    pass
+    term
+    results = []
+    if ' ' not in term:
+        results = search_first_name(term)
+        results += search_last_name(term)
+        return results
+    for emp in employees:
+        fullname = emp.first_name + " " + emp.last_name
+        if term in fullname:
+            results.append(deepcopy(emp))
+    return results
 
 def search_first_name(term):
-    pass
+    results = []
+    for emp in employees:
+        if term.lower() in emp.first_name.lower():
+            results.append(deepcopy(emp))
+    return results
 
 def search_last_name(term):
-    pass
+    results = []
+    for emp in employees:
+        if term in emp.last_name:
+            results.append(deepcopy(emp))
+    return results
 
 def search_id(term):
     if term in employees_by_id.keys():
         return [deepcopy(employees_by_id[term])]
     
     
-
 def update_employee(new_emp):
     pass
 
@@ -248,7 +265,6 @@ def login(id, password):
             current_user = employees_by_id[id]
             return deepcopy(current_user)
     return False
-
 
 def logout():
     current_user = None
