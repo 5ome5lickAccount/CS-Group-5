@@ -55,7 +55,10 @@ class Employee:
         '''
         Mailing 5599.44 to Issie Scholard at 11 Texas Court Columbia Missouri 65218
         '''
-        s=f'Mailing {pay} to {self.first_name} {self.last_name} at {self.address} {self.city} {self.state} {self.zipcode}\n'
+        if self.pay_method == 1:
+            s=f'Mailing {pay} to {self.first_name} {self.last_name} at {self.address} {self.city} {self.state} {self.zipcode}\n'
+        elif self.pay_method == 2:
+            s=f'Sending a direct deposit to {self.first_name} {self.last_name} at {self.acct_number} with routing number {self.route}\n'
         with open(PAY_LOGFILE,'a') as f:
             f.write(s)
 class Classification(abc.ABC):
@@ -229,7 +232,7 @@ def search_full_name(term):
         results += search_last_name(term)
         return results
     for emp in employees:
-        fullname = emp.first_name + " " + emp.last_name
+        fullname = emp.first_name.lower() + " " + emp.last_name.lower()
         if term in fullname:
             results.append(deepcopy(emp))
     return results
@@ -244,14 +247,13 @@ def search_first_name(term):
 def search_last_name(term):
     results = []
     for emp in employees:
-        if term in emp.last_name:
+        if term.lower() in emp.last_name.lower():
             results.append(deepcopy(emp))
     return results
 
 def search_id(term):
     if term in employees_by_id.keys():
-        return [deepcopy(employees_by_id[term])]
-    
+        return [deepcopy(employees_by_id[term])]    
     
 def update_employee(new_emp):
     pass
