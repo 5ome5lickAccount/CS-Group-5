@@ -6,9 +6,7 @@ from copy import deepcopy
 
 from numpy import double
 class Employee:
-    def __init__(self,emp_id,first_name,last_name,address,
-    city,state,zipcode,pay_method,route,account,dob,ssn,start_date,routing_number,acct_number,is_manager,
-    is_archived,emp_title,department,office_phone,office_email,password) -> None:
+    def __init__(self,emp_id,first_name,last_name,address,city,state,zipcode,pay_method,route,account,dob,ssn,start_date,routing_number,acct_number,is_manager,is_archived,emp_title,department,office_phone,office_email,password) -> None:
         self.emp_id = emp_id
         self.first_name = first_name
         self.last_name = last_name
@@ -34,7 +32,7 @@ class Employee:
         self.password=password
 
     #Old Init - shouldn't be used
-    def __init__(self,emp_id,first_name,last_name,address,city,state,zipcode) -> None:
+    '''def __init__(self,emp_id,first_name,last_name,address,city,state,zipcode) -> None:
         self.emp_id = emp_id
         self.first_name = first_name
         self.last_name = last_name
@@ -43,7 +41,7 @@ class Employee:
         self.state = state
         self.zipcode = zipcode
         self.classification = False
-        
+       ''' 
     def make_hourly(self,rate):
         self.classification=Hourly(rate)
     def make_salaried(self,salary):
@@ -105,7 +103,8 @@ class Commissioned(Salaried):
 #
 ###########################################
 PAY_LOGFILE = 'payroll.txt'
-EMPLOYEE_FILE = "employees.csv"
+#EMPLOYEE_FILE = "employees.csv"
+EMPLOYEE_FILE = "employeestest.csv"
 employees = []
 employees_by_id = {}
 current_user = None
@@ -133,7 +132,9 @@ def load_employees():
         for line in lines:
             line=line.split(',')
             id=line[0]
-            first_name=line[1].split(' ')[0:-1]
+            first_name=line[1].split(' ')[0]
+            if len(line[1].split(' ')) > 2:
+                first_name=line[1].split(' ')[1]
             last_name=line[1].split(' ')[-1]
             address=line[2]
             city=line[3]
@@ -153,15 +154,15 @@ def load_employees():
             dob=line[13]
             ssn=line[14]
             start_date=line[15]
-            routing_number=line[17]
-            acct_number=line[18]
-            is_manager=bool(line[19])
-            is_archived=bool(line[20])
-            emp_title=line[21]
-            department=line[22]
-            office_phone=line[23]
-            office_email=line[24]
-            password=line[25]
+            routing_number=line[16]
+            acct_number=line[17]
+            is_manager=bool(line[18])
+            is_archived=bool(line[19])
+            emp_title=line[20]
+            department=line[21]
+            office_phone=line[22]
+            office_email=line[23]
+            password=line[24]
             x=Employee(id,first_name,last_name,address,city,state,zip,pay_method,route,account,dob,ssn,start_date,routing_number,acct_number,is_manager,is_archived,emp_title,department,office_phone,office_email,password)
             if classification==1:
                 x.make_hourly(hourly)
@@ -225,14 +226,14 @@ def update_file():
     pass
 
 def search_full_name(term):
-    term
+    term = term.lower()
     results = []
     if ' ' not in term:
         results = search_first_name(term)
         results += search_last_name(term)
         return results
     for emp in employees:
-        fullname = emp.first_name.lower() + " " + emp.last_name.lower()
+        fullname = (emp.first_name).lower() + " " + (emp.last_name).lower()
         if term in fullname:
             results.append(deepcopy(emp))
     return results
@@ -240,20 +241,20 @@ def search_full_name(term):
 def search_first_name(term):
     results = []
     for emp in employees:
-        if term.lower() in emp.first_name.lower():
+        if term.lower() in (emp.first_name).lower():
             results.append(deepcopy(emp))
     return results
 
 def search_last_name(term):
     results = []
     for emp in employees:
-        if term.lower() in emp.last_name.lower():
+        if term.lower() in (emp.last_name).lower():
             results.append(deepcopy(emp))
     return results
 
 def search_id(term):
-    if term in employees_by_id.keys():
-        return [deepcopy(employees_by_id[term])]    
+    if str(term) in employees_by_id.keys():
+        return [deepcopy(employees_by_id[str(term)])]    
     
 def update_employee(new_emp):
     pass
