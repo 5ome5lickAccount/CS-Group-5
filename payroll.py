@@ -234,8 +234,7 @@ def run_payroll():
 #New Functions
 
 def update_file():
-    #with open(EMPLOYEE_FILE, 'w') as fout:
-    with open("Test.csv", 'w') as fout:
+    with open(EMPLOYEE_FILE, 'w') as fout:
         fout.write("ID,Name,Address,City,State,Zip,Classification,PayMethod,Salary,Hourly,Commission,Route,Account,DOB,SSN,StartDate,IsManager,IsArchived,EmpTitle,Department,OfficePhone,OfficeEmail,Password")
         fout.write("\n")
         for emp in employees:
@@ -280,7 +279,6 @@ def update_employee(new_emp):
         return False
     if overwrite_emp.ssn != new_emp.ssn:
         return False
-
     overwrite_emp.first_name = new_emp.first_name
     overwrite_emp.last_name = new_emp.last_name
     overwrite_emp.address = new_emp.address
@@ -304,7 +302,62 @@ def update_employee(new_emp):
 
 
 def validate_fields(emp):
-    pass
+    problem_fields = []
+    
+    def validate_ssn(ssn_fields):
+        ssn = ssn_fields.split('-')
+        if len(ssn) != 3:
+            return False
+        if len(ssn[0]) != 3:
+            return False
+        elif len(ssn[1]) != 2:
+            return False
+        elif len(ssn[2]) != 4:
+            return False
+        return True
+
+    def validate_no_commas(emp): #Confirms no commas are found
+        bad_fields = []
+        if ',' in emp.first_name:
+            bad_fields.append('First Name')
+        if ',' in emp.last_name:
+            bad_fields.append('Last Name')
+        if ',' in emp.address:
+            bad_fields.append('Address')
+        if ',' in emp.city:
+            bad_fields.append('City')
+        if ',' in emp.state:
+            bad_fields.append('State')
+        if ',' in emp.zipcode:
+            bad_fields.append('Zipcode')
+        if ',' in emp.route:
+            bad_fields.append('Route')
+        if ',' in emp.account:
+            bad_fields.append('Account')
+        if ',' in emp.dob:
+            bad_fields.append('Date of Birth')
+        if ',' in emp.ssn:
+            bad_fields.append('SSN')
+        if ',' in emp.dob:
+            bad_fields.append('Date of Birth')
+        if ',' in emp.start_date:
+            bad_fields.append('Start Date')
+        if ',' in emp.emp_title:
+            bad_fields.append('Employee Title')
+        if ',' in emp.department:
+            bad_fields.append('Department')
+        if ',' in emp.office_email:
+            bad_fields.append('Office Email')
+        return bad_fields
+
+    if not validate_ssn(emp.ssn):
+        problem_fields.append("SSN")
+
+    problems_fields += validate_no_commas(emp)
+
+    return problem_fields
+
+
 
 def login(id, password):
     if id in employees_by_id.keys():
@@ -320,13 +373,16 @@ def logout():
 def pay_report(include_archived):
     if current_user.isManager is False:
         return False #Change this later when determined better way to send this error
-    pass
+    process_timecards()
+    process_receipts()
+    pay_report()
 
+'''
 def other_report(include_archived):
     if current_user.isManager is False:
         return False #Change this later when determined better way to send this error
     pass
-
+'''
 def add_employee(new_emp): #can only be called by manager - and will throw error if non manager user is currently active
     if current_user.isManager is False:
         return False #Change this later when determined better way to send this error
