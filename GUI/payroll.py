@@ -280,7 +280,12 @@ def search_last_name(term):
 
 def search_id(term):
     if str(term) in employees_by_id.keys():
-        return [deepcopy(employees_by_id[str(term)])]    
+        return [deepcopy(employees_by_id[str(term)])]
+    results = []
+    for emp in employees:
+        if str(term) in emp.employeeId:
+            results.append(deepcopy(emp))
+    return results     
     
 def update_employee(new_emp):
     overwrite_emp = find_employee_by_id(new_emp.employeeId)
@@ -406,10 +411,10 @@ def add_employee(new_emp): #can only be called by manager - and will throw error
     employees_by_id[new_emp.employeeId] = new_emp
 
 def backendSearcher(searchFilter, searchText):
-    ''' First name, Last name, Full Name, Employee Id'''
+    ''' First name, Last name, Full Name, Employee ID'''
     if searchFilter == "First name":
         return search_first_name(searchText)
-    elif searchFilter == "Employee Id":
+    elif searchFilter == "Employee ID":
         return search_id(searchText)
     elif searchFilter == "Last Name":
         return search_last_name(searchText)
