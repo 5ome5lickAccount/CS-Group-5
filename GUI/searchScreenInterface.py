@@ -88,10 +88,9 @@ class SearchManager():
         self.clearSearchScreen()
 
         for employee in self.searchResults:
-            print(employee.firstName)
             self.populateSearchRow(employee, self.ui)
 
-        for i in range(0, 6):
+        for i in range(0, 5):
             self.ui.gridLayout_7.addItem(
                 QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding),
                 self.rowCounter, i, 1, 1)
