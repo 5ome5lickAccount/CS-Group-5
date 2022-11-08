@@ -1,4 +1,3 @@
-
 import abc
 import os
 from stat import SF_SNAPSHOT
@@ -38,16 +37,18 @@ class Employee:
         self.classification=Salaried(salary)
     def make_commissioned(self,salary,rate):
         self.classification=Commissioned(salary,rate)
-    def issue_payment(self):
+    def issue_payment(self, save_file):
         pay = self.classification.compute_pay()
         '''
         Mailing 5599.44 to Issie Scholard at 11 Texas Court Columbia Missouri 65218
         '''
+        if pay == 0.0:
+            return
         if self.pay_method == 1:
             s=f'Mailing {pay} to {self.first_name} {self.last_name} at {self.address} {self.city} {self.state} {self.zipcode}\n'
         elif self.pay_method == 2:
-            s=f'Sending a direct deposit to {self.first_name} {self.last_name} at {self.account} with routing number {self.route}\n'
-        with open(PAY_LOGFILE,'a') as f:
+            s=f'Sending a direct deposit of {pay} to {self.first_name} {self.last_name} at {self.account} with routing number {self.route}\n'
+        with open(save_file,'a') as f:
             f.write(s)
     def __str__(self):
         if isinstance(self.classification,  Hourly):
@@ -138,6 +139,9 @@ def load_employees():
     id,full name,address,city,state,zip,classification,paymethod,salary,commission,hourly,Route,Account,DOB,SSN,StartDate,RoutingNum,AcctNum,IsManager,IsArchived,EmpTitle,Department,OfficePhone,OfficeEmail,Password
     51-4678119,Issie,Scholard,11 Texas Court,Columbia,Missouri,65218,3,134386.51,34,91.06
     '''
+    global employees
+    if len(employees) != 0:
+        employees = []
     filename=EMPLOYEE_FILE
     with open(filename,'r') as f:
         lines=f.readlines()
@@ -223,24 +227,29 @@ def process_receipts():
                     pass
                     #print(f'employee {id} is not commissioned')
                 
-def run_payroll():
-    if os.path.exists(PAY_LOGFILE): # pay_log_file is a global variable holding ‘payroll.txt’ 
-        os.remove(PAY_LOGFILE) 
+def run_payroll(include_archived, save_file):
+    if os.path.exists(save_file): # pay_log_file is a global variable holding ‘payroll.txt’ 
+        os.remove(save_file) 
     for emp in employees:      # employees is the global list of Employee objects 
-        emp.issue_payment()        # issue_payment calls a method in the classification 
+        if include_archived:
+            emp.issue_payment()
+        elif emp.is_archived is False:
+            emp.issue_payment()        # issue_payment calls a method in the classification 
       # object to compute the pay
 
-
+#################
 #New Functions
+#################
 
 def update_file():
+    if os.path.exists(EMPLOYEE_FILE): # pay_log_file is a global variable holding ‘payroll.txt’ 
+        os.remove(EMPLOYEE_FILE) 
     with open(EMPLOYEE_FILE, 'w') as fout:
         fout.write("ID,Name,Address,City,State,Zip,Classification,PayMethod,Salary,Hourly,Commission,Route,Account,DOB,SSN,StartDate,IsManager,IsArchived,EmpTitle,Department,OfficePhone,OfficeEmail,Password")
         fout.write("\n")
         for emp in employees:
             fout.write(str(emp))
             fout.write('\n')
-
 
 def search_full_name(term):
     term = term.lower()
@@ -300,7 +309,6 @@ def update_employee(new_emp):
     update_file()
     return True
 
-
 def validate_fields(emp):
     problem_fields = []
     
@@ -316,7 +324,7 @@ def validate_fields(emp):
             return False
         return True
 
-    def validate_no_commas(emp): #Confirms no commas are found
+    def validate_no_commas(emp): #Confirms no commas are found # No special characters#Numbers only have numbers potential dashes,slashes
         bad_fields = []
         if ',' in emp.first_name:
             bad_fields.append('First Name')
@@ -357,8 +365,6 @@ def validate_fields(emp):
 
     return problem_fields
 
-
-
 def login(id, password):
     if id in employees_by_id.keys():
         if employees_by_id[id].password == password:
@@ -368,10 +374,11 @@ def login(id, password):
 
 def logout():
     current_user = None
+    update_file()
     return True
 
 def pay_report(include_archived, save_file):
-    if current_user.isManager is False:
+    if current_user.is_manager is False:
         return False #Change this later when determined better way to send this error
     process_timecards()
     process_receipts()
@@ -381,10 +388,20 @@ def pay_report(include_archived, save_file):
 def database_report(include_archived, save_file): #Just output as if to the save file... but to another file
     if current_user.isManager is False:
         return False #Change this later when determined better way to send this error
-    pass
+    if os.path.exists(save_file): # pay_log_file is a global variable holding ‘payroll.txt’ 
+        os.remove(save_file) 
+    with open(save_file, 'w') as fout:
+        fout.write("ID,Name,Address,City,State,Zip,Classification,PayMethod,Salary,Hourly,Commission,Route,Account,DOB,SSN,StartDate,IsManager,IsArchived,EmpTitle,Department,OfficePhone,OfficeEmail,Password")
+        fout.write("\n")
+        for emp in employees or emp.is_archived is False:
+            if include_archived:
+                fout.write(str(emp))
+                fout.write('\n')
+            elif emp.is_archived:
+                    continue
 
 def add_employee(new_emp): #can only be called by manager - and will throw error if non manager user is currently active
-    if current_user.isManager is False:
+    if current_user.is_manager is False:
         return False #Change this later when determined better way to send this error
     #validate fields
     employees.append(new_emp)

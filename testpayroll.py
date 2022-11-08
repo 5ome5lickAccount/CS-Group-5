@@ -21,5 +21,9 @@ class payrollTest(unittest.TestCase):
     def testResave(self):
         payroll.update_file()
 
+    def testPayReport(self):
+        payroll.current_user = payroll.employees[0]
+        payroll.pay_report(True)
+
 if __name__ == '__main__':
     unittest.main()
