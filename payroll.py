@@ -370,23 +370,22 @@ def logout():
     current_user = None
     return True
 
-def pay_report(include_archived):
+def pay_report(include_archived, save_file):
     if current_user.isManager is False:
         return False #Change this later when determined better way to send this error
     process_timecards()
     process_receipts()
-    pay_report()
+    run_payroll(include_archived, save_file)
 
-'''
-def other_report(include_archived):
+
+def database_report(include_archived, save_file): #Just output as if to the save file... but to another file
     if current_user.isManager is False:
         return False #Change this later when determined better way to send this error
     pass
-'''
+
 def add_employee(new_emp): #can only be called by manager - and will throw error if non manager user is currently active
     if current_user.isManager is False:
         return False #Change this later when determined better way to send this error
     #validate fields
     employees.append(new_emp)
     employees_by_id[new_emp.emp_id] = new_emp
-
