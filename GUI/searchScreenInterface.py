@@ -1,5 +1,4 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
-from empTest import generateEmployeeObjects
 
 
 class SeparatorLine(QtWidgets.QFrame):
@@ -86,10 +85,10 @@ class SearchManager():
         self.searchResults = searchResultList
 
     def populateSearchResults(self):
-        testEmpList = generateEmployeeObjects()
         self.clearSearchScreen()
 
-        for employee in testEmpList:
+        for employee in self.searchResults:
+            print(employee.firstName)
             self.populateSearchRow(employee, self.ui)
 
         for i in range(0, 6):

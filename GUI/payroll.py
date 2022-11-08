@@ -283,14 +283,14 @@ def search_id(term):
         return [deepcopy(employees_by_id[str(term)])]    
     
 def update_employee(new_emp):
-    overwrite_emp = find_employee_by_id(new_emp.id)
+    overwrite_emp = find_employee_by_id(new_emp.employeeId)
     if overwrite_emp is None:
         return False
     if overwrite_emp.ssn != new_emp.ssn:
         return False
     overwrite_emp.firstName = new_emp.firstName
     overwrite_emp.lastName = new_emp.lastName
-    overwrite_emp.address = new_emp.address
+    overwrite_emp.address1 = new_emp.address1
     overwrite_emp.city = new_emp.city
     overwrite_emp.state = new_emp.state
     overwrite_emp.zip = new_emp.zip
@@ -326,36 +326,34 @@ def validate_fields(emp):
 
     def validate_no_commas(emp): #Confirms no commas are found # No special characters#Numbers only have numbers potential dashes,slashes
         bad_fields = []
-        if ',' in emp.first_name:
+        if ',' in emp.firstName:
             bad_fields.append('First Name')
-        if ',' in emp.last_name:
+        if ',' in emp.lastName:
             bad_fields.append('Last Name')
-        if ',' in emp.address:
+        if ',' in emp.address1:
             bad_fields.append('Address')
         if ',' in emp.city:
             bad_fields.append('City')
         if ',' in emp.state:
             bad_fields.append('State')
-        if ',' in emp.zipcode:
+        if ',' in emp.zip:
             bad_fields.append('Zipcode')
-        if ',' in emp.route:
+        if ',' in emp.routeNum:
             bad_fields.append('Route')
-        if ',' in emp.account:
+        if ',' in emp.accountNum:
             bad_fields.append('Account')
-        if ',' in emp.dob:
-            bad_fields.append('Date of Birth')
         if ',' in emp.ssn:
             bad_fields.append('SSN')
-        if ',' in emp.dob:
+        if ',' in emp.birthDay:
             bad_fields.append('Date of Birth')
-        if ',' in emp.start_date:
+        if ',' in emp.startDate:
             bad_fields.append('Start Date')
-        if ',' in emp.emp_title:
-            bad_fields.append('Employee Title')
+        if ',' in emp.title:
+            bad_fields.append('Title')
         if ',' in emp.department:
             bad_fields.append('Department')
-        if ',' in emp.office_email:
-            bad_fields.append('Office Email')
+        if ',' in emp.email:
+            bad_fields.append('Email')
         return bad_fields
 
     if not validate_ssn(emp.ssn):
@@ -406,3 +404,14 @@ def add_employee(new_emp): #can only be called by manager - and will throw error
     #validate fields
     employees.append(new_emp)
     employees_by_id[new_emp.employeeId] = new_emp
+
+def backendSearcher(searchFilter, searchText):
+    ''' First name, Last name, Full Name, Employee Id'''
+    if searchFilter == "First name":
+        return search_first_name(searchText)
+    elif searchFilter == "Employee Id":
+        return search_id(searchText)
+    elif searchFilter == "Last Name":
+        return search_last_name(searchText)
+    else:#Default is search by full name 
+        return search_full_name(searchText)

@@ -2,6 +2,7 @@ from infoScreenInterface import InfoScreenInterface
 from reportScreenInterface import ReportScreenManager
 from searchScreenInterface import SearchManager
 from sideBarManager import SideBarMgr
+from payroll import backendSearcher
 
 
 class SessionManager():
@@ -48,9 +49,7 @@ class SessionManager():
     def activateSearchScreen(self):
         searchFilter = self.ui.searchField_comboBox.currentText()
         searchText = self.ui.search_lineEdit.text()
-        searchResultsList = [None]
-        # todo get search results from backend by passing in search information
-        # searchResultsList = backendSearcher()
+        searchResultsList = backendSearcher(searchFilter, searchText)
         SearchManager(self.ui, searchResultsList, self.activateOtherEmployeeInfoScreen).populateSearchResults()
         self.mainScreen.setCurrentIndex(0)
 
