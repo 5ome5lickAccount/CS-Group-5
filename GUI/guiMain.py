@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from empDataGraphics import Ui_MainWindow
-from empTest import Employee
+from payroll import Employee 
 from sessionManager import SessionManager
 import sys
 
@@ -14,7 +14,7 @@ class CentralWindow(QtWidgets.QMainWindow, SessionManager):
 
         self.initializeSessionManager(self.ui, self.activeUser)
 
-
+#Put all on backend start up functions 
 # class LoginWindow(QtWidgets.QMainWindow):
 #     def __init__(self, *args, **kwargs):
 #         super().__init__(*args, **kwargs)
