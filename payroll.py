@@ -6,7 +6,7 @@ from copy import deepcopy
 
 from numpy import double
 class Employee:
-    def __init__(self,emp_id,first_name,last_name,address,city,state,zipcode,pay_method,route,account,dob,ssn,start_date,routing_number,acct_number,is_manager,is_archived,emp_title,department,office_phone,office_email,password) -> None:
+    def __init__(self,emp_id,first_name,last_name,address,city,state,zipcode,pay_method,route,account,dob,ssn,start_date,is_manager,is_archived,emp_title,department,office_phone,office_email,password,hourly,salary,commissioned) -> None:
         self.emp_id = emp_id
         self.first_name = first_name
         self.last_name = last_name
@@ -21,27 +21,17 @@ class Employee:
         self.dob = dob
         self.ssn = ssn
         self.start_date = start_date
-        self.routing_number = routing_number
-        self.acct_number = acct_number
         self.is_manager = is_manager
         self.is_archived = is_archived
         self.emp_title = emp_title
         self.department = department
         self.office_phone = office_phone
         self.office_email = office_email
-        self.password=password
-
-    #Old Init - shouldn't be used
-    '''def __init__(self,emp_id,first_name,last_name,address,city,state,zipcode) -> None:
-        self.emp_id = emp_id
-        self.first_name = first_name
-        self.last_name = last_name
-        self.address = address
-        self.city = city
-        self.state = state
-        self.zipcode = zipcode
-        self.classification = False
-       ''' 
+        self.password=password[0:-1]
+        #Need this to save them
+        self.save_hr = deepcopy(hourly)
+        self.save_sal = deepcopy(salary)
+        self.save_com = deepcopy(commissioned)
     def make_hourly(self,rate):
         self.classification=Hourly(rate)
     def make_salaried(self,salary):
@@ -56,9 +46,32 @@ class Employee:
         if self.pay_method == 1:
             s=f'Mailing {pay} to {self.first_name} {self.last_name} at {self.address} {self.city} {self.state} {self.zipcode}\n'
         elif self.pay_method == 2:
-            s=f'Sending a direct deposit to {self.first_name} {self.last_name} at {self.acct_number} with routing number {self.route}\n'
+            s=f'Sending a direct deposit to {self.first_name} {self.last_name} at {self.account} with routing number {self.route}\n'
         with open(PAY_LOGFILE,'a') as f:
             f.write(s)
+    def __str__(self):
+        if isinstance(self.classification,  Hourly):
+            classification = 1
+        elif isinstance(self.classification, Commissioned):
+            classification = 3
+        elif isinstance(self.classification, Salaried):
+            classification = 2
+        else:
+            classification = 4
+        if self.is_archived:
+            archive = 1
+        else:
+            archive = 0
+        if self.is_manager:
+            manager = 1
+        else:
+            manager = 0
+        detail = self.emp_id+','+self.first_name+' '+self.last_name+','+self.address+','+self.city+','+self.state+','
+        detail += self.zipcode+','+str(classification)+','+str(self.pay_method)+','+str(self.save_sal)+','+str(self.save_hr)+','+str(self.save_com)+','
+        detail += self.route+','+self.account+','+self.dob+','+self.ssn+','+self.start_date+','+str(manager)+','
+        detail += str(archive)+','+self.emp_title+','+self.department+','+self.office_phone+','+self.office_email+','+self.password
+        return detail
+    
 class Classification(abc.ABC):
     @abc.abstractmethod
     def compute_pay(self):
@@ -134,7 +147,7 @@ def load_employees():
             id=line[0]
             first_name=line[1].split(' ')[0]
             if len(line[1].split(' ')) > 2:
-                first_name=line[1].split(' ')[1]
+                first_name+=' '+line[1].split(' ')[1]
             last_name=line[1].split(' ')[-1]
             address=line[2]
             city=line[3]
@@ -154,16 +167,14 @@ def load_employees():
             dob=line[13]
             ssn=line[14]
             start_date=line[15]
-            routing_number=line[16]
-            acct_number=line[17]
-            is_manager=bool(line[18])
-            is_archived=bool(line[19])
-            emp_title=line[20]
-            department=line[21]
-            office_phone=line[22]
-            office_email=line[23]
-            password=line[24]
-            x=Employee(id,first_name,last_name,address,city,state,zip,pay_method,route,account,dob,ssn,start_date,routing_number,acct_number,is_manager,is_archived,emp_title,department,office_phone,office_email,password)
+            is_manager=bool(int(line[16]))
+            is_archived=bool(int(line[17]))
+            emp_title=line[18]
+            department=line[19]
+            office_phone=line[20]
+            office_email=line[21]
+            password=line[22]
+            x=Employee(id,first_name,last_name,address,city,state,zip,pay_method,route,account,dob,ssn,start_date,is_manager,is_archived,emp_title,department,office_phone,office_email,password,hourly,salary,commission)
             if classification==1:
                 x.make_hourly(hourly)
             elif classification==2:
@@ -223,7 +234,14 @@ def run_payroll():
 #New Functions
 
 def update_file():
-    pass
+    #with open(EMPLOYEE_FILE, 'w') as fout:
+    with open("Test.csv", 'w') as fout:
+        fout.write("ID,Name,Address,City,State,Zip,Classification,PayMethod,Salary,Hourly,Commission,Route,Account,DOB,SSN,StartDate,IsManager,IsArchived,EmpTitle,Department,OfficePhone,OfficeEmail,Password")
+        fout.write("\n")
+        for emp in employees:
+            fout.write(str(emp))
+            fout.write('\n')
+
 
 def search_full_name(term):
     term = term.lower()
@@ -257,7 +275,33 @@ def search_id(term):
         return [deepcopy(employees_by_id[str(term)])]    
     
 def update_employee(new_emp):
-    pass
+    overwrite_emp = find_employee_by_id(new_emp.emp_id)
+    if overwrite_emp is None:
+        return False
+    if overwrite_emp.ssn != new_emp.ssn:
+        return False
+
+    overwrite_emp.first_name = new_emp.first_name
+    overwrite_emp.last_name = new_emp.last_name
+    overwrite_emp.address = new_emp.address
+    overwrite_emp.city = new_emp.city
+    overwrite_emp.state = new_emp.state
+    overwrite_emp.zipcode = new_emp.zipcode
+    overwrite_emp.classification = new_emp.classification
+    overwrite_emp.pay_method = new_emp.pay_method
+    overwrite_emp.route = new_emp.route
+    overwrite_emp.account = new_emp.account
+    overwrite_emp.dob = new_emp.dob
+    overwrite_emp.start_date = new_emp.start_date
+    overwrite_emp.is_manager = new_emp.is_manager
+    overwrite_emp.is_archived = new_emp.is_archived
+    overwrite_emp.emp_title = new_emp.emp_title
+    overwrite_emp.department = new_emp.department
+    overwrite_emp.office_phone = new_emp.office_phone
+    overwrite_emp.office_email = new_emp.office_email
+    update_file()
+    return True
+
 
 def validate_fields(emp):
     pass
@@ -286,5 +330,7 @@ def other_report(include_archived):
 def add_employee(new_emp): #can only be called by manager - and will throw error if non manager user is currently active
     if current_user.isManager is False:
         return False #Change this later when determined better way to send this error
-    pass
+    #validate fields
+    employees.append(new_emp)
+    employees_by_id[new_emp.emp_id] = new_emp
 

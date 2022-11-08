@@ -18,5 +18,8 @@ class payrollTest(unittest.TestCase):
     def testSearchByFullName(self):
         self.assertEqual(payroll.search_full_name("Rooney Alvar")[0].first_name, "Rooney")
 
+    def testResave(self):
+        payroll.update_file()
+
 if __name__ == '__main__':
     unittest.main()
