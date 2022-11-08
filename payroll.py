@@ -1,4 +1,3 @@
-
 import abc
 import os
 from stat import SF_SNAPSHOT
@@ -38,7 +37,7 @@ class Employee:
         self.classification=Salaried(salary)
     def make_commissioned(self,salary,rate):
         self.classification=Commissioned(salary,rate)
-    def issue_payment(self):
+    def issue_payment(self, save_file):
         pay = self.classification.compute_pay()
         '''
         Mailing 5599.44 to Issie Scholard at 11 Texas Court Columbia Missouri 65218
@@ -49,7 +48,7 @@ class Employee:
             s=f'Mailing {pay} to {self.first_name} {self.last_name} at {self.address} {self.city} {self.state} {self.zipcode}\n'
         elif self.pay_method == 2:
             s=f'Sending a direct deposit of {pay} to {self.first_name} {self.last_name} at {self.account} with routing number {self.route}\n'
-        with open(PAY_LOGFILE,'a') as f:
+        with open(save_file,'a') as f:
             f.write(s)
     def __str__(self):
         if isinstance(self.classification,  Hourly):
@@ -228,9 +227,9 @@ def process_receipts():
                     pass
                     #print(f'employee {id} is not commissioned')
                 
-def run_payroll(include_archived):
-    if os.path.exists(PAY_LOGFILE): # pay_log_file is a global variable holding ‘payroll.txt’ 
-        os.remove(PAY_LOGFILE) 
+def run_payroll(include_archived, save_file):
+    if os.path.exists(save_file): # pay_log_file is a global variable holding ‘payroll.txt’ 
+        os.remove(save_file) 
     for emp in employees:      # employees is the global list of Employee objects 
         if include_archived:
             emp.issue_payment()
@@ -241,6 +240,7 @@ def run_payroll(include_archived):
 #################
 #New Functions
 #################
+
 def update_file():
     if os.path.exists(EMPLOYEE_FILE): # pay_log_file is a global variable holding ‘payroll.txt’ 
         os.remove(EMPLOYEE_FILE) 
@@ -250,7 +250,6 @@ def update_file():
         for emp in employees:
             fout.write(str(emp))
             fout.write('\n')
-
 
 def search_full_name(term):
     term = term.lower()
@@ -310,7 +309,6 @@ def update_employee(new_emp):
     update_file()
     return True
 
-
 def validate_fields(emp):
     problem_fields = []
     
@@ -326,7 +324,7 @@ def validate_fields(emp):
             return False
         return True
 
-    def validate_no_commas(emp): #Confirms no commas are found
+    def validate_no_commas(emp): #Confirms no commas are found # No special characters#Numbers only have numbers potential dashes,slashes
         bad_fields = []
         if ',' in emp.first_name:
             bad_fields.append('First Name')
@@ -379,19 +377,29 @@ def logout():
     update_file()
     return True
 
-def pay_report(include_archived):
+def pay_report(include_archived, save_file):
     if current_user.is_manager is False:
         return False #Change this later when determined better way to send this error
     process_timecards()
     process_receipts()
-    run_payroll(include_archived)
+    run_payroll(include_archived, save_file)
 
-'''
-def other_report(include_archived):
+
+def database_report(include_archived, save_file): #Just output as if to the save file... but to another file
     if current_user.isManager is False:
         return False #Change this later when determined better way to send this error
-    pass
-'''
+    if os.path.exists(save_file): # pay_log_file is a global variable holding ‘payroll.txt’ 
+        os.remove(save_file) 
+    with open(save_file, 'w') as fout:
+        fout.write("ID,Name,Address,City,State,Zip,Classification,PayMethod,Salary,Hourly,Commission,Route,Account,DOB,SSN,StartDate,IsManager,IsArchived,EmpTitle,Department,OfficePhone,OfficeEmail,Password")
+        fout.write("\n")
+        for emp in employees or emp.is_archived is False:
+            if include_archived:
+                fout.write(str(emp))
+                fout.write('\n')
+            elif emp.is_archived:
+                    continue
+
 def add_employee(new_emp): #can only be called by manager - and will throw error if non manager user is currently active
     if current_user.is_manager is False:
         return False #Change this later when determined better way to send this error
