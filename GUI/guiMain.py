@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from empDataGraphics import Ui_MainWindow
-from payroll import Employee 
+from payroll import Employee, find_employee_by_id, load_employees 
 from sessionManager import SessionManager
 import sys
 
@@ -24,10 +24,13 @@ class CentralWindow(QtWidgets.QMainWindow, SessionManager):
 
 def main():
     # todo delete after connecting to backend
-    activeUser = Employee("7777777", "Grayson Pratt", "123 w 456 n", "Orem", "UT", "84057", "2", "2", "40872.60",
+    '''activeUser = Employee("7777777", "Grayson", "Pratt", "123 w 456 n", "Orem", "UT", "84057", "2", "2", "40872.60",
                                "57.05", "31", "13255163-4", "104934-8350", "7/11/1984", "123-45-6789",
                                "9/11/2019", "2", "0", "Software Engineer", "Software Engineering", "222-333-4444",
                                "grayson.pratt@uvu.edu", "password")
+'''
+    load_employees()
+    activeUser = find_employee_by_id(522759)
 
     app = QtWidgets.QApplication(sys.argv)
     Central = CentralWindow(activeUser)
