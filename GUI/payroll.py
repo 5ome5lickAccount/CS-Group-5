@@ -369,9 +369,9 @@ def validate_fields(emp):
     return problem_fields
 
 def login(id, password):
-    if id in employees_by_id.keys():
-        if employees_by_id[id].password == password:
-            current_user = employees_by_id[id]
+    if str(id) in employees_by_id.keys():
+        if employees_by_id[str(id)].password == password:
+            current_user = employees_by_id[str(id)]
             return deepcopy(current_user)
     return False
 
