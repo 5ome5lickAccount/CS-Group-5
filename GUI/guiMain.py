@@ -1,7 +1,8 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtWidgets
 from empDataGraphics import Ui_MainWindow
-from payroll import Employee, find_employee_by_id, load_employees 
+from empDataLoginGraphics import Ui_LoginWindow
 from sessionManager import SessionManager
+from payroll import load_employees, login
 import sys
 
 
@@ -14,32 +15,51 @@ class CentralWindow(QtWidgets.QMainWindow, SessionManager):
 
         self.initializeSessionManager(self.ui, self.activeUser)
 
-#Put all on backend start up functions 
-# class LoginWindow(QtWidgets.QMainWindow):
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.loginUi = Ui_LoginWindow()
-#         self.loginUi.setupUi(self)
 
+class LoginWindow(QtWidgets.QMainWindow):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.loginUi = Ui_LoginWindow()
+        self.loginUi.setupUi(self)
+        self.activeUser = False
+
+        self.loginUi.login_toolButton.clicked.connect(self.validateLoginInfo)
+        load_employees()
+
+    def validateLoginInfo(self):
+        userName = self.loginUi.employeeIdLogin_lineEdit.text()
+        password = self.loginUi.passwordLogin_lineEdit.text()
+        self.activeUser = login(userName, password)
+        if self.activeUser is not False:
+            self.proceedWithLogin()
+
+    def proceedWithLogin(self):
+        self.Central = CentralWindow(self.activeUser)
+        self.createAccessDependentInterface()
+        self.Central.ui.signOut_toolButton.clicked.connect(self.signOutOfMainWindow)
+        self.Central.ui.signOutTopBar_toolButton.clicked.connect(self.signOutOfMainWindow)
+        self.Central.show()
+        self.hide()
+
+    def createAccessDependentInterface(self):
+        if self.activeUser.isManager == False:
+            self.Central.ui.newEmp_toolButton.hide()
+            self.Central.ui.report_toolButton.hide()
+        else:
+            self.Central.ui.newEmp_toolButton.show()
+            self.Central.ui.report_toolButton.show()
+
+    def signOutOfMainWindow(self):
+        self.Central.close()
+        self.show()
 
 def main():
-    # todo delete after connecting to backend
-    '''activeUser = Employee("7777777", "Grayson", "Pratt", "123 w 456 n", "Orem", "UT", "84057", "2", "2", "40872.60",
-                               "57.05", "31", "13255163-4", "104934-8350", "7/11/1984", "123-45-6789",
-                               "9/11/2019", "2", "0", "Software Engineer", "Software Engineering", "222-333-4444",
-                               "grayson.pratt@uvu.edu", "password")
-'''
-    load_employees()
-    #activeUser = find_employee_by_id(522759)
-    activeUser = find_employee_by_id(688997)
-
     app = QtWidgets.QApplication(sys.argv)
-    Central = CentralWindow(activeUser)
-    Central.show()
+    CentralLogin = LoginWindow()
+    CentralLogin.show()
     try:
         sys.exit(app.exec())
     except:
         print("Exiting")
-
 
 main()
