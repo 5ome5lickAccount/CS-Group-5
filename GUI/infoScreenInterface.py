@@ -37,7 +37,7 @@ class InfoScreenInterface():
                 self.ui.ssn_lineEdit.setText(self.selectedUser.ssn)
                 self.ui.birthDay_dateEdit.setDate(self.dateToQDate(self.selectedUser.birthDay))
 
-                if self.selectedUser.payMethod == "2":
+                if self.selectedUser.classification == "1":
                     self.ui.payTypeHourly_radioButton.setChecked(True)
                 else:
                     self.ui.payTypeSalary_radioButton.setChecked(True)
@@ -52,7 +52,7 @@ class InfoScreenInterface():
                 elif self.selectedUser.isManager:
                     self.ui.userAccess_comboBox.setCurrentIndex(2)
                 else:
-                    self.ui.userAccess_comboBox.setCurrentIndex(2)
+                    self.ui.userAccess_comboBox.setCurrentIndex(1)
 
                 self.ui.mailAddressYes_radioButton.setChecked(True)
                 self.ui.routingNum_lineEdit.setText(self.selectedUser.routingNum)
@@ -82,7 +82,7 @@ class InfoScreenInterface():
         self.ui.routingNum_lineEdit.setText(self.activeUser.routingNum)
         self.ui.accountNum_lineEdit.setText(self.activeUser.accountNum)
 
-        if self.activeUser.payMethod == "2":
+        if self.activeUser.classification == "1":
             self.ui.payTypeHourly_radioButton.setChecked(True)
         else:
             self.ui.payTypeSalary_radioButton.setChecked(True)
@@ -96,8 +96,10 @@ class InfoScreenInterface():
             self.ui.userAccess_comboBox.setCurrentIndex(3)
         elif self.activeUser.isManager:
             self.ui.userAccess_comboBox.setCurrentIndex(2)
+        elif self.activeUser.isManager == "":
+            self.ui.userAccess_comboBox.setCurrentIndex(0)
         else:
-            self.ui.userAccess_comboBox.setCurrentIndex(2)
+            self.ui.userAccess_comboBox.setCurrentIndex(1)
 
     def clearInfoScreen(self):
         self.enableInfoInputs()
