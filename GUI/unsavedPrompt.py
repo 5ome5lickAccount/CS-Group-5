@@ -1,7 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Form(object):
+class Unsaved_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(400, 121)
@@ -35,13 +35,3 @@ class Ui_Form(object):
         self.pushButton_2.setText(_translate("Form", "No"))
         self.label.setText(_translate("Form", "WARNING: There is unsaved data. Are you sure you want to exit without saving your data?"))
         self.label_2.setText(_translate("Form", "Unsaved data will be lost"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
-    sys.exit(app.exec_())
