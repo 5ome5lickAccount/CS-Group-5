@@ -27,10 +27,13 @@ class Employee:
         self.phone = office_phone
         self.email = office_email
         self.password=password[0:-1]
+        self.unsavedData = True
+        self.unsavedDataFields = []
         #Need this to save them
         self.save_hr = deepcopy(hourly)
         self.save_sal = deepcopy(salary)
         self.save_com = deepcopy(commissioned)
+        self.selfValidate()
     def make_hourly(self,rate):
         self.classification=Hourly(rate)
     def make_salaried(self,salary):
@@ -39,9 +42,7 @@ class Employee:
         self.classification=Commissioned(salary,rate)
     def issue_payment(self, save_file):
         pay = self.classification.compute_pay()
-        
         #Mailing 5599.44 to Issie Scholard at 11 Texas Court Columbia Missouri 65218
-        
         if pay == 0.0:
             return
         if self.payMethod == 1:
@@ -72,6 +73,79 @@ class Employee:
         detail += self.routingNum+','+self.accountNum+','+self.birthDay+','+self.ssn+','+self.startDate+','+str(manager)+','
         detail += str(archive)+','+self.title+','+self.department+','+self.phone+','+self.email+','+self.password
         return detail
+    def selfValidate(self):
+        if self.employeeId == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Employee Id")
+        if self.firstName == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("First Name")
+        if self.lastName == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Last Name")
+        if self.address1 == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Address")
+        if self.city == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("City")
+        if self.state == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("State")
+        if self.zip == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Zip")
+        if self.classification == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Classification")
+        if self.payMethod == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Pay Method")
+        if self.routingNum == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Routing Number")
+        if self.accountNum == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Account Number")
+        if self.birthDay == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Birthday")
+        if self.ssn == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Social Security Number")
+        if self.startDate == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Last Name")
+        if self.isManager == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Manager")
+        if self.isArchived == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Archived")
+        if self.title == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Title")
+        if self.department == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Department")
+        if self.phone == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Phone")
+        if self.email == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Email")
+        if self.password == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Password")
+        if self.save_hr == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Hourly Pay")
+        if self.save_sal == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Salary Pay")
+        if self.save_com == "":
+            self.unsavedData = True
+            self.unsavedDataFields.append("Commision Pay")
     
 class Classification(abc.ABC):
     @abc.abstractmethod

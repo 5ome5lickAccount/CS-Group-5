@@ -1,6 +1,7 @@
 from PyQt5.QtCore import QDate
 from PyQt5.QtWidgets import QFileDialog, QWidget
 from payroll import database_report, pay_report
+from errorWindow import Error_Form
 
 
 class InfoScreenInterface():
@@ -8,6 +9,8 @@ class InfoScreenInterface():
         self.ui = ui
         self.activeUser = activeUserObject
         self.selectedUser = ""
+        self.Pop_up = QWidget()
+        self.Form = Error_Form()
 
     def setSelectedUser(self, selectedUserObject):
         self.selectedUser = selectedUserObject
@@ -57,6 +60,15 @@ class InfoScreenInterface():
                 self.ui.mailAddressYes_radioButton.setChecked(True)
                 self.ui.routingNum_lineEdit.setText(self.selectedUser.routingNum)
                 self.ui.accountNum_lineEdit.setText(self.selectedUser.accountNum)
+                if self.selectedUser.unsavedData:
+                    displayText = "\nThis user contains empty fields. Consider filling them out.\n"
+                    for i in self.selectedUser.unsavedDataFields:
+                        displayText+="\n"+i
+                    
+                    self.Form.setupUi(self.Pop_up, displayText)
+                    self.Pop_up.show()
+                    
+                    #Create Popup warning
             else:
                 self.disablePersonalTab()
 
