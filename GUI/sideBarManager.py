@@ -52,7 +52,6 @@ class SideBarMgr():
     def closeSub(self):
         subWidth = self.ui.sideBar_frame.width()
         subHeight = self.ui.sideBar_frame.height()
-        print(subWidth)
         if subWidth != 102:
             self.shrinkOtherWidgets()
             self.increaseButtonSize()

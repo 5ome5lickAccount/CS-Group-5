@@ -2,6 +2,7 @@ import abc
 import os
 from stat import SF_SNAPSHOT
 from copy import deepcopy
+import random as rand
 
 from numpy import double
 class Employee:
@@ -68,7 +69,7 @@ class Employee:
             manager = 1
         else:
             manager = 0
-        detail = self.employeeId+','+self.firstName+' '+self.lastName+','+self.address1+','+self.city+','+self.state+','
+        detail = str(self.employeeId)+','+str(self.firstName)+' '+str(self.lastName)+','+str(self.address1)+','+str(self.city)+','+str(self.state)+','
         detail += self.zip+','+str(classification)+','+str(self.payMethod)+','+str(self.save_sal)+','+str(self.save_hr)+','+str(self.save_com)+','
         detail += self.routingNum+','+self.accountNum+','+self.birthDay+','+self.ssn+','+self.startDate+','+str(manager)+','
         detail += str(archive)+','+self.title+','+self.department+','+self.phone+','+self.email+','+self.password
@@ -205,9 +206,12 @@ current_user = None
 ###########################################
 
 def find_employee_by_id(id):
+    if id == "":
+        return
     for emp in employees:
         if int(emp.employeeId)==int(id):
             return emp
+
 def load_employees():
     '''
     id,full name,address,city,state,zip,classification,paymethod,salary,commission,hourly,Route,Account,DOB,SSN,StartDate,RoutingNum,AcctNum,IsManager,IsArchived,EmpTitle,Department,OfficePhone,OfficeEmail,Password
@@ -489,11 +493,18 @@ def database_report(include_archived, save_file): #Just output as if to the save
                     continue
 
 def add_employee(new_emp): #can only be called by manager - and will throw error if non manager user is currently active
-    if current_user.isManager is False:
-        return False #Change this later when determined better way to send this error
+    #if current_user.isManager is False:
+    #    return False #Change this later when determined better way to send this error
     #validate fields
+    newId = rand.randrange( 100000, 999999)
+    while str(newId) in employees_by_id.keys():
+        newId = rand.randrange( 100000, 999999)
+    new_emp.employeeId = str(newId)
+    if new_emp.payMethod == "":
+        new_emp.payMethod = "1"
     employees.append(new_emp)
     employees_by_id[new_emp.employeeId] = new_emp
+    update_file()
 
 def backendSearcher(searchFilter, searchText):
     ''' First name, Last name, Full Name, Employee ID'''

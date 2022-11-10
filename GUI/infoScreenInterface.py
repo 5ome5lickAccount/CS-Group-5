@@ -11,6 +11,9 @@ class InfoScreenInterface():
         self.selectedUser = ""
         self.Pop_up = QWidget()
         self.Form = Error_Form()
+        
+        self.ui.mailAddressYes_radioButton.toggled.connect(self.hideMailingAddress)
+        self.ui.mailAddressNo_radioButton.toggled.connect(self.showMailingAddress)
 
     def setSelectedUser(self, selectedUserObject):
         self.selectedUser = selectedUserObject
@@ -18,6 +21,12 @@ class InfoScreenInterface():
     def dateToQDate(self, date):
         dateList = date.split("/")
         return QDate(int(dateList[2]), int(dateList[1]), int(dateList[0]))
+
+    def qDateToDate(self,qDate):
+        tempDate = qDate.toString("yyyy.M.d")
+        dateList = tempDate.split('.')
+        date = dateList[2]+'/'+dateList[1]+'/'+dateList[0]
+        return date
 
     def fillOutPageWithOtherUser(self):
         if isinstance(type(self.selectedUser), object):
@@ -42,8 +51,10 @@ class InfoScreenInterface():
 
                 if self.selectedUser.classification == "1":
                     self.ui.payTypeHourly_radioButton.setChecked(True)
-                else:
+                elif self.selectedUser.classification == "2":
                     self.ui.payTypeSalary_radioButton.setChecked(True)
+                else:
+                     self.ui.payTypeCommision_radioButton.setChecked(True)
 
                 if self.selectedUser.payMethod == "2":
                     self.ui.directDepositYes_radioButton.setChecked(True)
@@ -65,12 +76,10 @@ class InfoScreenInterface():
                 if self.selectedUser.unsavedData:
                     displayText = "\nThis user contains empty fields. Consider filling them out.\n"
                     for i in self.selectedUser.unsavedDataFields:
-                        displayText+="\n"+i
+                        displayText+=i+" "
                     
                     self.Form.setupUi(self.Pop_up, displayText)
                     self.Pop_up.show()
-                    
-                    #Create Popup warning
             else:
                 self.disablePersonalTab()
 
@@ -98,8 +107,10 @@ class InfoScreenInterface():
 
         if self.activeUser.classification == "1":
             self.ui.payTypeHourly_radioButton.setChecked(True)
-        else:
+        elif self.activeUser.classification == "2":
             self.ui.payTypeSalary_radioButton.setChecked(True)
+        else:
+                self.ui.payTypeCommision_radioButton.setChecked(True)
 
         if self.activeUser.payMethod == "2":
             self.ui.directDepositYes_radioButton.setChecked(True)
@@ -136,7 +147,6 @@ class InfoScreenInterface():
         self.ui.routingNum_lineEdit.setText("")
         self.ui.accountNum_lineEdit.setText("")
         self.ui.mailAddressOne_lineEdit.setText("")
-        self.ui.mailAddressTwo_lineEdit.setText("")
         self.ui.mailAddressCity_lineEdit.setText("")
         self.ui.mailAddressState_lineEdit.setText("")
         self.ui.mailAddressState_lineEdit.setText("")
@@ -147,7 +157,6 @@ class InfoScreenInterface():
         self.ui.firstName_lineEdit.setEnabled(False)
         self.ui.lastName_lineEdit.setEnabled(False)
         self.ui.addressOne_lineEdit.setEnabled(False)
-        self.ui.addressTwo_lineEdit.setEnabled(False)
         self.ui.city_lineEdit.setEnabled(False)
         self.ui.state_lineEdit.setEnabled(False)
         self.ui.zip_lineEdit.setEnabled(False)
@@ -171,7 +180,6 @@ class InfoScreenInterface():
         self.ui.routingNum_lineEdit.setEnabled(False)
         self.ui.accountNum_lineEdit.setEnabled(False)
         self.ui.mailAddressOne_lineEdit.setEnabled(False)
-        self.ui.mailAddressTwo_lineEdit.setEnabled(False)
         self.ui.mailAddressCity_lineEdit.setEnabled(False)
         self.ui.mailAddressState_lineEdit.setEnabled(False)
         self.ui.mailAddressZip_lineEdit.setEnabled(False)
@@ -185,7 +193,6 @@ class InfoScreenInterface():
         self.ui.firstName_lineEdit.setEnabled(True)
         self.ui.lastName_lineEdit.setEnabled(True)
         self.ui.addressOne_lineEdit.setEnabled(True)
-        self.ui.addressTwo_lineEdit.setEnabled(True)
         self.ui.city_lineEdit.setEnabled(True)
         self.ui.state_lineEdit.setEnabled(True)
         self.ui.zip_lineEdit.setEnabled(True)
@@ -198,7 +205,6 @@ class InfoScreenInterface():
         self.ui.routingNum_lineEdit.setEnabled(True)
         self.ui.accountNum_lineEdit.setEnabled(True)
         self.ui.mailAddressOne_lineEdit.setEnabled(True)
-        self.ui.mailAddressTwo_lineEdit.setEnabled(True)
         self.ui.mailAddressCity_lineEdit.setEnabled(True)
         self.ui.mailAddressState_lineEdit.setEnabled(True)
         self.ui.mailAddressZip_lineEdit.setEnabled(True)
@@ -207,8 +213,6 @@ class InfoScreenInterface():
             self.ui.department_lineEdit.setEnabled(True)
             self.ui.title_lineEdit.setEnabled(True)
             self.ui.startDate_dateEdit.setEnabled(True)
-            self.ui.employeeIdPersonal_lineEdit.setEnabled(True)
-            self.ui.employeeIdGeneral_lineEdit.setEnabled(True)
             self.ui.ssn_lineEdit.setEnabled(True)
             self.ui.birthDay_dateEdit.setEnabled(True)
             self.ui.payTypeHourly_radioButton.setEnabled(True)
@@ -259,8 +263,8 @@ class InfoScreenInterface():
         else:
             database_report(archived, fileName+'.csv')
     
-    def finalCheck(self):
-        if not self.checkForEdits():
+    def finalCheck(self,emp):
+        if not self.checkForEdits(emp):
             return True
         dlg = QMessageBox()
         dlg.setWindowTitle("Unsaved data will be lost")
@@ -273,59 +277,76 @@ class InfoScreenInterface():
         else:
             return False
         
-    
-    def checkForEdits(self):
-        if self.ui.employeeIdGeneral_lineEdit.text() != self.activeUser.employeeId:
+    def checkForEdits(self,emp):
+        if self.ui.employeeIdGeneral_lineEdit.text() != emp.employeeId:
             return True
-        if self.ui.firstName_lineEdit.text() != self.activeUser.firstName:
+        if self.ui.firstName_lineEdit.text() != emp.firstName:
             return True
-        if self.ui.lastName_lineEdit.text() != self.activeUser.lastName:
+        if self.ui.lastName_lineEdit.text() != emp.lastName:
             return True
-        if self.ui.addressOne_lineEdit.text() != self.activeUser.address1:
+        if self.ui.addressOne_lineEdit.text() != emp.address1:
             return True
-        if self.ui.city_lineEdit.text() != self.activeUser.city:
+        if self.ui.city_lineEdit.text() != emp.city:
             return True
-        if self.ui.state_lineEdit.text() != self.activeUser.state:
+        if self.ui.state_lineEdit.text() != emp.state:
             return True
-        if self.ui.zip_lineEdit.text() != self.activeUser.zip:
+        if self.ui.zip_lineEdit.text() != emp.zip:
             return True
-        if self.ui.email_lineEdit.text() != self.activeUser.email:
+        if self.ui.email_lineEdit.text() != emp.email:
             return True
-        if self.ui.phone_lineEdit.text() != self.activeUser.phone:
+        if self.ui.phone_lineEdit.text() != emp.phone:
             return True
-        if self.ui.department_lineEdit.text() != self.activeUser.department:
+        if self.ui.department_lineEdit.text() != emp.department:
             return True
-        if self.ui.title_lineEdit.text() != self.activeUser.title:
+        if self.ui.title_lineEdit.text() != emp.title:
             return True
-        if self.ui.startDate_dateEdit.date() != self.dateToQDate(self.activeUser.startDate):
+        if self.ui.startDate_dateEdit.date() != self.dateToQDate(emp.startDate):
             return True
-        if self.ui.employeeIdPersonal_lineEdit.text() != self.activeUser.employeeId:
+        if self.ui.ssn_lineEdit.text() != emp.ssn:
             return True
-        if self.ui.ssn_lineEdit.text() != self.activeUser.ssn:
+        if self.ui.birthDay_dateEdit.date() != self.dateToQDate(emp.birthDay):
             return True
-        if self.ui.birthDay_dateEdit.date() != self.dateToQDate(self.activeUser.birthDay):
+        '''if self.ui.mailAddressYes_radioButton.isChecked() != True:
+            return True'''
+        if self.ui.routingNum_lineEdit.text() != emp.routingNum:
             return True
-        if self.ui.mailAddressYes_radioButton.isChecked() != True:
+        if emp.classification == "1" and not self.ui.payTypeHourly_radioButton.isChecked():
             return True
-        if self.ui.routingNum_lineEdit.text() != self.activeUser.routingNum:
+        if emp.classification == "2" and not self.ui.payTypeSalary_radioButton.isChecked():
             return True
-        if self.activeUser.classification == "1" and not self.ui.payTypeHourly_radioButton.isChecked():
+        if emp.payMethod == "1" and not self.ui.directDepositNo_radioButton.isChecked():
             return True
-        if self.activeUser.classification == "2" and not self.ui.payTypeSalary_radioButton.isChecked():
+        if emp.payMethod == "2" and not self.ui.directDepositYes_radioButton.isChecked():
             return True
-        if self.activeUser.payMethod == "1" and not self.ui.directDepositNo_radioButton.isChecked():
+        '''if emp.isArchived  and self.ui.userAccess_comboBox.currentIndex() != 3:
             return True
-        if self.activeUser.payMethod == "2" and not self.ui.directDepositYes_radioButton.isChecked():
+        elif emp.isManager and self.ui.userAccess_comboBox.currentIndex() != 2:
             return True
-        if self.activeUser.isArchived  and self.ui.userAccess_comboBox.currentIndex() != 3:
+        elif emp.isManager == "" and self.ui.userAccess_comboBox.currentIndex() != 0:
             return True
-        elif self.activeUser.isManager and self.ui.userAccess_comboBox.currentIndex() != 2:
-            return True
-        elif self.activeUser.isManager == "" and self.ui.userAccess_comboBox.currentIndex() != 0:
-            return True
-        elif not self.activeUser.isManager and self.ui.userAccess_comboBox.currentIndex() != 1:
-            return True
+        elif not emp.isManager and self.ui.userAccess_comboBox.currentIndex() != 1:
+            return True'''
         return False
+
+    def hideMailingAddress(self):
+        self.ui.mailAddressOne_label.hide()
+        self.ui.mailAddressOne_lineEdit.hide()
+        self.ui.mailAddressCity_label.hide()
+        self.ui.mailAddressCity_lineEdit.hide()
+        self.ui.mailAddressState_label.hide()
+        self.ui.mailAddressState_lineEdit.hide()
+        self.ui.mailAddressZip_label.hide()
+        self.ui.mailAddressZip_lineEdit.hide()
+
+    def showMailingAddress(self):
+        self.ui.mailAddressOne_label.show()
+        self.ui.mailAddressOne_lineEdit.show()
+        self.ui.mailAddressCity_label.show()
+        self.ui.mailAddressCity_lineEdit.show()
+        self.ui.mailAddressState_label.show()
+        self.ui.mailAddressState_lineEdit.show()
+        self.ui.mailAddressZip_label.show()
+        self.ui.mailAddressZip_lineEdit.show()
     
 class SaveLocation(QWidget):
     def openFileNameDialog(self):

@@ -30,6 +30,7 @@ class LoginWindow(QtWidgets.QMainWindow):
         userName = self.loginUi.employeeIdLogin_lineEdit.text()
         password = self.loginUi.passwordLogin_lineEdit.text()
         self.activeUser = login(userName, password)
+        #self.activeUser = login("522759", "728Terran#")
         if self.activeUser is not False:
             self.proceedWithLogin()
 
@@ -60,6 +61,6 @@ def main():
     try:
         sys.exit(app.exec())
     except:
-        print("Exiting")
+        pass
 
 main()
