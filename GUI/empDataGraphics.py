@@ -1,7 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import Resources_rc
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -2277,6 +2276,7 @@ class Ui_MainWindow(object):
         self.department_label.setObjectName("department_label")
         self.gridLayout_2.addWidget(self.department_label, 8, 3, 1, 1)
         self.employeeIdGeneral_lineEdit = QtWidgets.QLineEdit(self.frame_2)
+        self.employeeIdGeneral_lineEdit.setEnabled(False)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -3016,6 +3016,7 @@ class Ui_MainWindow(object):
         spacerItem120 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem120, 15, 4, 1, 1)
         self.employeeIdPersonal_lineEdit = QtWidgets.QLineEdit(self.frame_4)
+        self.employeeIdPersonal_lineEdit.setEnabled(False)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -3059,7 +3060,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.frame_7.sizePolicy().hasHeightForWidth())
         self.frame_7.setSizePolicy(sizePolicy)
-        self.frame_7.setMinimumSize(QtCore.QSize(270, 70))
+        self.frame_7.setMinimumSize(QtCore.QSize(280, 70))
         self.frame_7.setMaximumSize(QtCore.QSize(350, 16777215))
         self.frame_7.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.frame_7.setStyleSheet("background-color: none;\n"
@@ -3525,7 +3526,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.mainScreen_stackedWidget.setCurrentIndex(1)
-        self.userInfo_tabWidget.setCurrentIndex(1)
+        self.userInfo_tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.firstName_lineEdit, self.lastName_lineEdit)
         MainWindow.setTabOrder(self.lastName_lineEdit, self.addressOne_lineEdit)
