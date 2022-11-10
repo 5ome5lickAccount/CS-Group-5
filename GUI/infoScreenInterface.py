@@ -259,6 +259,59 @@ class InfoScreenInterface():
         else:
             database_report(archived, fileName+'.csv')
 
+    def checkForEdits(self):
+        if self.ui.employeeIdGeneral_lineEdit.text() != self.activeUser.employeeId:
+            return True
+        if self.ui.firstName_lineEdit.text() != self.activeUser.firstName:
+            return True
+        if self.ui.lastName_lineEdit.text() != self.activeUser.lastName:
+            return True
+        if self.ui.addressOne_lineEdit.text() != self.activeUser.address1:
+            return True
+        if self.ui.city_lineEdit.text() != self.activeUser.city:
+            return True
+        if self.ui.state_lineEdit.text() != self.activeUser.state:
+            return True
+        if self.ui.zip_lineEdit.text() != self.activeUser.zip:
+            return True
+        if self.ui.email_lineEdit.text() != self.activeUser.email:
+            return True
+        if self.ui.phone_lineEdit.text() != self.activeUser.phone:
+            return True
+        if self.ui.department_lineEdit.text() != self.activeUser.department:
+            return True
+        if self.ui.title_lineEdit.text() != self.activeUser.title:
+            return True
+        if self.ui.startDate_dateEdit.date() != self.dateToQDate(self.activeUser.startDate):
+            return True
+        if self.ui.employeeIdPersonal_lineEdit.text() != self.activeUser.employeeId:
+            return True
+        if self.ui.ssn_lineEdit.text() != self.activeUser.ssn:
+            return True
+        if self.ui.birthDay_dateEdit.date() != self.dateToQDate(self.activeUser.birthDay):
+            return True
+        if self.ui.mailAddressYes_radioButton.isChecked() != True:
+            return True
+        if self.ui.routingNum_lineEdit.text() != self.activeUser.routingNum:
+            return True
+        if self.activeUser.classification == "1" and not self.ui.payTypeHourly_radioButton.isChecked():
+            return True
+        if self.activeUser.classification == "2" and not self.ui.payTypeSalary_radioButton.isChecked():
+            return True
+        if self.activeUser.payMethod == "1" and not self.ui.directDepositNo_radioButton.isChecked():
+            return True
+        if self.activeUser.payMethod == "2" and not self.ui.directDepositYes_radioButton.isChecked():
+            return True
+        if self.activeUser.isArchived  and self.ui.userAccess_comboBox.currentIndex() != 3:
+            return True
+        elif self.activeUser.isManager and self.ui.userAccess_comboBox.currentIndex() != 2:
+            return True
+        elif self.activeUser.isManager == "" and self.ui.userAccess_comboBox.currentIndex() != 0:
+            return True
+        elif not self.activeUser.isManager and self.ui.userAccess_comboBox.currentIndex() != 1:
+            return True
+        return False
+    
 class SaveLocation(QWidget):
     def openFileNameDialog(self):
         options = QFileDialog.Options()
