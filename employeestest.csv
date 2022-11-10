@@ -1,5 +1,5 @@
 ID,Name,Address,City,State,Zip,Classification,PayMethod,Salary,Hourly,Commission,Route,Account,DOB,SSN,StartDate,IsManager,IsArchived,EmpTitle,Department,OfficePhone,OfficeEmail,Password
-688997,Karina Gay,998 Vitae St.,Atlanta,GA,45169,1,1,45884.99,46.92,34.0,30417353-K,465794-3611,4/3/1988,142-95-3576,1/10/2006,1,0,Wizard,Security,765-148-6331,GayKarina@uvu.edu,836Protoss$
+688997,Karina Gay,998 Vitae St.,Atlanta,GA,45169,1,1,45884.99,46.92,34.0,30417353-K,465794-3611,4/3/1988,142-95-3576,1/10/2006,1,0,,Security,765-148-6331,GayKarina@uvu.edu,836Protoss$
 522759,TaShya D. Snow,2624 Hendrerit St.,College,AK,99789,2,2,50005.5,68.13,25.0,36644938-8,244269-0000,4/4/1970,918-71-2680,19/8/2006,0,1,Druid,Science,375-342-4099,D.TaShya@uvu.edu,728Terran#
 165966,Rooney Alvarado,4963 Nisl. St. Ap #185,Gillette,WY,20226,3,2,34532.37,21.53,24.0,37324307-8,422046-0739,13/5/1957,956-67-3065,17/10/2013,0,0,Wizard,Command,389-316-3897,AlvaradoRooney@uvu.edu,666Protoss*
 983010,Jolene Burgess,P.O. Box 873,South Burlington,VT,32036,2,2,20042.77,40.17,23.0,15300058-1,828625-2906,13/9/1978,567-16-8974,16/2/2000,1,1,Wizard,Science,893-857-5629,BurgessJolene@uvu.edu,902Zerg*
