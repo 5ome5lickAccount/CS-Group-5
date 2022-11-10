@@ -39,9 +39,7 @@ class SessionManager():
         self.ui.editPersonal_toolButton.clicked.connect(self.infoScreen.startEdit)
         # self.ui.saveGeneral_toolButton.clicked.connect(self.infoScreen.startEdit)
         # self.ui.savePersonal_toolButton.clicked.connect(self.infoScreen.startEdit)
-        # self.ui.generateReport_toolButton.clicked.connect(self.infoScreen.startEdit)
-
-
+        self.ui.generateReport_toolButton.clicked.connect(self.infoScreen.generateReport)
 
     def firstLogin(self):
         self.activateMyInfoScreen()

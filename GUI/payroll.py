@@ -232,9 +232,9 @@ def run_payroll(include_archived, save_file):
         os.remove(save_file) 
     for emp in employees:      # employees is the global list of Employee objects 
         if include_archived:
-            emp.issue_payment()
+            emp.issue_payment(save_file)
         elif emp.is_archived is False:
-            emp.issue_payment()        # issue_payment calls a method in the classification 
+            emp.issue_payment(save_file)        # issue_payment calls a method in the classification 
       # object to compute the pay
 
 #################
@@ -381,16 +381,20 @@ def logout():
     return True
 
 def pay_report(include_archived, save_file):
-    if current_user.is_manager is False:
-        return False #Change this later when determined better way to send this error
+    #if current_user is None:
+    #    return False
+    #if current_user.is_manager is False:
+    #    return False #Change this later when determined better way to send this error
     process_timecards()
     process_receipts()
     run_payroll(include_archived, save_file)
 
 
 def database_report(include_archived, save_file): #Just output as if to the save file... but to another file
-    if current_user.isManager is False:
-        return False #Change this later when determined better way to send this error
+    #if current_user is None:
+    #    return False
+    #if current_user.isManager is False:
+    #    return False #Change this later when determined better way to send this error
     if os.path.exists(save_file): # pay_log_file is a global variable holding ‘payroll.txt’ 
         os.remove(save_file) 
     with open(save_file, 'w') as fout:
@@ -420,3 +424,5 @@ def backendSearcher(searchFilter, searchText):
         return search_last_name(searchText)
     else:#Default is search by full name 
         return search_full_name(searchText)
+
+#def 

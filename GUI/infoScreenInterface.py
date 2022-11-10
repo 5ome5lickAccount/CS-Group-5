@@ -1,4 +1,6 @@
 from PyQt5.QtCore import QDate
+from PyQt5.QtWidgets import QFileDialog, QWidget
+from payroll import database_report, pay_report
 
 
 class InfoScreenInterface():
@@ -231,3 +233,19 @@ class InfoScreenInterface():
 
     def startEdit(self):
         self.enableInfoInputs()
+
+    def generateReport(self):
+        file = SaveLocation()
+        fileName, _ = file.openFileNameDialog()
+        archived = self.ui.archivedEmployeeReport_checkBox.isChecked()
+        if self.ui.reportTypePay_radioButton.isChecked():
+            pay_report(archived, fileName+'.txt')
+        else:
+            database_report(archived, fileName+'.csv')
+
+class SaveLocation(QWidget):
+    def openFileNameDialog(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getSaveFileName(self,"Choose File", "","csv (*.csv)", options=options)
+        return fileName, _
