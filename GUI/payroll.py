@@ -329,8 +329,15 @@ def search_full_name(term):
     term = term.lower()
     results = []
     if ' ' not in term:
-        results = search_first_name(term)
-        results += search_last_name(term)
+        results1 = search_first_name(term)
+        results2 = search_last_name(term)
+        for i in results2:
+            for j in results1:    
+                if i.employeeId == j.employeeId:
+                    break
+                if j is results1[-1]:
+                    results.append(i)
+        results += results1
         return results
     for emp in employees:
         fullname = (emp.firstName).lower() + " " + (emp.lastName).lower()
@@ -490,7 +497,7 @@ def add_employee(new_emp): #can only be called by manager - and will throw error
 
 def backendSearcher(searchFilter, searchText):
     ''' First name, Last name, Full Name, Employee ID'''
-    if searchFilter == "First name":
+    if searchFilter == "First Name":
         return search_first_name(searchText)
     elif searchFilter == "Employee ID":
         return search_id(searchText)
@@ -498,5 +505,3 @@ def backendSearcher(searchFilter, searchText):
         return search_last_name(searchText)
     else:#Default is search by full name 
         return search_full_name(searchText)
-
-#def 
