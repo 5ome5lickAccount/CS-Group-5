@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QDate
-from PyQt5.QtWidgets import QFileDialog, QWidget
+from PyQt5.QtWidgets import QFileDialog, QWidget, QApplication, QDialog, QMainWindow, QPushButton, QMessageBox
 from payroll import database_report, pay_report
 from errorWindow import Error_Form
 
@@ -258,7 +258,22 @@ class InfoScreenInterface():
             pay_report(archived, fileName+'.txt')
         else:
             database_report(archived, fileName+'.csv')
-
+    
+    def finalCheck(self):
+        if not self.checkForEdits():
+            return True
+        dlg = QMessageBox()
+        dlg.setWindowTitle("Unsaved data will be lost")
+        dlg.setText("WARNING: There is unsaved data. Are you sure you want to exit without saving your data?")
+        dlg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        dlg.setIcon(QMessageBox.Question)
+        button = dlg.exec()
+        if button == QMessageBox.Yes:
+            return True
+        else:
+            return False
+        
+    
     def checkForEdits(self):
         if self.ui.employeeIdGeneral_lineEdit.text() != self.activeUser.employeeId:
             return True
