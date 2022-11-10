@@ -1,5 +1,10 @@
+import time
+
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QPropertyAnimation
+from PyQt5.QtCore import QPropertyAnimation, QSize
+from PyQt5.QtGui import QCursor
+from PyQt5.QtWidgets import QFrame, QHBoxLayout, QToolButton
+
 
 class SideBarMgr():
     def __init__(self, ui):
@@ -29,10 +34,10 @@ class SideBarMgr():
 
     def collapseSub(self):
         subWidth = self.ui.sideBar_frame.width()
-        if subWidth != 100:
+        if subWidth > 102:
             self.shrinkOtherWidgets()
             self.increaseButtonSize()
-            newWidth = 100
+            newWidth = 102
 
             self.animation1 = QPropertyAnimation(self.ui.sideBar_frame, b"minimumWidth")
 
@@ -43,6 +48,45 @@ class SideBarMgr():
             self.animation1.start()
         else:
             self.pushOutSub()
+
+    def closeSub(self):
+        subWidth = self.ui.sideBar_frame.width()
+        subHeight = self.ui.sideBar_frame.height()
+        print(subWidth)
+        if subWidth != 102:
+            self.shrinkOtherWidgets()
+            self.increaseButtonSize()
+        newWidth = 0
+        newHeight = 0
+
+        self.animation1 = QPropertyAnimation(self.ui.sideBar_frame, b"minimumWidth")
+
+        self.animation1.setDuration(300)
+        self.animation1.setStartValue(subWidth)
+        self.animation1.setEndValue(newWidth)
+        self.animation1.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+
+        self.animation1.start()
+
+        self.animation2 = QPropertyAnimation(self.ui.sideBar_frame, b"minimumHeight")
+
+        self.animation2.setDuration(300)
+        self.animation2.setStartValue(subHeight)
+        self.animation2.setEndValue(newHeight)
+        self.animation2.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+
+        self.animation2.start()
+        self.ui.sideBar_frame.hide()
+        self.ui.topBar_frame.show()
+
+    def openSub(self):
+        subWidth = self.ui.sideBar_frame.width()
+        subHeight = self.ui.sideBar_frame.height()
+        self.shrinkOtherWidgets()
+        self.increaseButtonSize()
+
+        self.ui.topBar_frame.hide()
+        self.ui.sideBar_frame.show()
 
 
     def shrinkOtherWidgets(self):
@@ -59,7 +103,7 @@ class SideBarMgr():
         self.ui.searchField_comboBox.hide()
         self.ui.search_lineEdit.hide()
         self.ui.collapse_toolButton.setIcon(icon)
-        self.ui.collapse_horizontalLayout.itemAt(0).changeSize(0, 0)
+        self.ui.collapse_horizontalLayout.itemAt(1).changeSize(0, 0)
 
         self.ui.search_toolButton.setMaximumSize(newButtonSize)
         self.ui.search_toolButton.setMinimumSize(newButtonSize)
@@ -110,7 +154,7 @@ class SideBarMgr():
         self.ui.searchField_comboBox.show()
         self.ui.search_lineEdit.show()
         self.ui.collapse_toolButton.setIcon(icon)
-        self.ui.collapse_horizontalLayout.itemAt(0).changeSize(280, 20)
+        self.ui.collapse_horizontalLayout.itemAt(1).changeSize(280, 20)
 
         self.ui.newEmp_toolButton.setToolButtonStyle(QtCore.Qt.ToolButtonTextBesideIcon)
         self.ui.report_toolButton.setToolButtonStyle(QtCore.Qt.ToolButtonTextBesideIcon)
