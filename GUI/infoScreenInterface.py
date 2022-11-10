@@ -51,6 +51,8 @@ class InfoScreenInterface():
                     self.ui.userAccess_comboBox.setCurrentIndex(3)
                 elif self.selectedUser.isManager:
                     self.ui.userAccess_comboBox.setCurrentIndex(2)
+                elif self.selectedUser.isManager == "":
+                    self.ui.userAccess_comboBox.setCurrentIndex(0)
                 else:
                     self.ui.userAccess_comboBox.setCurrentIndex(1)
 
