@@ -51,7 +51,10 @@ class SessionManager():
         newEmp = self.getUpdatedEmployee()
         if not update_employee(newEmp):
             add_employee(newEmp)
-        
+        #self.infoScreen = InfoScreenInterface(self.ui, self.currentUser)
+        self.createOriginalData()
+        self.infoScreen.disableInfoInputs()
+        self.infoScreen.activeUser = newEmp
 
     def firstLogin(self):
         self.activateMyInfoScreen()
@@ -167,11 +170,11 @@ class SessionManager():
             payMethod = "2"
         else:
             payMethod = ""
-        if self.ui.userAccess_comboBox.currentIndex() != 3:
+        if self.ui.userAccess_comboBox.currentIndex() == 3:
             isArchived = True
         else:
             isArchived = ""
-        if self.ui.userAccess_comboBox.currentIndex() != 2:
+        if self.ui.userAccess_comboBox.currentIndex() == 2:
             isManager = True
         else:
             isManager = ""
@@ -203,4 +206,12 @@ class SessionManager():
         0.0,
         0.0
         )
+        if self.ui.payTypeSalary_radioButton.isChecked():
+            newEmp.classification = "2"
+        elif self.ui.payTypeHourly_radioButton.isChecked():
+            newEmp.classification = "1"
+        elif self.ui.payTypeHourly_radioButton.isChecked():
+            newEmp.classification = "3"
+        else:
+            newEmp.classification = ""
         return newEmp

@@ -62,12 +62,12 @@ class Employee:
         elif isinstance(self.classification, Salaried):
             classification = 2
         else:
-            classification = 4
+            classification = 2
         if self.isArchived:
             archive = 1
         else:
             archive = 0
-        if self.isManager:
+        if str(self.isManager) == "1":
             manager = 1
         else:
             manager = 0
@@ -350,6 +350,9 @@ def search_full_name(term):
         results1 = search_first_name(term)
         results2 = search_last_name(term)
         for i in results2:
+            if len(results1) == 0:
+                results.append(i)
+                continue
             for j in results1:    
                 if i.employeeId == j.employeeId:
                     break
@@ -398,14 +401,23 @@ def update_employee(new_emp):
     overwrite_emp.city = new_emp.city
     overwrite_emp.state = new_emp.state
     overwrite_emp.zip = new_emp.zip
-    overwrite_emp.classification = new_emp.classification
+    if new_emp.classification != "" and new_emp.classification is not False:
+        if new_emp.classification=="1" and not isinstance(overwrite_emp.classification, Hourly):
+            overwrite_emp.make_hourly(float(overwrite_emp.save_hr))
+        elif new_emp.classification=="2" and not isinstance(overwrite_emp.classification, Salaried):
+            overwrite_emp.make_salaried(float(overwrite_emp.save_sal))
+        elif new_emp.classification=="3" and not isinstance(overwrite_emp.classification, Commissioned):
+            overwrite_emp.make_commissioned(float(overwrite_emp.save_sal),float(overwrite_emp.save_com))
+        #overwrite_emp.classification = new_emp.classification
     overwrite_emp.payMethod = new_emp.payMethod
     overwrite_emp.routingNum = new_emp.routingNum
     overwrite_emp.accountNum = new_emp.accountNum
     overwrite_emp.birthDay = new_emp.birthDay
     overwrite_emp.startDate = new_emp.startDate
-    overwrite_emp.isManager = new_emp.isManager
-    overwrite_emp.isArchived = new_emp.isArchived
+    if new_emp.isManager != "":
+        overwrite_emp.isManager = new_emp.isManager
+    if new_emp.isArchived != "":
+        overwrite_emp.isArchived = new_emp.isArchived
     overwrite_emp.title = new_emp.title
     overwrite_emp.department = new_emp.department
     overwrite_emp.phone = new_emp.phone
