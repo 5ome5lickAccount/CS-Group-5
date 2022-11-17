@@ -90,10 +90,7 @@ class SearchManager():
         for employee in self.searchResults:
             self.populateSearchRow(employee, self.ui)
 
-        for i in range(0, 5):
-            self.ui.gridLayout_7.addItem(
-                QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding),
-                self.rowCounter, i, 1, 1)
+        self.ui.gridLayout_7.setRowStretch(100,1)
 
     def populateSearchRow(self, employeeObj, ui):
         self.rowCounter += 1
