@@ -32,7 +32,7 @@ class Employee:
         self.password=password[0:-1]
         self.unsavedData = True
         self.unsavedDataFields = []
-        #Need this to save them
+        #Need this to re-save the employee, as well if they try to switch between classifications
         self.save_hr = deepcopy(hourly)
         self.save_sal = deepcopy(salary)
         self.save_com = deepcopy(commissioned)
@@ -67,7 +67,7 @@ class Employee:
             archive = 1
         else:
             archive = 0
-        if str(self.isManager) == "1":
+        if str(self.isManager) == "1" or self.isManager == True:
             manager = 1
         else:
             manager = 0
@@ -194,7 +194,10 @@ class Commissioned(Salaried):
 #
 ###########################################
 def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller """
+    ''' 
+    Get absolute path to resource, works for dev and for PyInstaller
+    Found somewhere online to try and get stuff working 
+    '''
     dirname = os.path.dirname(__file__)
     #base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(dirname, relative_path)
@@ -220,6 +223,9 @@ current_user = None
 ###########################################
 
 def find_employee_by_id(id):
+    '''
+    Loops through the list of Employees and returns the employee with the found id
+    '''
     if id == "":
         return
     for emp in employees:
@@ -235,7 +241,7 @@ def load_employees():
     if len(employees) != 0:
         employees = []
     filename=EMPLOYEE_FILE
-    with open(EMPLOYEE_FILE,'r') as f:
+    with open(filename,'r') as f:
         lines=f.readlines()
         lines.pop(0)
         for line in lines:
@@ -285,6 +291,7 @@ def load_employees():
 
 def process_timecards():
     '''
+    Opens the Timecards file and adds them to the proper employee
     51-4678119,7.6,3.1,1.4,4.1,6.4,7.7,6.6
     '''
     filename=resource_path("Files/timecards.csv")
@@ -303,6 +310,9 @@ def process_timecards():
                     pass
                     # print(f'employee {id} is not hourly')
 def process_receipts():
+    '''
+    Opens the Receipts and adds them to the proper employees
+    '''
     filename=resource_path("Files/receipts.csv")
     with open(filename,'r') as f:
         lines=f.readlines()
@@ -320,6 +330,9 @@ def process_receipts():
                     #print(f'employee {id} is not commissioned')
                 
 def run_payroll(include_archived, save_file):
+    '''
+    A function given in the original project, modified for a custom save_file and to include archived or not
+    '''
     if os.path.exists(save_file): # pay_log_file is a global variable holding ‘payroll.txt’ 
         os.remove(save_file) 
     for emp in employees:      # employees is the global list of Employee objects 
@@ -334,6 +347,9 @@ def run_payroll(include_archived, save_file):
 #################
 
 def update_file():
+    '''
+    Resaves all of the employees - using the __str__ of all of them, and seperating them by line
+    '''
     if os.path.exists(EMPLOYEE_FILE): # pay_log_file is a global variable holding ‘payroll.txt’ 
         os.remove(EMPLOYEE_FILE) 
     with open(EMPLOYEE_FILE, 'w') as fout:
@@ -344,6 +360,9 @@ def update_file():
             fout.write('\n')
 
 def search_full_name(term):
+    '''
+    Uses
+    '''
     term = term.lower()
     results = []
     if ' ' not in term:

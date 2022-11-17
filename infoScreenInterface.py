@@ -171,6 +171,7 @@ class InfoScreenInterface():
 
         self.ui.payTypeHourly_radioButton.setEnabled(False)
         self.ui.payTypeSalary_radioButton.setEnabled(False)
+        self.ui.payTypeCommision_radioButton.setEnabled(False)
         self.ui.directDepositYes_radioButton.setEnabled(False)
         self.ui.directDepositNo_radioButton.setEnabled(False)
         self.ui.mailAddressYes_radioButton.setEnabled(False)
@@ -188,6 +189,7 @@ class InfoScreenInterface():
         self.ui.editPersonal_toolButton.setEnabled(True)
         self.ui.saveGeneral_toolButton.setEnabled(False)
         self.ui.savePersonal_toolButton.setEnabled(False)
+        
 
     def enableInfoInputs(self):
         self.ui.firstName_lineEdit.setEnabled(True)
@@ -217,6 +219,7 @@ class InfoScreenInterface():
             self.ui.birthDay_dateEdit.setEnabled(True)
             self.ui.payTypeHourly_radioButton.setEnabled(True)
             self.ui.payTypeSalary_radioButton.setEnabled(True)
+            self.ui.payTypeCommision_radioButton.setEnabled(True)
             self.ui.userAccess_comboBox.setEnabled(True)
 
         self.ui.editGeneral_toolButton.setEnabled(False)
