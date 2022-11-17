@@ -511,8 +511,8 @@ def database_report(include_archived, save_file): #Just output as if to the save
     with open(save_file, 'w') as fout:
         fout.write("ID,Name,Address,City,State,Zip,Classification,PayMethod,Salary,Hourly,Commission,Route,Account,DOB,SSN,StartDate,IsManager,IsArchived,EmpTitle,Department,OfficePhone,OfficeEmail,Password")
         fout.write("\n")
-        for emp in employees or emp.isArchived is False:
-            if include_archived:
+        for emp in employees:
+            if include_archived  or emp.isArchived is False:
                 fout.write(str(emp))
                 fout.write('\n')
             elif emp.isArchived:
