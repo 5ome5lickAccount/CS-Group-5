@@ -34,6 +34,8 @@ class LoginWindow(QtWidgets.QMainWindow):
         #self.activeUser = login("522759", "728Terran#")
         if self.activeUser is not False:
             self.proceedWithLogin()
+            self.loginUi.employeeIdLogin_lineEdit.setText("")
+            self.loginUi.passwordLogin_lineEdit.setText("")
         else:
             self.Form = Error_Form()
             self.Pop_up = QtWidgets.QWidget()
