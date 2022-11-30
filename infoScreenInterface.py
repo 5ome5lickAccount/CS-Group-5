@@ -73,7 +73,7 @@ class InfoScreenInterface():
                 self.ui.mailAddressYes_radioButton.setChecked(True)
                 self.ui.routingNum_lineEdit.setText(self.selectedUser.routingNum)
                 self.ui.accountNum_lineEdit.setText(self.selectedUser.accountNum)
-                if self.selectedUser.unsavedData:
+                if self.selectedUser.unsavedData and self.selectedUser.unsavedDataFields:
                     displayText = "\nThis user contains empty fields. Consider filling them out.\n"
                     for i in self.selectedUser.unsavedDataFields:
                         displayText+=i+" "

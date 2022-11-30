@@ -137,9 +137,9 @@ class Employee:
         if self.email == "":
             self.unsavedData = True
             self.unsavedDataFields.append("Email")
-        if self.password == "":
-            self.unsavedData = True
-            self.unsavedDataFields.append("Password")
+        #if self.password == "":
+        #    self.unsavedData = True
+        #    self.unsavedDataFields.append("Password")
         if self.save_hr == "":
             self.unsavedData = True
             self.unsavedDataFields.append("Hourly Pay")
