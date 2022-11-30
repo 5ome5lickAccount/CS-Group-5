@@ -4,6 +4,7 @@ from empDataLoginGraphics import Ui_LoginWindow
 from sessionManager import SessionManager
 from payroll import load_employees, login
 import sys
+from errorWindow import Error_Form
 
 
 class CentralWindow(QtWidgets.QMainWindow, SessionManager):
@@ -33,6 +34,12 @@ class LoginWindow(QtWidgets.QMainWindow):
         #self.activeUser = login("522759", "728Terran#")
         if self.activeUser is not False:
             self.proceedWithLogin()
+        else:
+            self.Form = Error_Form()
+            self.Pop_up = QtWidgets.QWidget()
+            displayText = "\nInvalid Username or Password.\n"            
+            self.Form.setupUi(self.Pop_up, displayText)
+            self.Pop_up.show()
 
     def proceedWithLogin(self):
         self.Central = CentralWindow(self.activeUser)
