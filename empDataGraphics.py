@@ -2,6 +2,37 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import Resources_rc
 
 class Ui_MainWindow(object):
+    
+    def disableTooltips(self):
+        self.closeSideBar_toolButton.setToolTip("")
+        self.collapse_toolButton.setToolTip("")
+        self.search_lineEdit.setToolTip("")
+        self.searchField_comboBox.setToolTip("")
+        self.search_toolButton.setToolTip("")
+        self.newEmp_toolButton.setToolTip("")
+        self.report_toolButton.setToolTip("")
+        self.info_toolButton.setToolTip("")
+        self.userManual_toolButton.setToolTip("")
+        self.signOut_toolButton.setToolTip("")
+        self.hamburger_toolButton.setToolTip("")
+        self.signOutTopBar_toolButton.setToolTip("")
+        return 0
+    
+    def enableTooltips(self):
+        self.closeSideBar_toolButton.setToolTip("This is the closeSideBar_toolButton ToolTip")
+        self.collapse_toolButton.setToolTip("This is the collapse_toolButton ToolTip")
+        self.search_lineEdit.setToolTip("This is the search_lineEdit ToolTip")
+        self.searchField_comboBox.setToolTip("This is the searchField_combobox ToolTip")
+        self.search_toolButton.setToolTip("This is the search_toolButton ToolTip")
+        self.newEmp_toolButton.setToolTip("This is the newEmp_toolButton ToolTip")
+        self.report_toolButton.setToolTip("This is the report_toolButton ToolTip")
+        self.info_toolButton.setToolTip("This is the info_toolButton ToolTip")
+        self.userManual_toolButton.setToolTip("This is the userManual_toolButton ToolTip")
+        self.signOut_toolButton.setToolTip("This is the signOut_toolButton ToolTip")
+        self.hamburger_toolButton.setToolTip("This is the hamburger_toolButton Tooltip")
+        self.signOutTopBar_toolButton.setToolTip("This is the signOutTopBar Tooltip")
+        return 0
+    
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1401, 950)
