@@ -51,10 +51,10 @@ class SessionManager():
         newEmp = self.getUpdatedEmployee()
         if not update_employee(newEmp):
             add_employee(newEmp)
-        #self.infoScreen = InfoScreenInterface(self.ui, self.currentUser)
         self.createOriginalData()
         self.infoScreen.disableInfoInputs()
-        self.infoScreen.activeUser = newEmp
+        if newEmp.employeeId == self.infoScreen.activeUser.employeeId: 
+            self.infoScreen.activeUser = newEmp
 
     def firstLogin(self):
         self.activateMyInfoScreen()
@@ -100,16 +100,7 @@ class SessionManager():
         return True 
 
     def createOriginalData(self):
-        #if isinstance(self.originalData, Employee):
-        #    return
-        if self.ui.payTypeSalary_radioButton.isChecked():
-            classification = "2"
-        elif self.ui.payTypeHourly_radioButton.isChecked():
-            classification = "1"
-        elif self.ui.payTypeHourly_radioButton.isChecked():
-            classification = "3"
-        else:
-            classification = ""
+        
         if self.ui.directDepositNo_radioButton.isChecked():
             payMethod = "1"
         elif self.ui.directDepositYes_radioButton.isChecked():
@@ -152,6 +143,16 @@ class SessionManager():
         0.0,
         0.0
         )
+        #TODO: FIX THIS
+        if self.ui.payTypeSalary_radioButton.isChecked():
+            classification = "2"
+        elif self.ui.payTypeHourly_radioButton.isChecked():
+            classification = "1"
+        elif self.ui.payTypeHourly_radioButton.isChecked():
+            classification = "3"
+        else:
+            classification = ""
+
 
     def getUpdatedEmployee(self):
         #if isinstance(self.originalData, Employee):

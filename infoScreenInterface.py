@@ -43,7 +43,7 @@ class InfoScreenInterface():
             self.ui.title_lineEdit.setText(self.selectedUser.title)
             self.ui.startDate_dateEdit.setDate(self.dateToQDate(self.selectedUser.startDate))
 
-            if self.activeUser.isManager:
+            if self.activeUser.isManager or self.activeUser.employeeId == self.selectedUser.employeeId:
                 self.enablePersonalTab()
                 self.ui.employeeIdPersonal_lineEdit.setText(self.selectedUser.employeeId)
                 self.ui.ssn_lineEdit.setText(self.selectedUser.ssn)
@@ -356,4 +356,6 @@ class SaveLocation(QWidget):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         fileName, _ = QFileDialog.getSaveFileName(self,"Choose File", "","csv (*.csv)", options=options)
+        if '.csv' in fileName:
+            fileName=fileName[:-5]
         return fileName, _
