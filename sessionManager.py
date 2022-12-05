@@ -100,7 +100,6 @@ class SessionManager():
         return True 
 
     def createOriginalData(self):
-        
         if self.ui.directDepositNo_radioButton.isChecked():
             payMethod = "1"
         elif self.ui.directDepositYes_radioButton.isChecked():

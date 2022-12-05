@@ -119,12 +119,12 @@ class Employee:
         if self.startDate == "":
             self.unsavedData = True
             self.unsavedDataFields.append("Last Name")
-        if self.isManager == "":
-            self.unsavedData = True
-            self.unsavedDataFields.append("Manager")
-        if self.isArchived == "":
-            self.unsavedData = True
-            self.unsavedDataFields.append("Archived")
+        #if self.isManager == "":
+        #    self.unsavedData = True
+        #    self.unsavedDataFields.append("Manager")
+        #if self.isArchived == "":
+        #    self.unsavedData = True
+        #    self.unsavedDataFields.append("Archived")
         if self.title == "":
             self.unsavedData = True
             self.unsavedDataFields.append("Title")
@@ -361,7 +361,8 @@ def update_file():
 
 def search_full_name(term):
     '''
-    Uses
+    Uses the other two search functions and combines the results (if no space)
+    If there is a space, it will do a different search to check for that
     '''
     term = term.lower()
     results = []
@@ -525,7 +526,7 @@ def database_report(include_archived, save_file): #Just output as if to the save
     #    return False
     #if current_user.isManager is False:
     #    return False #Change this later when determined better way to send this error
-    if os.path.exists(save_file): # pay_log_file is a global variable holding ‘payroll.txt’ 
+    if os.path.exists(save_file): 
         os.remove(save_file) 
     with open(save_file, 'w') as fout:
         fout.write("ID,Name,Address,City,State,Zip,Classification,PayMethod,Salary,Hourly,Commission,Route,Account,DOB,SSN,StartDate,IsManager,IsArchived,EmpTitle,Department,OfficePhone,OfficeEmail,Password")

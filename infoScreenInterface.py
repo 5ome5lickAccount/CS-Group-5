@@ -355,7 +355,7 @@ class SaveLocation(QWidget):
     def openFileNameDialog(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        fileName, _ = QFileDialog.getSaveFileName(self,"Choose File", "","csv (*.csv)", options=options)
+        fileName, _ = QFileDialog.getSaveFileName(self,"Choose File", "","", options=options)
         if '.csv' in fileName:
             fileName=fileName[:-5]
         return fileName, _
