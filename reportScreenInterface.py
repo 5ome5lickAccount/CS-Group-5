@@ -8,8 +8,23 @@ class ReportScreenManager:
         self.ui.reportTypePay_radioButton.toggled.connect(self.validateRequiredInfoPresent)
         self.ui.reportTypeFull_radioButton.toggled.connect(self.validateRequiredInfoPresent)
         self.ui.archivedEmployeeReport_checkBox.toggled.connect(self.validateRequiredInfoPresent)
-
-
+        
+    def disableTooltips(self):
+        self.ui.reportType_label.setToolTip("")
+        self.ui.reportTypeFull_radioButton.setToolTip("")
+        self.ui.reportTypePay_radioButton.setToolTip("")
+        self.ui.archivedEmployeeReport_checkBox.setToolTip("")
+        self.ui.generateReport_label.setToolTip("")
+        self.ui.generateReport_toolButton.setToolTip("")
+    
+    def enableTooltips(self):
+        self.ui.reportType_label.setToolTip("This is the reportType ToolTip")
+        self.ui.reportTypeFull_radioButton.setToolTip("This is the reportType ToolTip")
+        self.ui.reportTypePay_radioButton.setToolTip("This is the reportType ToolTip")
+        self.ui.archivedEmployeeReport_checkBox.setToolTip("This is the archiveEmployeeReport ToolTip")
+        self.ui.generateReport_label.setToolTip("This is the generateReport ToolTip")
+        self.ui.generateReport_toolButton.setToolTip("This is the generateReport ToolTip")
+    
     def clearReportScreen(self):
         self.ui.reportTypePay_radioButton.setAutoExclusive(False)
         self.ui.reportTypePay_radioButton.setChecked(False)
