@@ -201,7 +201,7 @@ def resource_path(relative_path):
     dirname = os.path.dirname(__file__)
     #base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(dirname, relative_path)
-EMPLOYEE_FILE=resource_path("Files\employeestest.csv")
+EMPLOYEE_FILE=resource_path("Files/employeestest.csv")
 PAY_LOGFILE=resource_path("payroll.txt")
 
 '''

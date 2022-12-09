@@ -19,18 +19,18 @@ class Ui_MainWindow(object):
         return 0
     
     def enableTooltips(self):
-        self.closeSideBar_toolButton.setToolTip("This is the closeSideBar_toolButton ToolTip")
-        self.collapse_toolButton.setToolTip("This is the collapse_toolButton ToolTip")
-        self.search_lineEdit.setToolTip("This is the search_lineEdit ToolTip")
-        self.searchField_comboBox.setToolTip("This is the searchField_combobox ToolTip")
-        self.search_toolButton.setToolTip("This is the search_toolButton ToolTip")
-        self.newEmp_toolButton.setToolTip("This is the newEmp_toolButton ToolTip")
+        self.closeSideBar_toolButton.setToolTip("Close the side bar")
+        self.collapse_toolButton.setToolTip("Colapse the side bar")
+        self.search_lineEdit.setToolTip("Type employee information for search here")
+        self.searchField_comboBox.setToolTip("Select the empoloyee information type")
+        self.search_toolButton.setToolTip("Click to search for the employee information entered above")
+        self.newEmp_toolButton.setToolTip("Create a new employee")
         self.report_toolButton.setToolTip("This is the report_toolButton ToolTip")
-        self.info_toolButton.setToolTip("This is the info_toolButton ToolTip")
-        self.userManual_toolButton.setToolTip("This is the userManual_toolButton ToolTip")
-        self.signOut_toolButton.setToolTip("This is the signOut_toolButton ToolTip")
-        self.hamburger_toolButton.setToolTip("This is the hamburger_toolButton Tooltip")
-        self.signOutTopBar_toolButton.setToolTip("This is the signOutTopBar Tooltip")
+        self.info_toolButton.setToolTip("Click to view your employee information")
+        self.userManual_toolButton.setToolTip("Click to view the program manual")
+        self.signOut_toolButton.setToolTip("Log out of your account")
+        self.hamburger_toolButton.setToolTip("Reopen the side bar")
+        self.signOutTopBar_toolButton.setToolTip("Sign out of your account")
         return 0
     
     def setupUi(self, MainWindow):

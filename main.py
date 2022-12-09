@@ -12,6 +12,7 @@ class CentralWindow(QtWidgets.QMainWindow, SessionManager):
         super().__init__(*args, **kwargs)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.ui.enableTooltips()
         self.activeUser = activeUser
 
         self.initializeSessionManager(self.ui, self.activeUser)
@@ -30,8 +31,8 @@ class LoginWindow(QtWidgets.QMainWindow):
     def validateLoginInfo(self):
         userName = self.loginUi.employeeIdLogin_lineEdit.text()
         password = self.loginUi.passwordLogin_lineEdit.text()
-        self.activeUser = login(userName, password)
-        #self.activeUser = login("522759", "728Terran#")
+        #self.activeUser = login(userName, password)
+        self.activeUser = login("522759", "728Terran#")
         if self.activeUser is not False:
             self.proceedWithLogin()
             self.loginUi.employeeIdLogin_lineEdit.setText("")

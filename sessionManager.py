@@ -23,6 +23,8 @@ class SessionManager():
         self.infoScreen = InfoScreenInterface(self.ui, self.currentUser)
         self.reportScreen = ReportScreenManager(self.ui)
         self.sideBarManager = SideBarMgr(self.ui)
+        self.infoScreen.enableTooltips()
+        self.reportScreen.enableTooltips()
         self.connectButtons()
         self.firstLogin()
 
