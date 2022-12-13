@@ -18,12 +18,12 @@ class ReportScreenManager:
         self.ui.generateReport_toolButton.setToolTip("")
     
     def enableTooltips(self):
-        self.ui.reportType_label.setToolTip("This is the reportType ToolTip")
-        self.ui.reportTypeFull_radioButton.setToolTip("This is the reportType ToolTip")
-        self.ui.reportTypePay_radioButton.setToolTip("This is the reportType ToolTip")
-        self.ui.archivedEmployeeReport_checkBox.setToolTip("This is the archiveEmployeeReport ToolTip")
-        self.ui.generateReport_label.setToolTip("This is the generateReport ToolTip")
-        self.ui.generateReport_toolButton.setToolTip("This is the generateReport ToolTip")
+        # self.ui.reportType_label.setToolTip("This is the reportType ToolTip")
+        self.ui.reportTypeFull_radioButton.setToolTip("Generate a report of the employee datatbase")
+        self.ui.reportTypePay_radioButton.setToolTip("Generate a payroll report")
+        self.ui.archivedEmployeeReport_checkBox.setToolTip("Do you want to include archived employees in the report?")
+        self.ui.generateReport_label.setToolTip("Press the button to create your selected report!")
+        self.ui.generateReport_toolButton.setToolTip("Press to create your selected report!")
     
     def clearReportScreen(self):
         self.ui.reportTypePay_radioButton.setAutoExclusive(False)

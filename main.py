@@ -31,8 +31,10 @@ class LoginWindow(QtWidgets.QMainWindow):
     def validateLoginInfo(self):
         userName = self.loginUi.employeeIdLogin_lineEdit.text()
         password = self.loginUi.passwordLogin_lineEdit.text()
-        #self.activeUser = login(userName, password)
-        self.activeUser = login("688997", "836Protoss$")
+        self.activeUser = login(userName, password)
+        # self.activeUser = login("522759", "728Terran#")  # regular user
+        # self.activeUser = login("688997", "836Protoss$") # admin
+
         if self.activeUser is not False:
             self.proceedWithLogin()
             self.loginUi.employeeIdLogin_lineEdit.setText("")
