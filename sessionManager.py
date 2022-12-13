@@ -53,10 +53,16 @@ class SessionManager():
         newEmp = self.getUpdatedEmployee()
         if not update_employee(newEmp):
             add_employee(newEmp)
+            self.viewNewEmployee(newEmp)
         self.createOriginalData()
         self.infoScreen.disableInfoInputs()
         if newEmp.employeeId == self.infoScreen.activeUser.employeeId: 
             self.infoScreen.activeUser = newEmp
+    
+    def viewNewEmployee(self, selectedUser):
+        self.infoScreen.otherUserInfoScreenActivate(selectedUser)
+        self.mainScreen.setCurrentIndex(1)
+        self.createOriginalData()
 
     def firstLogin(self):
         self.activateMyInfoScreen()
