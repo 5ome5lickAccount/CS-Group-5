@@ -1,9 +1,9 @@
 import time
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QPropertyAnimation, QSize
-from PyQt5.QtGui import QCursor
-from PyQt5.QtWidgets import QFrame, QHBoxLayout, QToolButton
+from PyQt5.QtCore import QPropertyAnimation
+
+import toggleButton
 
 
 class SideBarMgr():
@@ -17,8 +17,15 @@ class SideBarMgr():
         self.getOriginalSettings()
         self.getButtonNewSettings()
 
+
+        self.toggle = toggleButton.ToggleButton(self.ui.horizontalLayout_5)
+        self.toggle.setChecked(True)
+        self.enableTooltips()
+        self.toggle.stateChanged.connect(self.toggleToolTips)
+
     def pushOutSub(self):
         subWidth = self.ui.sideBar_frame.width()
+        print("here: ", subWidth)
 
         if subWidth != 350:
             self.resetOtherWidgets()
@@ -34,6 +41,7 @@ class SideBarMgr():
 
     def collapseSub(self):
         subWidth = self.ui.sideBar_frame.width()
+
         if subWidth > 102:
             self.shrinkOtherWidgets()
             self.increaseButtonSize()
@@ -48,6 +56,13 @@ class SideBarMgr():
             self.animation1.start()
         else:
             self.pushOutSub()
+
+        print("subWidth: ", subWidth)
+        print("tool tip: ", self.toggle.width())
+        print("tool tip frame: ", self.ui.toolTipToggle_frame.width())
+        print("subWidth: ", subWidth)
+
+
 
     def closeSub(self):
         subWidth = self.ui.sideBar_frame.width()
@@ -128,6 +143,8 @@ class SideBarMgr():
         self.ui.signOut_toolButton.setMinimumSize(newLogOutSize)
         self.ui.signOut_toolButton.setToolButtonStyle(QtCore.Qt.ToolButtonIconOnly)
 
+        self.ui.toolTipToggle_frame.hide()
+
 
     def increaseButtonSize(self):
         newSize = QtCore.QSize(self.newIconSize, self.newIconSize)
@@ -168,6 +185,8 @@ class SideBarMgr():
             thisObj.setStyleSheet(self.originalSettings[widg]["style"])
             if thisObj.objectName() != "searchField_comboBox" and thisObj.objectName() != "search_lineEdit":
                 thisObj.setIconSize(self.originalSettings[widg]["iconSize"])
+
+        self.ui.toolTipToggle_frame.show()
 
 
     def getOriginalSettings(self):
@@ -210,3 +229,39 @@ class SideBarMgr():
                 "object": widg,
                 "style": newStyle
             }
+
+    def toggleToolTips(self):
+        if self.toggle.isChecked():
+            self.enableTooltips()
+        else:
+            self.disableTooltips()
+    def disableTooltips(self):
+        self.ui.closeSideBar_toolButton.setToolTip("")
+        self.ui.collapse_toolButton.setToolTip("")
+        self.ui.search_lineEdit.setToolTip("")
+        self.ui.searchField_comboBox.setToolTip("")
+        self.ui.search_toolButton.setToolTip("")
+        self.toggle.setToolTip("")
+        self.ui.newEmp_toolButton.setToolTip("")
+        self.ui.report_toolButton.setToolTip("")
+        self.ui.info_toolButton.setToolTip("")
+        self.ui.userManual_toolButton.setToolTip("")
+        self.ui.signOut_toolButton.setToolTip("")
+        self.ui.hamburger_toolButton.setToolTip("")
+        self.ui.signOutTopBar_toolButton.setToolTip("")
+
+    def enableTooltips(self):
+        self.ui.closeSideBar_toolButton.setToolTip("Close the side bar")
+        self.ui.collapse_toolButton.setToolTip("Colapse the side bar")
+        self.ui.search_lineEdit.setToolTip("Type employee information for search here")
+        self.ui.searchField_comboBox.setToolTip("Select the empoloyee information type")
+        self.ui.search_toolButton.setToolTip("Click to search for the employee information entered above")
+        self.toggle.setToolTip("Turn hover tips on/off")
+        self.ui.newEmp_toolButton.setToolTip("Create a new employee")
+        self.ui.report_toolButton.setToolTip("This is the report_toolButton ToolTip")
+        self.ui.info_toolButton.setToolTip("Click to view your employee information")
+        self.ui.userManual_toolButton.setToolTip("Click to view the program manual")
+        self.ui.signOut_toolButton.setToolTip("Log out of your account")
+        self.ui.hamburger_toolButton.setToolTip("Reopen the side bar")
+        self.ui.signOutTopBar_toolButton.setToolTip("Sign out of your account")
+

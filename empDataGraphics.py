@@ -2,1127 +2,1103 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import Resources_rc
 
 class Ui_MainWindow(object):
-    
-    def disableTooltips(self):
-        self.closeSideBar_toolButton.setToolTip("")
-        self.collapse_toolButton.setToolTip("")
-        self.search_lineEdit.setToolTip("")
-        self.searchField_comboBox.setToolTip("")
-        self.search_toolButton.setToolTip("")
-        self.newEmp_toolButton.setToolTip("")
-        self.report_toolButton.setToolTip("")
-        self.info_toolButton.setToolTip("")
-        self.userManual_toolButton.setToolTip("")
-        self.signOut_toolButton.setToolTip("")
-        self.hamburger_toolButton.setToolTip("")
-        self.signOutTopBar_toolButton.setToolTip("")
-        return 0
-    
-    def enableTooltips(self):
-        self.closeSideBar_toolButton.setToolTip("Close the side bar")
-        self.collapse_toolButton.setToolTip("Colapse the side bar")
-        self.search_lineEdit.setToolTip("Type employee information for search here")
-        self.searchField_comboBox.setToolTip("Select the empoloyee information type")
-        self.search_toolButton.setToolTip("Click to search for the employee information entered above")
-        self.newEmp_toolButton.setToolTip("Create a new employee")
-        self.report_toolButton.setToolTip("This is the report_toolButton ToolTip")
-        self.info_toolButton.setToolTip("Click to view your employee information")
-        self.userManual_toolButton.setToolTip("Click to view the program manual")
-        self.signOut_toolButton.setToolTip("Log out of your account")
-        self.hamburger_toolButton.setToolTip("Reopen the side bar")
-        self.signOutTopBar_toolButton.setToolTip("Sign out of your account")
-        return 0
-    
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1401, 950)
+        MainWindow.resize(1400, 950)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/assets/png/logo-white.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("QMainWindow{\n"
-"background-color: rgb(41, 46, 50);\n"
-"}\n"
-"\n"
-"QCalendar {\n"
-"    background-color: white;\n"
-"    color: black;\n"
-"}\n"
-"\n"
-"QCalendarWidget QTableView QLabel \n"
-"{\n"
-"    color: black;\n"
-"}\n"
-"\n"
-"\n"
-"QTextEdit {\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"    background-color: #222b2e;\n"
-"    color: #d3dae3;\n"
-"}\n"
-"QPlainTextEdit {\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"    background-color: #222b2e;\n"
-"    color: #d3dae3;\n"
-"}\n"
-"QToolButton {\n"
-"    border-style: solid;\n"
-"    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));\n"
-"    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));\n"
-"    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: #d3dae3;\n"
-"    padding: 2px;\n"
-"    background-color: rgb(255,255,255);\n"
-"}\n"
-"QToolButton:hover{\n"
-"    border-style: solid;\n"
-"    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(195, 195, 195), stop:1 rgb(222, 222, 222));\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(197, 197, 197), stop:1 rgb(227, 227, 227));\n"
-"    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(197, 197, 197));\n"
-"    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(195, 195, 195), stop:1 rgb(222, 222, 222));\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: rgb(0,0,0);\n"
-"    padding: 2px;\n"
-"    background-color: rgb(255,255,255);\n"
-"}\n"
-"QToolButton:pressed{\n"
-"    border-style: solid;\n"
-"    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));\n"
-"    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));\n"
-"    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: rgb(0,0,0);\n"
-"    padding: 2px;\n"
-"    background-color: rgb(142,142,142);\n"
-"}\n"
-"QPushButton{\n"
-"    border-style: solid;\n"
-"    border-color: #050a0e;\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: #d3dae3;\n"
-"    padding: 2px;\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"QPushButton::default{\n"
-"    border-style: solid;\n"
-"    border-color: #050a0e;\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: #FFFFFF;\n"
-"    padding: 2px;\n"
-"    background-color: #151a1e;;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    border-style: solid;\n"
-"    border-color: #050a0e;\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: #d3dae3;\n"
-"    padding: 2px;\n"
-"    background-color: #1c1f1f;\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    border-style: solid;\n"
-"    border-color: #050a0e;\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: #d3dae3;\n"
-"    padding: 2px;\n"
-"    background-color: #2c2f2f;\n"
-"}\n"
-"QPushButton:disabled{\n"
-"    border-style: solid;\n"
-"    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));\n"
-"    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));\n"
-"    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: #808086;\n"
-"    padding: 2px;\n"
-"    background-color: rgb(142,142,142);\n"
-"}\n"
-"QComboBox QAbstractItemView {\n"
-"    background-color: white;\n"
-"    selection-background-color: rgb(120, 190, 72);\n"
-"    border-width: 2px solid;\n"
-"    border-color: rgb(120, 190, 72);\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"\n"
-"QLineEdit QMenu {\n"
-"background-color: white;\n"
-"}\n"
-"\n"
-"QLineEdit QMenu::item {\n"
-"color: black;\n"
-"}\n"
-"\n"
-"QLineEdit QMenu::item::selected { \n"
-"background-color: rgb(36, 93, 56)\n"
-"}\n"
-"QLabel {\n"
-"    color: #d3dae3;\n"
-"}\n"
-"QLCDNumber {\n"
-"    color: #4d9b87;\n"
-"}\n"
-"\n"
-"QProgressBar {\n"
-"    text-align: center;\n"
-"    color: #d3dae3;\n"
-"    border-radius: 10px;\n"
-"    border-color: transparent;\n"
-"    border-style: solid;\n"
-"    background-color: #52595d;\n"
-"}\n"
-"QProgressBar::chunk {\n"
-"    background-color: #214037    ;\n"
-"    border-radius: 10px;\n"
-"}\n"
-"QMenuBar {\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"QMenuBar::item {\n"
-"    color: #d3dae3;\n"
-"      spacing: 3px;\n"
-"      padding: 1px 4px;\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"\n"
-"QMenuBar::item:selected {\n"
-"      background-color: #252a2e;\n"
-"    color: #FFFFFF;\n"
-"}\n"
-"QMenu {\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"QMenu::item:selected {\n"
-"    background-color: #252a2e;\n"
-"    color: #FFFFFF;\n"
-"}\n"
-"QMenu::item {\n"
-"    color: #d3dae3;\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"QTabWidget {\n"
-"    color:rgb(0,0,0);\n"
-"    background-color:#000000;\n"
-"}\n"
-"QTabWidget::pane {\n"
-"        border-color: rgb(120, 190, 72);\n"
-"        background-color: #1e282c;\n"
-"        border-style: solid;\n"
-"        border-width: 2px;\n"
-"        border-bottom-left-radius: 4px;\n"
-"        border-bottom-right-radius: 4px;\n"
-"}\n"
-"QTabBar::tab:first {\n"
-"    border-style: solid;\n"
-"    border-left-width:1px;\n"
-"    border-right-width:0px;\n"
-"    border-top-width:1px;\n"
-"    border-bottom-width:0px;\n"
-"    border-color:  rgb(120, 190, 72);\n"
-"    border-top-left-radius: 4px;\n"
-"    color: #d3dae3;\n"
-"    padding: 5px;\n"
-"    padding-left: 10px;\n"
-"    padding-right: 10px;\n"
-"    margin-left:0px;\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"QTabBar::tab:last {\n"
-"    border-style: solid;\n"
-"    border-top-width:1px;\n"
-"    border-left-width:1px;\n"
-"    border-right-width:1px;\n"
-"    border-bottom-width:0px;\n"
-"    border-color:  rgb(120, 190, 72);\n"
-"    border-top-right-radius: 4px;\n"
-"    color: #d3dae3;\n"
-"    padding: 5px;\n"
-"    padding-left: 10px;\n"
-"    padding-right: 10px;\n"
-"    margin-left: 0px;\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"QTabBar::tab {\n"
-"    border-style: solid;\n"
-"    border-top-width:1px;\n"
-"    border-bottom-width:0px;\n"
-"    border-left-width:1px;\n"
-"    border-color:  rgb(120, 190, 72);\n"
-"    color: #d3dae3;\n"
-"    padding: 3px;\n"
-"    margin-left:0px;\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"QTabBar::tab:selected, QTabBar::tab:last:selected, QTabBar::tab:hover {\n"
-"      border-style: solid;\n"
-"      border-right-width: 2px;\n"
-"    border-top-width: 2px;\n"
-"    border-left-width: 2px;\n"
-"    border-color: rgb(120, 190, 72);\n"
-"    color: black;\n"
-"    padding: 5px;\n"
-"    padding-left: 10px;\n"
-"    padding-right: 10px;\n"
-"    margin-left:0px;\n"
-"    background-color: white;\n"
-"}\n"
-"\n"
-"QTabBar::tab:selected, QTabBar::tab:first:selected, QTabBar::tab:hover {\n"
-"      border-style: solid;\n"
-"      border-right-width: 2px;\n"
-"    border-top-width: 2px;\n"
-"    border-left-width: 2px;\n"
-"    border-color: rgb(120, 190, 72);\n"
-"    color: black;\n"
-"    padding: 5px;\n"
-"    padding-left: 10px;\n"
-"    padding-right: 10px;\n"
-"    margin-left:0px;\n"
-"    background-color: white;\n"
-"}\n"
-"\n"
-"QCheckBox {\n"
-"    color: #d3dae3;\n"
-"    padding: 2px;\n"
-"}\n"
-"QCheckBox:disabled {\n"
-"    color: #808086;\n"
-"    padding: 2px;\n"
-"}\n"
-"\n"
-"QCheckBox:hover {\n"
-"    border-radius:4px;\n"
-"    border-style:solid;\n"
-"    padding-left: 1px;\n"
-"    padding-right: 1px;\n"
-"    padding-bottom: 1px;\n"
-"    padding-top: 1px;\n"
-"    border-width:1px;\n"
-"    border-color: transparent;\n"
-"}\n"
-"QCheckBox::indicator:checked {\n"
-"\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    border-style:solid;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(120, 190, 72);;\n"
-"    color: #000000;\n"
-"    background-color: rgb(120, 190, 72);\n"
-"    padding: 0.2;\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:unchecked {\n"
-"\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    border-style:solid;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(120, 190, 72);;\n"
-"    color: #000000;\n"
-"}\n"
-"QRadioButton {\n"
-"    color: #d3dae3;\n"
-"    padding: 1px;\n"
-"}\n"
-"QRadioButton::indicator:checked {\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    border-style:solid;\n"
-"    border-radius:5px;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(120, 190, 72);\n"
-"    color: #a9b7c6;\n"
-"    background-color: qradialgradient(cx:0.5, cy:0.5, radius:0.4,fx:0.5, fy:0.5, stop:0 #4fa08b, stop:1 rgb(120, 190, 72));\n"
-"}\n"
-"QRadioButton::indicator:!checked {\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    border-style:solid;\n"
-"    border-radius:5px;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(120, 190, 72);\n"
-"    color: #a9b7c6;\n"
-"    background-color: transparent;\n"
-"}\n"
-"QStatusBar {\n"
-"    color:#027f7f;\n"
-"}\n"
-"QSpinBox {\n"
-"    color: #d3dae3;\n"
-"    background-color: #222b2e;\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"}\n"
-"QDoubleSpinBox {\n"
-"    color: #d3dae3;\n"
-"    background-color: #222b2e;\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"}\n"
-"QTimeEdit {\n"
-"    color: #d3dae3;\n"
-"    background-color: #222b2e;\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"}\n"
-"QDateTimeEdit {\n"
-"    color: #d3dae3;\n"
-"    background-color: #222b2e;\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"}\n"
-"QDateEdit {\n"
-"    color: #d3dae3;\n"
-"    background-color: #222b2e;\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"}\n"
-"QFontComboBox {\n"
-"    color: #d3dae3;\n"
-"    background-color: #222b2e;\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"}\n"
-"QComboBox {\n"
-"    color: #d3dae3;\n"
-"    background-color: #222b2e;\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: rgb(120, 190, 72);\n"
-"}\n"
-"\n"
-"QDial {\n"
-"    background: #16a085;\n"
-"}\n"
-"\n"
-"QToolBox {\n"
-"    color: #a9b7c6;\n"
-"    background-color: #222b2e;\n"
-"}\n"
-"QToolBox::tab {\n"
-"    color: #a9b7c6;\n"
-"    background-color:#222b2e;\n"
-"}\n"
-"QToolBox::tab:selected {\n"
-"    color: #FFFFFF;\n"
-"    background-color:#222b2e;\n"
-"}\n"
-"QScrollArea {\n"
-"    color: #FFFFFF;\n"
-"    background-color:#222b2e;\n"
-"}\n"
-"QSlider::groove:horizontal {\n"
-"    height: 5px;\n"
-"    background-color: #52595d;\n"
-"}\n"
-"QSlider::groove:vertical {\n"
-"    width: 5px;\n"
-"    background-color: #52595d;\n"
-"}\n"
-"QSlider::handle:horizontal {\n"
-"    background: #1a2224;\n"
-"    border-style: solid;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(207,207,207);\n"
-"    width: 12px;\n"
-"    margin: -5px 0;\n"
-"    border-radius: 7px;\n"
-"}\n"
-"QSlider::handle:vertical {\n"
-"    background: #1a2224;\n"
-"    border-style: solid;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(207,207,207);\n"
-"    height: 12px;\n"
-"    margin: 0 -5px;\n"
-"    border-radius: 7px;\n"
-"}\n"
-"QSlider::add-page:horizontal {\n"
-"    background: #52595d;\n"
-"}\n"
-"QSlider::add-page:vertical {\n"
-"    background: #52595d;\n"
-"}\n"
-"QSlider::sub-page:horizontal {\n"
-"    background-color: #15433a;\n"
-"}\n"
-"QSlider::sub-page:vertical {\n"
-"    background-color: #15433a;\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    max-height: 10px;\n"
-"    border: 1px transparent grey;\n"
-"    margin: 0px 20px 0px 20px;\n"
-"    background: transparent;\n"
-"}\n"
-"QScrollBar:vertical {\n"
-"    max-width: 10px;\n"
-"    border: 1px transparent grey;\n"
-"    margin: 20px 0px 20px 0px;\n"
-"    background: transparent;\n"
-"}\n"
-"QScrollBar::handle:horizontal {\n"
-"    background: #52595d;\n"
-"    border-style: transparent;\n"
-"    border-radius: 4px;\n"
-"    min-width: 25px;\n"
-"}\n"
-"QScrollBar::handle:horizontal:hover {\n"
-"    background: #58a492;\n"
-"    border-style: transparent;\n"
-"    border-radius: 4px;\n"
-"    min-width: 25px;\n"
-"}\n"
-"QScrollBar::handle:vertical {\n"
-"    background: #52595d;\n"
-"    border-style: transparent;\n"
-"    border-radius: 4px;\n"
-"    min-height: 25px;\n"
-"}\n"
-"QScrollBar::handle:vertical:hover {\n"
-"    background: #58a492;\n"
-"    border-style: transparent;\n"
-"    border-radius: 4px;\n"
-"    min-height: 25px;\n"
-"}\n"
-"QScrollBar::add-line:horizontal {\n"
-"   border: 2px transparent grey;\n"
-"   border-top-right-radius: 4px;\n"
-"   border-bottom-right-radius: 4px;\n"
-"   background: #15433a;\n"
-"   width: 20px;\n"
-"   subcontrol-position: right;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::add-line:horizontal:pressed {\n"
-"   border: 2px transparent grey;\n"
-"   border-top-right-radius: 4px;\n"
-"   border-bottom-right-radius: 4px;\n"
-"   background: rgb(181,181,181);\n"
-"   width: 20px;\n"
-"   subcontrol-position: right;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::add-line:vertical {\n"
-"   border: 2px transparent grey;\n"
-"   border-bottom-left-radius: 4px;\n"
-"   border-bottom-right-radius: 4px;\n"
-"   background: #15433a;\n"
-"   height: 20px;\n"
-"   subcontrol-position: bottom;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::add-line:vertical:pressed {\n"
-"   border: 2px transparent grey;\n"
-"   border-bottom-left-radius: 4px;\n"
-"   border-bottom-right-radius: 4px;\n"
-"   background: rgb(181,181,181);\n"
-"   height: 20px;\n"
-"   subcontrol-position: bottom;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::sub-line:horizontal {\n"
-"   border: 2px transparent grey;\n"
-"   border-top-left-radius: 4px;\n"
-"   border-bottom-left-radius: 4px;\n"
-"   background: #15433a;\n"
-"   width: 20px;\n"
-"   subcontrol-position: left;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::sub-line:horizontal:pressed {\n"
-"   border: 2px transparent grey;\n"
-"   border-top-left-radius: 4px;\n"
-"   border-bottom-left-radius: 4px;\n"
-"   background: rgb(181,181,181);\n"
-"   width: 20px;\n"
-"   subcontrol-position: left;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::sub-line:vertical {\n"
-"   border: 2px transparent grey;\n"
-"   border-top-left-radius: 4px;\n"
-"   border-top-right-radius: 4px;\n"
-"   background: #15433a;\n"
-"   height: 20px;\n"
-"   subcontrol-position: top;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::sub-line:vertical:pressed {\n"
-"   border: 2px transparent grey;\n"
-"   border-top-left-radius: 4px;\n"
-"   border-top-right-radius: 4px;\n"
-"   background: rgb(181,181,181);\n"
-"   height: 20px;\n"
-"   subcontrol-position: top;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"\n"
-"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
-"   background: none;\n"
-"}\n"
-"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"   background: none;\n"
-"}")
+                                 "background-color: rgb(41, 46, 50);\n"
+                                 "}\n"
+                                 "\n"
+                                 "QCalendar {\n"
+                                 "    background-color: white;\n"
+                                 "    color: black;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QCalendarWidget QTableView QLabel \n"
+                                 "{\n"
+                                 "    color: black;\n"
+                                 "}\n"
+                                 "\n"
+                                 "\n"
+                                 "QTextEdit {\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-style: solid;\n"
+                                 "    border-color: #4fa08b;\n"
+                                 "    background-color: #222b2e;\n"
+                                 "    color: #d3dae3;\n"
+                                 "}\n"
+                                 "QPlainTextEdit {\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-style: solid;\n"
+                                 "    border-color: #4fa08b;\n"
+                                 "    background-color: #222b2e;\n"
+                                 "    color: #d3dae3;\n"
+                                 "}\n"
+                                 "QToolButton {\n"
+                                 "    border-style: solid;\n"
+                                 "    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
+                                 "    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));\n"
+                                 "    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));\n"
+                                 "    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-radius: 5px;\n"
+                                 "    color: #d3dae3;\n"
+                                 "    padding: 2px;\n"
+                                 "    background-color: rgb(255,255,255);\n"
+                                 "}\n"
+                                 "QToolButton:hover{\n"
+                                 "    border-style: solid;\n"
+                                 "    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(195, 195, 195), stop:1 rgb(222, 222, 222));\n"
+                                 "    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(197, 197, 197), stop:1 rgb(227, 227, 227));\n"
+                                 "    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(197, 197, 197));\n"
+                                 "    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(195, 195, 195), stop:1 rgb(222, 222, 222));\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-radius: 5px;\n"
+                                 "    color: rgb(0,0,0);\n"
+                                 "    padding: 2px;\n"
+                                 "    background-color: rgb(255,255,255);\n"
+                                 "}\n"
+                                 "QToolButton:pressed{\n"
+                                 "    border-style: solid;\n"
+                                 "    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
+                                 "    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));\n"
+                                 "    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));\n"
+                                 "    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-radius: 5px;\n"
+                                 "    color: rgb(0,0,0);\n"
+                                 "    padding: 2px;\n"
+                                 "    background-color: rgb(142,142,142);\n"
+                                 "}\n"
+                                 "QPushButton{\n"
+                                 "    border-style: solid;\n"
+                                 "    border-color: #050a0e;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-radius: 5px;\n"
+                                 "    color: #d3dae3;\n"
+                                 "    padding: 2px;\n"
+                                 "    background-color: #151a1e;\n"
+                                 "}\n"
+                                 "QPushButton::default{\n"
+                                 "    border-style: solid;\n"
+                                 "    border-color: #050a0e;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-radius: 5px;\n"
+                                 "    color: #FFFFFF;\n"
+                                 "    padding: 2px;\n"
+                                 "    background-color: #151a1e;;\n"
+                                 "}\n"
+                                 "QPushButton:hover{\n"
+                                 "    border-style: solid;\n"
+                                 "    border-color: #050a0e;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-radius: 5px;\n"
+                                 "    color: #d3dae3;\n"
+                                 "    padding: 2px;\n"
+                                 "    background-color: #1c1f1f;\n"
+                                 "}\n"
+                                 "QPushButton:pressed{\n"
+                                 "    border-style: solid;\n"
+                                 "    border-color: #050a0e;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-radius: 5px;\n"
+                                 "    color: #d3dae3;\n"
+                                 "    padding: 2px;\n"
+                                 "    background-color: #2c2f2f;\n"
+                                 "}\n"
+                                 "QPushButton:disabled{\n"
+                                 "    border-style: solid;\n"
+                                 "    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
+                                 "    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));\n"
+                                 "    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));\n"
+                                 "    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-radius: 5px;\n"
+                                 "    color: #808086;\n"
+                                 "    padding: 2px;\n"
+                                 "    background-color: rgb(142,142,142);\n"
+                                 "}\n"
+                                 "QComboBox QAbstractItemView {\n"
+                                 "    background-color: white;\n"
+                                 "    selection-background-color: rgb(120, 190, 72);\n"
+                                 "    border-width: 2px solid;\n"
+                                 "    border-color: rgb(120, 190, 72);\n"
+                                 "    color: white;\n"
+                                 "}\n"
+                                 "\n"
+                                 "\n"
+                                 "QLineEdit QMenu {\n"
+                                 "background-color: white;\n"
+                                 "color:black;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QLineEdit QMenu::item {\n"
+                                 "color: black;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QLineEdit QMenu::item::selected { \n"
+                                 "background-color: #78BE48;\n"
+                                 "color: black;\n"
+                                 "}\n"
+                                 "QLabel {\n"
+                                 "    color: #d3dae3;\n"
+                                 "}\n"
+                                 "QLCDNumber {\n"
+                                 "    color: #4d9b87;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QProgressBar {\n"
+                                 "    text-align: center;\n"
+                                 "    color: #d3dae3;\n"
+                                 "    border-radius: 10px;\n"
+                                 "    border-color: transparent;\n"
+                                 "    border-style: solid;\n"
+                                 "    background-color: #52595d;\n"
+                                 "}\n"
+                                 "QProgressBar::chunk {\n"
+                                 "    background-color: #214037    ;\n"
+                                 "    border-radius: 10px;\n"
+                                 "}\n"
+                                 "QMenuBar {\n"
+                                 "    background-color: white;\n"
+                                 "}\n"
+                                 "QMenuBar::item {\n"
+                                 "    color: black;\n"
+                                 "      spacing: 3px;\n"
+                                 "      padding: 1px 4px;\n"
+                                 "    background-color: white;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QMenuBar::item:selected {\n"
+                                 "      background-color: #78BE48;\n"
+                                 "    color: black;\n"
+                                 "}\n"
+                                 "QMenu {\n"
+                                 "    background-color: white;\n"
+                                 "}\n"
+                                 "QMenu::item:selected {\n"
+                                 "    background-color: #78BE48;\n"
+                                 "    color: black;\n"
+                                 "}\n"
+                                 "QMenu::item {\n"
+                                 "    color: black;\n"
+                                 "    background-color: white;\n"
+                                 "}\n"
+                                 "QTabWidget {\n"
+                                 "    color:rgb(0,0,0);\n"
+                                 "    background-color:#000000;\n"
+                                 "}\n"
+                                 "QTabWidget::pane {\n"
+                                 "        border-color: rgb(120, 190, 72);\n"
+                                 "        background-color: #1e282c;\n"
+                                 "        border-style: solid;\n"
+                                 "        border-width: 2px;\n"
+                                 "        border-bottom-left-radius: 4px;\n"
+                                 "        border-bottom-right-radius: 4px;\n"
+                                 "}\n"
+                                 "QTabBar::tab:first {\n"
+                                 "    border-style: solid;\n"
+                                 "    border-left-width:1px;\n"
+                                 "    border-right-width:0px;\n"
+                                 "    border-top-width:1px;\n"
+                                 "    border-bottom-width:0px;\n"
+                                 "    border-color:  rgb(120, 190, 72);\n"
+                                 "    border-top-left-radius: 4px;\n"
+                                 "    color: #d3dae3;\n"
+                                 "    padding: 5px;\n"
+                                 "    padding-left: 10px;\n"
+                                 "    padding-right: 10px;\n"
+                                 "    margin-left:0px;\n"
+                                 "    background-color: #151a1e;\n"
+                                 "}\n"
+                                 "QTabBar::tab:last {\n"
+                                 "    border-style: solid;\n"
+                                 "    border-top-width:1px;\n"
+                                 "    border-left-width:1px;\n"
+                                 "    border-right-width:1px;\n"
+                                 "    border-bottom-width:0px;\n"
+                                 "    border-color:  rgb(120, 190, 72);\n"
+                                 "    border-top-right-radius: 4px;\n"
+                                 "    color: #d3dae3;\n"
+                                 "    padding: 5px;\n"
+                                 "    padding-left: 10px;\n"
+                                 "    padding-right: 10px;\n"
+                                 "    margin-left: 0px;\n"
+                                 "    background-color: #151a1e;\n"
+                                 "}\n"
+                                 "QTabBar::tab {\n"
+                                 "    border-style: solid;\n"
+                                 "    border-top-width:1px;\n"
+                                 "    border-bottom-width:0px;\n"
+                                 "    border-left-width:1px;\n"
+                                 "    border-color:  rgb(120, 190, 72);\n"
+                                 "    color: #d3dae3;\n"
+                                 "    padding: 3px;\n"
+                                 "    margin-left:0px;\n"
+                                 "    background-color: #151a1e;\n"
+                                 "}\n"
+                                 "QTabBar::tab:selected, QTabBar::tab:last:selected, QTabBar::tab:hover {\n"
+                                 "      border-style: solid;\n"
+                                 "      border-right-width: 2px;\n"
+                                 "    border-top-width: 2px;\n"
+                                 "    border-left-width: 2px;\n"
+                                 "    border-color: rgb(120, 190, 72);\n"
+                                 "    color: black;\n"
+                                 "    padding: 5px;\n"
+                                 "    padding-left: 10px;\n"
+                                 "    padding-right: 10px;\n"
+                                 "    margin-left:0px;\n"
+                                 "    background-color: white;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QTabBar::tab:selected, QTabBar::tab:first:selected, QTabBar::tab:hover {\n"
+                                 "      border-style: solid;\n"
+                                 "      border-right-width: 2px;\n"
+                                 "    border-top-width: 2px;\n"
+                                 "    border-left-width: 2px;\n"
+                                 "    border-color: rgb(120, 190, 72);\n"
+                                 "    color: black;\n"
+                                 "    padding: 5px;\n"
+                                 "    padding-left: 10px;\n"
+                                 "    padding-right: 10px;\n"
+                                 "    margin-left:0px;\n"
+                                 "    background-color: white;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QCheckBox {\n"
+                                 "    color: #d3dae3;\n"
+                                 "    padding: 2px;\n"
+                                 "}\n"
+                                 "QCheckBox:disabled {\n"
+                                 "    color: #808086;\n"
+                                 "    padding: 2px;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QCheckBox:hover {\n"
+                                 "    border-radius:4px;\n"
+                                 "    border-style:solid;\n"
+                                 "    padding-left: 1px;\n"
+                                 "    padding-right: 1px;\n"
+                                 "    padding-bottom: 1px;\n"
+                                 "    padding-top: 1px;\n"
+                                 "    border-width:1px;\n"
+                                 "    border-color: transparent;\n"
+                                 "}\n"
+                                 "QCheckBox::indicator:checked {\n"
+                                 "\n"
+                                 "    height: 10px;\n"
+                                 "    width: 10px;\n"
+                                 "    border-style:solid;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-color: rgb(120, 190, 72);;\n"
+                                 "    color: #000000;\n"
+                                 "    background-color: rgb(120, 190, 72);\n"
+                                 "    padding: 0.2;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QCheckBox::indicator:unchecked {\n"
+                                 "\n"
+                                 "    height: 10px;\n"
+                                 "    width: 10px;\n"
+                                 "    border-style:solid;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-color: rgb(120, 190, 72);;\n"
+                                 "    color: #000000;\n"
+                                 "}\n"
+                                 "QRadioButton {\n"
+                                 "    color: #d3dae3;\n"
+                                 "    padding: 1px;\n"
+                                 "}\n"
+                                 "QRadioButton::indicator:checked {\n"
+                                 "    height: 10px;\n"
+                                 "    width: 10px;\n"
+                                 "    border-style:solid;\n"
+                                 "    border-radius:5px;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-color: rgb(120, 190, 72);\n"
+                                 "    color: #a9b7c6;\n"
+                                 "    background-color: qradialgradient(cx:0.5, cy:0.5, radius:0.4,fx:0.5, fy:0.5, stop:0 #4fa08b, stop:1 rgb(120, 190, 72));\n"
+                                 "}\n"
+                                 "QRadioButton::indicator:!checked {\n"
+                                 "    height: 10px;\n"
+                                 "    width: 10px;\n"
+                                 "    border-style:solid;\n"
+                                 "    border-radius:5px;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-color: rgb(120, 190, 72);\n"
+                                 "    color: #a9b7c6;\n"
+                                 "    background-color: transparent;\n"
+                                 "}\n"
+                                 "QStatusBar {\n"
+                                 "    color:#027f7f;\n"
+                                 "}\n"
+                                 "QSpinBox {\n"
+                                 "    color: #d3dae3;\n"
+                                 "    background-color: #222b2e;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-style: solid;\n"
+                                 "    border-color: #4fa08b;\n"
+                                 "}\n"
+                                 "QDoubleSpinBox {\n"
+                                 "    color: #d3dae3;\n"
+                                 "    background-color: #222b2e;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-style: solid;\n"
+                                 "    border-color: #4fa08b;\n"
+                                 "}\n"
+                                 "QTimeEdit {\n"
+                                 "    color: #d3dae3;\n"
+                                 "    background-color: #222b2e;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-style: solid;\n"
+                                 "    border-color: #4fa08b;\n"
+                                 "}\n"
+                                 "QDateTimeEdit {\n"
+                                 "    color: #d3dae3;\n"
+                                 "    background-color: #222b2e;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-style: solid;\n"
+                                 "    border-color: #4fa08b;\n"
+                                 "}\n"
+                                 "QDateEdit {\n"
+                                 "    color: #d3dae3;\n"
+                                 "    background-color: #222b2e;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-style: solid;\n"
+                                 "    border-color: #4fa08b;\n"
+                                 "}\n"
+                                 "QFontComboBox {\n"
+                                 "    color: #d3dae3;\n"
+                                 "    background-color: #222b2e;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-style: solid;\n"
+                                 "    border-color: #4fa08b;\n"
+                                 "}\n"
+                                 "QComboBox {\n"
+                                 "    color: #d3dae3;\n"
+                                 "    background-color: #222b2e;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-style: solid;\n"
+                                 "    border-color: rgb(120, 190, 72);\n"
+                                 "}\n"
+                                 "\n"
+                                 "QDial {\n"
+                                 "    background: #16a085;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QToolBox {\n"
+                                 "    color: #a9b7c6;\n"
+                                 "    background-color: #222b2e;\n"
+                                 "}\n"
+                                 "QToolBox::tab {\n"
+                                 "    color: #a9b7c6;\n"
+                                 "    background-color:#222b2e;\n"
+                                 "}\n"
+                                 "QToolBox::tab:selected {\n"
+                                 "    color: #FFFFFF;\n"
+                                 "    background-color:#222b2e;\n"
+                                 "}\n"
+                                 "QScrollArea {\n"
+                                 "    color: #FFFFFF;\n"
+                                 "    background-color:#222b2e;\n"
+                                 "}\n"
+                                 "QSlider::groove:horizontal {\n"
+                                 "    height: 5px;\n"
+                                 "    background-color: #52595d;\n"
+                                 "}\n"
+                                 "QSlider::groove:vertical {\n"
+                                 "    width: 5px;\n"
+                                 "    background-color: #52595d;\n"
+                                 "}\n"
+                                 "QSlider::handle:horizontal {\n"
+                                 "    background: #1a2224;\n"
+                                 "    border-style: solid;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-color: rgb(207,207,207);\n"
+                                 "    width: 12px;\n"
+                                 "    margin: -5px 0;\n"
+                                 "    border-radius: 7px;\n"
+                                 "}\n"
+                                 "QSlider::handle:vertical {\n"
+                                 "    background: #1a2224;\n"
+                                 "    border-style: solid;\n"
+                                 "    border-width: 1px;\n"
+                                 "    border-color: rgb(207,207,207);\n"
+                                 "    height: 12px;\n"
+                                 "    margin: 0 -5px;\n"
+                                 "    border-radius: 7px;\n"
+                                 "}\n"
+                                 "QSlider::add-page:horizontal {\n"
+                                 "    background: #52595d;\n"
+                                 "}\n"
+                                 "QSlider::add-page:vertical {\n"
+                                 "    background: #52595d;\n"
+                                 "}\n"
+                                 "QSlider::sub-page:horizontal {\n"
+                                 "    background-color: #15433a;\n"
+                                 "}\n"
+                                 "QSlider::sub-page:vertical {\n"
+                                 "    background-color: #15433a;\n"
+                                 "}\n"
+                                 "QScrollBar:horizontal {\n"
+                                 "    max-height: 10px;\n"
+                                 "    border: 1px transparent grey;\n"
+                                 "    margin: 0px 20px 0px 20px;\n"
+                                 "    background: transparent;\n"
+                                 "}\n"
+                                 "QScrollBar:vertical {\n"
+                                 "    max-width: 10px;\n"
+                                 "    border: 1px transparent grey;\n"
+                                 "    margin: 20px 0px 20px 0px;\n"
+                                 "    background: transparent;\n"
+                                 "}\n"
+                                 "QScrollBar::handle:horizontal {\n"
+                                 "    background: #52595d;\n"
+                                 "    border-style: transparent;\n"
+                                 "    border-radius: 4px;\n"
+                                 "    min-width: 25px;\n"
+                                 "}\n"
+                                 "QScrollBar::handle:horizontal:hover {\n"
+                                 "    background: #58a492;\n"
+                                 "    border-style: transparent;\n"
+                                 "    border-radius: 4px;\n"
+                                 "    min-width: 25px;\n"
+                                 "}\n"
+                                 "QScrollBar::handle:vertical {\n"
+                                 "    background: #52595d;\n"
+                                 "    border-style: transparent;\n"
+                                 "    border-radius: 4px;\n"
+                                 "    min-height: 25px;\n"
+                                 "}\n"
+                                 "QScrollBar::handle:vertical:hover {\n"
+                                 "    background: #58a492;\n"
+                                 "    border-style: transparent;\n"
+                                 "    border-radius: 4px;\n"
+                                 "    min-height: 25px;\n"
+                                 "}\n"
+                                 "QScrollBar::add-line:horizontal {\n"
+                                 "   border: 2px transparent grey;\n"
+                                 "   border-top-right-radius: 4px;\n"
+                                 "   border-bottom-right-radius: 4px;\n"
+                                 "   background: #15433a;\n"
+                                 "   width: 20px;\n"
+                                 "   subcontrol-position: right;\n"
+                                 "   subcontrol-origin: margin;\n"
+                                 "}\n"
+                                 "QScrollBar::add-line:horizontal:pressed {\n"
+                                 "   border: 2px transparent grey;\n"
+                                 "   border-top-right-radius: 4px;\n"
+                                 "   border-bottom-right-radius: 4px;\n"
+                                 "   background: rgb(181,181,181);\n"
+                                 "   width: 20px;\n"
+                                 "   subcontrol-position: right;\n"
+                                 "   subcontrol-origin: margin;\n"
+                                 "}\n"
+                                 "QScrollBar::add-line:vertical {\n"
+                                 "   border: 2px transparent grey;\n"
+                                 "   border-bottom-left-radius: 4px;\n"
+                                 "   border-bottom-right-radius: 4px;\n"
+                                 "   background: #15433a;\n"
+                                 "   height: 20px;\n"
+                                 "   subcontrol-position: bottom;\n"
+                                 "   subcontrol-origin: margin;\n"
+                                 "}\n"
+                                 "QScrollBar::add-line:vertical:pressed {\n"
+                                 "   border: 2px transparent grey;\n"
+                                 "   border-bottom-left-radius: 4px;\n"
+                                 "   border-bottom-right-radius: 4px;\n"
+                                 "   background: rgb(181,181,181);\n"
+                                 "   height: 20px;\n"
+                                 "   subcontrol-position: bottom;\n"
+                                 "   subcontrol-origin: margin;\n"
+                                 "}\n"
+                                 "QScrollBar::sub-line:horizontal {\n"
+                                 "   border: 2px transparent grey;\n"
+                                 "   border-top-left-radius: 4px;\n"
+                                 "   border-bottom-left-radius: 4px;\n"
+                                 "   background: #15433a;\n"
+                                 "   width: 20px;\n"
+                                 "   subcontrol-position: left;\n"
+                                 "   subcontrol-origin: margin;\n"
+                                 "}\n"
+                                 "QScrollBar::sub-line:horizontal:pressed {\n"
+                                 "   border: 2px transparent grey;\n"
+                                 "   border-top-left-radius: 4px;\n"
+                                 "   border-bottom-left-radius: 4px;\n"
+                                 "   background: rgb(181,181,181);\n"
+                                 "   width: 20px;\n"
+                                 "   subcontrol-position: left;\n"
+                                 "   subcontrol-origin: margin;\n"
+                                 "}\n"
+                                 "QScrollBar::sub-line:vertical {\n"
+                                 "   border: 2px transparent grey;\n"
+                                 "   border-top-left-radius: 4px;\n"
+                                 "   border-top-right-radius: 4px;\n"
+                                 "   background: #15433a;\n"
+                                 "   height: 20px;\n"
+                                 "   subcontrol-position: top;\n"
+                                 "   subcontrol-origin: margin;\n"
+                                 "}\n"
+                                 "QScrollBar::sub-line:vertical:pressed {\n"
+                                 "   border: 2px transparent grey;\n"
+                                 "   border-top-left-radius: 4px;\n"
+                                 "   border-top-right-radius: 4px;\n"
+                                 "   background: rgb(181,181,181);\n"
+                                 "   height: 20px;\n"
+                                 "   subcontrol-position: top;\n"
+                                 "   subcontrol-origin: margin;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
+                                 "   background: none;\n"
+                                 "}\n"
+                                 "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+                                 "   background: none;\n"
+                                 "}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setStyleSheet("background-color: rgb(41, 46, 50);\n"
-"\n"
-"QCalendar {\n"
-"    background-color: white;\n"
-"}\n"
-"QTextEdit {\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"    background-color: #222b2e;\n"
-"    color: #d3dae3;\n"
-"}\n"
-"QPlainTextEdit {\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"    background-color: #222b2e;\n"
-"    color: #d3dae3;\n"
-"}\n"
-"QToolButton {\n"
-"    border-style: solid;\n"
-"    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));\n"
-"    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));\n"
-"    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: #d3dae3;\n"
-"    padding: 2px;\n"
-"    background-color: rgb(255,255,255);\n"
-"}\n"
-"QToolButton:hover{\n"
-"    border-style: solid;\n"
-"    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(195, 195, 195), stop:1 rgb(222, 222, 222));\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(197, 197, 197), stop:1 rgb(227, 227, 227));\n"
-"    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(197, 197, 197));\n"
-"    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(195, 195, 195), stop:1 rgb(222, 222, 222));\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: rgb(0,0,0);\n"
-"    padding: 2px;\n"
-"    background-color: rgb(255,255,255);\n"
-"}\n"
-"QToolButton:pressed{\n"
-"    border-style: solid;\n"
-"    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));\n"
-"    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));\n"
-"    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: rgb(0,0,0);\n"
-"    padding: 2px;\n"
-"    background-color: rgb(142,142,142);\n"
-"}\n"
-"QPushButton{\n"
-"    border-style: solid;\n"
-"    border-color: #050a0e;\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: #d3dae3;\n"
-"    padding: 2px;\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"QPushButton::default{\n"
-"    border-style: solid;\n"
-"    border-color: #050a0e;\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: #FFFFFF;\n"
-"    padding: 2px;\n"
-"    background-color: #151a1e;;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    border-style: solid;\n"
-"    border-color: #050a0e;\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: #d3dae3;\n"
-"    padding: 2px;\n"
-"    background-color: #1c1f1f;\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    border-style: solid;\n"
-"    border-color: #050a0e;\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: #d3dae3;\n"
-"    padding: 2px;\n"
-"    background-color: #2c2f2f;\n"
-"}\n"
-"QPushButton:disabled{\n"
-"    border-style: solid;\n"
-"    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));\n"
-"    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));\n"
-"    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
-"    border-width: 1px;\n"
-"    border-radius: 5px;\n"
-"    color: #808086;\n"
-"    padding: 2px;\n"
-"    background-color: rgb(142,142,142);\n"
-"}\n"
-"QComboBox QAbstractItemView {\n"
-"    background-color: white;\n"
-"    selection-background-color: rgb(120, 190, 72);\n"
-"    border-width: 2px solid;\n"
-"    border-color: rgb(120, 190, 72);\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"\n"
-"QLineEdit QMenu {\n"
-"background-color: white;\n"
-"}\n"
-"\n"
-"QLineEdit QMenu::item {\n"
-"color: black;\n"
-"}\n"
-"\n"
-"QLineEdit QMenu::item::selected { \n"
-"background-color: rgb(36, 93, 56)\n"
-"}\n"
-"QLabel {\n"
-"    color: #d3dae3;\n"
-"}\n"
-"QLCDNumber {\n"
-"    color: #4d9b87;\n"
-"}\n"
-"\n"
-"QProgressBar {\n"
-"    text-align: center;\n"
-"    color: #d3dae3;\n"
-"    border-radius: 10px;\n"
-"    border-color: transparent;\n"
-"    border-style: solid;\n"
-"    background-color: #52595d;\n"
-"}\n"
-"QProgressBar::chunk {\n"
-"    background-color: #214037    ;\n"
-"    border-radius: 10px;\n"
-"}\n"
-"QMenuBar {\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"QMenuBar::item {\n"
-"    color: #d3dae3;\n"
-"      spacing: 3px;\n"
-"      padding: 1px 4px;\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"\n"
-"QMenuBar::item:selected {\n"
-"      background-color: #252a2e;\n"
-"    color: #FFFFFF;\n"
-"}\n"
-"QMenu {\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"QMenu::item:selected {\n"
-"    background-color: #252a2e;\n"
-"    color: #FFFFFF;\n"
-"}\n"
-"QMenu::item {\n"
-"    color: #d3dae3;\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"QTabWidget {\n"
-"    color:rgb(0,0,0);\n"
-"    background-color:#000000;\n"
-"}\n"
-"QTabWidget::pane {\n"
-"        border-color: rgb(120, 190, 72);\n"
-"        background-color: #1e282c;\n"
-"        border-style: solid;\n"
-"        border-width: 2px;\n"
-"        border-bottom-left-radius: 4px;\n"
-"        border-bottom-right-radius: 4px;\n"
-"}\n"
-"QTabBar::tab:first {\n"
-"    border-style: solid;\n"
-"    border-left-width:1px;\n"
-"    border-right-width:0px;\n"
-"    border-top-width:1px;\n"
-"    border-bottom-width:0px;\n"
-"    border-color:  rgb(120, 190, 72);\n"
-"    border-top-left-radius: 4px;\n"
-"    color: #d3dae3;\n"
-"    padding: 5px;\n"
-"    padding-left: 10px;\n"
-"    padding-right: 10px;\n"
-"    margin-left:0px;\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"QTabBar::tab:last {\n"
-"    border-style: solid;\n"
-"    border-top-width:1px;\n"
-"    border-left-width:1px;\n"
-"    border-right-width:1px;\n"
-"    border-bottom-width:0px;\n"
-"    border-color:  rgb(120, 190, 72);\n"
-"    border-top-right-radius: 4px;\n"
-"    color: #d3dae3;\n"
-"    padding: 5px;\n"
-"    padding-left: 10px;\n"
-"    padding-right: 10px;\n"
-"    margin-left: 0px;\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"QTabBar::tab {\n"
-"    border-style: solid;\n"
-"    border-top-width:1px;\n"
-"    border-bottom-width:0px;\n"
-"    border-left-width:1px;\n"
-"    border-color:  rgb(120, 190, 72);\n"
-"    color: #d3dae3;\n"
-"    padding: 3px;\n"
-"    margin-left:0px;\n"
-"    background-color: #151a1e;\n"
-"}\n"
-"QTabBar::tab:selected, QTabBar::tab:last:selected, QTabBar::tab:hover {\n"
-"      border-style: solid;\n"
-"      border-right-width: 2px;\n"
-"    border-top-width: 2px;\n"
-"    border-left-width: 2px;\n"
-"    border-color: rgb(120, 190, 72);\n"
-"    color: black;\n"
-"    padding: 5px;\n"
-"    padding-left: 10px;\n"
-"    padding-right: 10px;\n"
-"    margin-left:0px;\n"
-"    background-color: white;\n"
-"}\n"
-"\n"
-"QTabBar::tab:selected, QTabBar::tab:first:selected, QTabBar::tab:hover {\n"
-"      border-style: solid;\n"
-"      border-right-width: 2px;\n"
-"    border-top-width: 2px;\n"
-"    border-left-width: 2px;\n"
-"    border-color: rgb(120, 190, 72);\n"
-"    color: black;\n"
-"    padding: 5px;\n"
-"    padding-left: 10px;\n"
-"    padding-right: 10px;\n"
-"    margin-left:0px;\n"
-"    background-color: white;\n"
-"}\n"
-"\n"
-"QCheckBox {\n"
-"    color: #d3dae3;\n"
-"    padding: 2px;\n"
-"}\n"
-"QCheckBox:disabled {\n"
-"    color: #808086;\n"
-"    padding: 2px;\n"
-"}\n"
-"\n"
-"QCheckBox:hover {\n"
-"    border-radius:4px;\n"
-"    border-style:solid;\n"
-"    padding-left: 1px;\n"
-"    padding-right: 1px;\n"
-"    padding-bottom: 1px;\n"
-"    padding-top: 1px;\n"
-"    border-width:1px;\n"
-"    border-color: transparent;\n"
-"}\n"
-"QCheckBox::indicator:checked {\n"
-"\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    border-style:solid;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(120, 190, 72);;\n"
-"    color: #000000;\n"
-"    background-color: rgb(120, 190, 72);\n"
-"    padding: 0.2;\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:unchecked {\n"
-"\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    border-style:solid;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(120, 190, 72);;\n"
-"    color: #000000;\n"
-"}\n"
-"QRadioButton {\n"
-"    color: #d3dae3;\n"
-"    padding: 1px;\n"
-"}\n"
-"QRadioButton::indicator:checked {\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    border-style:solid;\n"
-"    border-radius:5px;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(120, 190, 72);\n"
-"    color: #a9b7c6;\n"
-"    background-color: qradialgradient(cx:0.5, cy:0.5, radius:0.4,fx:0.5, fy:0.5, stop:0 #4fa08b, stop:1 rgb(120, 190, 72));\n"
-"}\n"
-"QRadioButton::indicator:!checked {\n"
-"    height: 10px;\n"
-"    width: 10px;\n"
-"    border-style:solid;\n"
-"    border-radius:5px;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(120, 190, 72);\n"
-"    color: #a9b7c6;\n"
-"    background-color: transparent;\n"
-"}\n"
-"QStatusBar {\n"
-"    color:#027f7f;\n"
-"}\n"
-"QSpinBox {\n"
-"    color: #d3dae3;\n"
-"    background-color: #222b2e;\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"}\n"
-"QDoubleSpinBox {\n"
-"    color: #d3dae3;\n"
-"    background-color: #222b2e;\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"}\n"
-"QTimeEdit {\n"
-"    color: #d3dae3;\n"
-"    background-color: #222b2e;\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"}\n"
-"QDateTimeEdit {\n"
-"    color: #d3dae3;\n"
-"    background-color: #222b2e;\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"}\n"
-"QDateEdit {\n"
-"    color: #d3dae3;\n"
-"    background-color: #222b2e;\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"}\n"
-"QFontComboBox {\n"
-"    color: #d3dae3;\n"
-"    background-color: #222b2e;\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: #4fa08b;\n"
-"}\n"
-"QComboBox {\n"
-"    color: #d3dae3;\n"
-"    background-color: #222b2e;\n"
-"    border-width: 1px;\n"
-"    border-style: solid;\n"
-"    border-color: rgb(120, 190, 72);\n"
-"}\n"
-"\n"
-"QDial {\n"
-"    background: #16a085;\n"
-"}\n"
-"\n"
-"QToolBox {\n"
-"    color: #a9b7c6;\n"
-"    background-color: #222b2e;\n"
-"}\n"
-"QToolBox::tab {\n"
-"    color: #a9b7c6;\n"
-"    background-color:#222b2e;\n"
-"}\n"
-"QToolBox::tab:selected {\n"
-"    color: #FFFFFF;\n"
-"    background-color:#222b2e;\n"
-"}\n"
-"QScrollArea {\n"
-"    color: #FFFFFF;\n"
-"    background-color:#222b2e;\n"
-"}\n"
-"QSlider::groove:horizontal {\n"
-"    height: 5px;\n"
-"    background-color: #52595d;\n"
-"}\n"
-"QSlider::groove:vertical {\n"
-"    width: 5px;\n"
-"    background-color: #52595d;\n"
-"}\n"
-"QSlider::handle:horizontal {\n"
-"    background: #1a2224;\n"
-"    border-style: solid;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(207,207,207);\n"
-"    width: 12px;\n"
-"    margin: -5px 0;\n"
-"    border-radius: 7px;\n"
-"}\n"
-"QSlider::handle:vertical {\n"
-"    background: #1a2224;\n"
-"    border-style: solid;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(207,207,207);\n"
-"    height: 12px;\n"
-"    margin: 0 -5px;\n"
-"    border-radius: 7px;\n"
-"}\n"
-"QSlider::add-page:horizontal {\n"
-"    background: #52595d;\n"
-"}\n"
-"QSlider::add-page:vertical {\n"
-"    background: #52595d;\n"
-"}\n"
-"QSlider::sub-page:horizontal {\n"
-"    background-color: #15433a;\n"
-"}\n"
-"QSlider::sub-page:vertical {\n"
-"    background-color: #15433a;\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    max-height: 10px;\n"
-"    border: 1px transparent grey;\n"
-"    margin: 0px 20px 0px 20px;\n"
-"    background: transparent;\n"
-"}\n"
-"QScrollBar:vertical {\n"
-"    max-width: 10px;\n"
-"    border: 1px transparent grey;\n"
-"    margin: 20px 0px 20px 0px;\n"
-"    background: transparent;\n"
-"}\n"
-"QScrollBar::handle:horizontal {\n"
-"    background: #52595d;\n"
-"    border-style: transparent;\n"
-"    border-radius: 4px;\n"
-"    min-width: 25px;\n"
-"}\n"
-"QScrollBar::handle:horizontal:hover {\n"
-"    background: #58a492;\n"
-"    border-style: transparent;\n"
-"    border-radius: 4px;\n"
-"    min-width: 25px;\n"
-"}\n"
-"QScrollBar::handle:vertical {\n"
-"    background: #52595d;\n"
-"    border-style: transparent;\n"
-"    border-radius: 4px;\n"
-"    min-height: 25px;\n"
-"}\n"
-"QScrollBar::handle:vertical:hover {\n"
-"    background: #58a492;\n"
-"    border-style: transparent;\n"
-"    border-radius: 4px;\n"
-"    min-height: 25px;\n"
-"}\n"
-"QScrollBar::add-line:horizontal {\n"
-"   border: 2px transparent grey;\n"
-"   border-top-right-radius: 4px;\n"
-"   border-bottom-right-radius: 4px;\n"
-"   background: #15433a;\n"
-"   width: 20px;\n"
-"   subcontrol-position: right;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::add-line:horizontal:pressed {\n"
-"   border: 2px transparent grey;\n"
-"   border-top-right-radius: 4px;\n"
-"   border-bottom-right-radius: 4px;\n"
-"   background: rgb(181,181,181);\n"
-"   width: 20px;\n"
-"   subcontrol-position: right;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::add-line:vertical {\n"
-"   border: 2px transparent grey;\n"
-"   border-bottom-left-radius: 4px;\n"
-"   border-bottom-right-radius: 4px;\n"
-"   background: #15433a;\n"
-"   height: 20px;\n"
-"   subcontrol-position: bottom;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::add-line:vertical:pressed {\n"
-"   border: 2px transparent grey;\n"
-"   border-bottom-left-radius: 4px;\n"
-"   border-bottom-right-radius: 4px;\n"
-"   background: rgb(181,181,181);\n"
-"   height: 20px;\n"
-"   subcontrol-position: bottom;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::sub-line:horizontal {\n"
-"   border: 2px transparent grey;\n"
-"   border-top-left-radius: 4px;\n"
-"   border-bottom-left-radius: 4px;\n"
-"   background: #15433a;\n"
-"   width: 20px;\n"
-"   subcontrol-position: left;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::sub-line:horizontal:pressed {\n"
-"   border: 2px transparent grey;\n"
-"   border-top-left-radius: 4px;\n"
-"   border-bottom-left-radius: 4px;\n"
-"   background: rgb(181,181,181);\n"
-"   width: 20px;\n"
-"   subcontrol-position: left;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::sub-line:vertical {\n"
-"   border: 2px transparent grey;\n"
-"   border-top-left-radius: 4px;\n"
-"   border-top-right-radius: 4px;\n"
-"   background: #15433a;\n"
-"   height: 20px;\n"
-"   subcontrol-position: top;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::sub-line:vertical:pressed {\n"
-"   border: 2px transparent grey;\n"
-"   border-top-left-radius: 4px;\n"
-"   border-top-right-radius: 4px;\n"
-"   background: rgb(181,181,181);\n"
-"   height: 20px;\n"
-"   subcontrol-position: top;\n"
-"   subcontrol-origin: margin;\n"
-"}\n"
-"\n"
-"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
-"   background: none;\n"
-"}\n"
-"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"   background: none;\n"
-"}")
+        self.centralwidget.setStyleSheet("QWidget {\n"
+                                         "background-color: rgb(41, 46, 50);\n"
+                                         "}\n"
+                                         "\n"
+                                         "QCalendar {\n"
+                                         "    background-color: white;\n"
+                                         "}\n"
+                                         "QTextEdit {\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-style: solid;\n"
+                                         "    border-color: #4fa08b;\n"
+                                         "    background-color: #222b2e;\n"
+                                         "    color: #d3dae3;\n"
+                                         "}\n"
+                                         "QPlainTextEdit {\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-style: solid;\n"
+                                         "    border-color: #4fa08b;\n"
+                                         "    background-color: #222b2e;\n"
+                                         "    color: #d3dae3;\n"
+                                         "}\n"
+                                         "QToolButton {\n"
+                                         "    border-style: solid;\n"
+                                         "    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
+                                         "    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));\n"
+                                         "    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));\n"
+                                         "    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-radius: 5px;\n"
+                                         "    color: #d3dae3;\n"
+                                         "    padding: 2px;\n"
+                                         "    background-color: rgb(255,255,255);\n"
+                                         "}\n"
+                                         "QToolButton:hover{\n"
+                                         "    border-style: solid;\n"
+                                         "    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(195, 195, 195), stop:1 rgb(222, 222, 222));\n"
+                                         "    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(197, 197, 197), stop:1 rgb(227, 227, 227));\n"
+                                         "    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(197, 197, 197));\n"
+                                         "    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(195, 195, 195), stop:1 rgb(222, 222, 222));\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-radius: 5px;\n"
+                                         "    color: rgb(0,0,0);\n"
+                                         "    padding: 2px;\n"
+                                         "    background-color: rgb(255,255,255);\n"
+                                         "}\n"
+                                         "QToolButton:pressed{\n"
+                                         "    border-style: solid;\n"
+                                         "    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
+                                         "    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));\n"
+                                         "    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));\n"
+                                         "    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-radius: 5px;\n"
+                                         "    color: rgb(0,0,0);\n"
+                                         "    padding: 2px;\n"
+                                         "    background-color: rgb(142,142,142);\n"
+                                         "}\n"
+                                         "QPushButton{\n"
+                                         "    border-style: solid;\n"
+                                         "    border-color: #050a0e;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-radius: 5px;\n"
+                                         "    color: #d3dae3;\n"
+                                         "    padding: 2px;\n"
+                                         "    background-color: #151a1e;\n"
+                                         "}\n"
+                                         "QPushButton::default{\n"
+                                         "    border-style: solid;\n"
+                                         "    border-color: #050a0e;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-radius: 5px;\n"
+                                         "    color: #FFFFFF;\n"
+                                         "    padding: 2px;\n"
+                                         "    background-color: #151a1e;;\n"
+                                         "}\n"
+                                         "QPushButton:hover{\n"
+                                         "    border-style: solid;\n"
+                                         "    border-color: #050a0e;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-radius: 5px;\n"
+                                         "    color: #d3dae3;\n"
+                                         "    padding: 2px;\n"
+                                         "    background-color: #1c1f1f;\n"
+                                         "}\n"
+                                         "QPushButton:pressed{\n"
+                                         "    border-style: solid;\n"
+                                         "    border-color: #050a0e;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-radius: 5px;\n"
+                                         "    color: #d3dae3;\n"
+                                         "    padding: 2px;\n"
+                                         "    background-color: #2c2f2f;\n"
+                                         "}\n"
+                                         "QPushButton:disabled{\n"
+                                         "    border-style: solid;\n"
+                                         "    border-top-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
+                                         "    border-right-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(217, 217, 217), stop:1 rgb(227, 227, 227));\n"
+                                         "    border-left-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgb(227, 227, 227), stop:1 rgb(217, 217, 217));\n"
+                                         "    border-bottom-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(215, 215, 215), stop:1 rgb(222, 222, 222));\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-radius: 5px;\n"
+                                         "    color: #808086;\n"
+                                         "    padding: 2px;\n"
+                                         "    background-color: rgb(142,142,142);\n"
+                                         "}\n"
+                                         "QComboBox QAbstractItemView {\n"
+                                         "    background-color: white;\n"
+                                         "    selection-background-color: rgb(120, 190, 72);\n"
+                                         "    border-width: 2px solid;\n"
+                                         "    border-color: rgb(120, 190, 72);\n"
+                                         "    color: white;\n"
+                                         "}\n"
+                                         "\n"
+                                         "\n"
+                                         "QLineEdit QMenu {\n"
+                                         "background-color: white;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QLineEdit QMenu::item {\n"
+                                         "color: black;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QLineEdit QMenu::item::selected { \n"
+                                         "background-color: #78BE48;\n"
+                                         "}\n"
+                                         "QLabel {\n"
+                                         "    color: #d3dae3;\n"
+                                         "}\n"
+                                         "QLCDNumber {\n"
+                                         "    color: #4d9b87;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QProgressBar {\n"
+                                         "    text-align: center;\n"
+                                         "    color: #d3dae3;\n"
+                                         "    border-radius: 10px;\n"
+                                         "    border-color: transparent;\n"
+                                         "    border-style: solid;\n"
+                                         "    background-color: #52595d;\n"
+                                         "}\n"
+                                         "QProgressBar::chunk {\n"
+                                         "    background-color: #214037    ;\n"
+                                         "    border-radius: 10px;\n"
+                                         "}\n"
+                                         "QMenuBar {\n"
+                                         "    background-color: white;\n"
+                                         "}\n"
+                                         "QMenuBar::item {\n"
+                                         "    color: #d3dae3;\n"
+                                         "      spacing: 3px;\n"
+                                         "      padding: 1px 4px;\n"
+                                         "    background-color: white;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QMenuBar::item:selected {\n"
+                                         "      background-color: #78BE48;\n"
+                                         "    color: black;\n"
+                                         "}\n"
+                                         "QMenu {\n"
+                                         "    background-color: white;\n"
+                                         "}\n"
+                                         "QMenu::item:selected {\n"
+                                         "    background-color: #78BE48;\n"
+                                         "    color: black;\n"
+                                         "}\n"
+                                         "QMenu::item {\n"
+                                         "    color: #d3dae3;\n"
+                                         "    background-color: white;\n"
+                                         "}\n"
+                                         "QTabWidget {\n"
+                                         "    color:rgb(0,0,0);\n"
+                                         "    background-color:#000000;\n"
+                                         "}\n"
+                                         "QTabWidget::pane {\n"
+                                         "        border-color: rgb(120, 190, 72);\n"
+                                         "        background-color: #1e282c;\n"
+                                         "        border-style: solid;\n"
+                                         "        border-width: 2px;\n"
+                                         "        border-bottom-left-radius: 4px;\n"
+                                         "        border-bottom-right-radius: 4px;\n"
+                                         "}\n"
+                                         "QTabBar::tab:first {\n"
+                                         "    border-style: solid;\n"
+                                         "    border-left-width:1px;\n"
+                                         "    border-right-width:0px;\n"
+                                         "    border-top-width:1px;\n"
+                                         "    border-bottom-width:0px;\n"
+                                         "    border-color:  rgb(120, 190, 72);\n"
+                                         "    border-top-left-radius: 4px;\n"
+                                         "    color: #d3dae3;\n"
+                                         "    padding: 5px;\n"
+                                         "    padding-left: 10px;\n"
+                                         "    padding-right: 10px;\n"
+                                         "    margin-left:0px;\n"
+                                         "    background-color: #151a1e;\n"
+                                         "}\n"
+                                         "QTabBar::tab:last {\n"
+                                         "    border-style: solid;\n"
+                                         "    border-top-width:1px;\n"
+                                         "    border-left-width:1px;\n"
+                                         "    border-right-width:1px;\n"
+                                         "    border-bottom-width:0px;\n"
+                                         "    border-color:  rgb(120, 190, 72);\n"
+                                         "    border-top-right-radius: 4px;\n"
+                                         "    color: #d3dae3;\n"
+                                         "    padding: 5px;\n"
+                                         "    padding-left: 10px;\n"
+                                         "    padding-right: 10px;\n"
+                                         "    margin-left: 0px;\n"
+                                         "    background-color: #151a1e;\n"
+                                         "}\n"
+                                         "QTabBar::tab {\n"
+                                         "    border-style: solid;\n"
+                                         "    border-top-width:1px;\n"
+                                         "    border-bottom-width:0px;\n"
+                                         "    border-left-width:1px;\n"
+                                         "    border-color:  rgb(120, 190, 72);\n"
+                                         "    color: #d3dae3;\n"
+                                         "    padding: 3px;\n"
+                                         "    margin-left:0px;\n"
+                                         "    background-color: #151a1e;\n"
+                                         "}\n"
+                                         "QTabBar::tab:selected, QTabBar::tab:last:selected, QTabBar::tab:hover {\n"
+                                         "      border-style: solid;\n"
+                                         "      border-right-width: 2px;\n"
+                                         "    border-top-width: 2px;\n"
+                                         "    border-left-width: 2px;\n"
+                                         "    border-color: rgb(120, 190, 72);\n"
+                                         "    color: black;\n"
+                                         "    padding: 5px;\n"
+                                         "    padding-left: 10px;\n"
+                                         "    padding-right: 10px;\n"
+                                         "    margin-left:0px;\n"
+                                         "    background-color: white;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QTabBar::tab:selected, QTabBar::tab:first:selected, QTabBar::tab:hover {\n"
+                                         "      border-style: solid;\n"
+                                         "      border-right-width: 2px;\n"
+                                         "    border-top-width: 2px;\n"
+                                         "    border-left-width: 2px;\n"
+                                         "    border-color: rgb(120, 190, 72);\n"
+                                         "    color: black;\n"
+                                         "    padding: 5px;\n"
+                                         "    padding-left: 10px;\n"
+                                         "    padding-right: 10px;\n"
+                                         "    margin-left:0px;\n"
+                                         "    background-color: white;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QCheckBox {\n"
+                                         "    color: #d3dae3;\n"
+                                         "    padding: 2px;\n"
+                                         "}\n"
+                                         "QCheckBox:disabled {\n"
+                                         "    color: #808086;\n"
+                                         "    padding: 2px;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QCheckBox:hover {\n"
+                                         "    border-radius:4px;\n"
+                                         "    border-style:solid;\n"
+                                         "    padding-left: 1px;\n"
+                                         "    padding-right: 1px;\n"
+                                         "    padding-bottom: 1px;\n"
+                                         "    padding-top: 1px;\n"
+                                         "    border-width:1px;\n"
+                                         "    border-color: transparent;\n"
+                                         "}\n"
+                                         "QCheckBox::indicator:checked {\n"
+                                         "\n"
+                                         "    height: 10px;\n"
+                                         "    width: 10px;\n"
+                                         "    border-style:solid;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-color: rgb(120, 190, 72);;\n"
+                                         "    color: #000000;\n"
+                                         "    background-color: rgb(120, 190, 72);\n"
+                                         "    padding: 0.2;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QCheckBox::indicator:unchecked {\n"
+                                         "\n"
+                                         "    height: 10px;\n"
+                                         "    width: 10px;\n"
+                                         "    border-style:solid;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-color: rgb(120, 190, 72);;\n"
+                                         "    color: #000000;\n"
+                                         "}\n"
+                                         "QRadioButton {\n"
+                                         "    color: #d3dae3;\n"
+                                         "    padding: 1px;\n"
+                                         "}\n"
+                                         "QRadioButton::indicator:checked {\n"
+                                         "    height: 10px;\n"
+                                         "    width: 10px;\n"
+                                         "    border-style:solid;\n"
+                                         "    border-radius:5px;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-color: rgb(120, 190, 72);\n"
+                                         "    color: #a9b7c6;\n"
+                                         "    background-color: qradialgradient(cx:0.5, cy:0.5, radius:0.4,fx:0.5, fy:0.5, stop:0 #4fa08b, stop:1 rgb(120, 190, 72));\n"
+                                         "}\n"
+                                         "QRadioButton::indicator:!checked {\n"
+                                         "    height: 10px;\n"
+                                         "    width: 10px;\n"
+                                         "    border-style:solid;\n"
+                                         "    border-radius:5px;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-color: rgb(120, 190, 72);\n"
+                                         "    color: #a9b7c6;\n"
+                                         "    background-color: transparent;\n"
+                                         "}\n"
+                                         "QStatusBar {\n"
+                                         "    color:#027f7f;\n"
+                                         "}\n"
+                                         "QSpinBox {\n"
+                                         "    color: #d3dae3;\n"
+                                         "    background-color: #222b2e;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-style: solid;\n"
+                                         "    border-color: #4fa08b;\n"
+                                         "}\n"
+                                         "QDoubleSpinBox {\n"
+                                         "    color: #d3dae3;\n"
+                                         "    background-color: #222b2e;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-style: solid;\n"
+                                         "    border-color: #4fa08b;\n"
+                                         "}\n"
+                                         "QTimeEdit {\n"
+                                         "    color: #d3dae3;\n"
+                                         "    background-color: #222b2e;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-style: solid;\n"
+                                         "    border-color: #4fa08b;\n"
+                                         "}\n"
+                                         "QDateTimeEdit {\n"
+                                         "    color: #d3dae3;\n"
+                                         "    background-color: #222b2e;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-style: solid;\n"
+                                         "    border-color: #4fa08b;\n"
+                                         "}\n"
+                                         "QDateEdit {\n"
+                                         "    color: #d3dae3;\n"
+                                         "    background-color: #222b2e;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-style: solid;\n"
+                                         "    border-color: #4fa08b;\n"
+                                         "}\n"
+                                         "QFontComboBox {\n"
+                                         "    color: #d3dae3;\n"
+                                         "    background-color: #222b2e;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-style: solid;\n"
+                                         "    border-color: #4fa08b;\n"
+                                         "}\n"
+                                         "QComboBox {\n"
+                                         "    color: #d3dae3;\n"
+                                         "    background-color: #222b2e;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-style: solid;\n"
+                                         "    border-color: rgb(120, 190, 72);\n"
+                                         "}\n"
+                                         "\n"
+                                         "QDial {\n"
+                                         "    background: #16a085;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QToolBox {\n"
+                                         "    color: #a9b7c6;\n"
+                                         "    background-color: #222b2e;\n"
+                                         "}\n"
+                                         "QToolBox::tab {\n"
+                                         "    color: #a9b7c6;\n"
+                                         "    background-color:#222b2e;\n"
+                                         "}\n"
+                                         "QToolBox::tab:selected {\n"
+                                         "    color: #FFFFFF;\n"
+                                         "    background-color:#222b2e;\n"
+                                         "}\n"
+                                         "QScrollArea {\n"
+                                         "    color: #FFFFFF;\n"
+                                         "    background-color:#222b2e;\n"
+                                         "}\n"
+                                         "QSlider::groove:horizontal {\n"
+                                         "    height: 5px;\n"
+                                         "    background-color: #52595d;\n"
+                                         "}\n"
+                                         "QSlider::groove:vertical {\n"
+                                         "    width: 5px;\n"
+                                         "    background-color: #52595d;\n"
+                                         "}\n"
+                                         "QSlider::handle:horizontal {\n"
+                                         "    background: #1a2224;\n"
+                                         "    border-style: solid;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-color: rgb(207,207,207);\n"
+                                         "    width: 12px;\n"
+                                         "    margin: -5px 0;\n"
+                                         "    border-radius: 7px;\n"
+                                         "}\n"
+                                         "QSlider::handle:vertical {\n"
+                                         "    background: #1a2224;\n"
+                                         "    border-style: solid;\n"
+                                         "    border-width: 1px;\n"
+                                         "    border-color: rgb(207,207,207);\n"
+                                         "    height: 12px;\n"
+                                         "    margin: 0 -5px;\n"
+                                         "    border-radius: 7px;\n"
+                                         "}\n"
+                                         "QSlider::add-page:horizontal {\n"
+                                         "    background: #52595d;\n"
+                                         "}\n"
+                                         "QSlider::add-page:vertical {\n"
+                                         "    background: #52595d;\n"
+                                         "}\n"
+                                         "QSlider::sub-page:horizontal {\n"
+                                         "    background-color: #15433a;\n"
+                                         "}\n"
+                                         "QSlider::sub-page:vertical {\n"
+                                         "    background-color: #15433a;\n"
+                                         "}\n"
+                                         "QScrollBar:horizontal {\n"
+                                         "    max-height: 10px;\n"
+                                         "    border: 1px transparent grey;\n"
+                                         "    margin: 0px 20px 0px 20px;\n"
+                                         "    background: transparent;\n"
+                                         "}\n"
+                                         "QScrollBar:vertical {\n"
+                                         "    max-width: 10px;\n"
+                                         "    border: 1px transparent grey;\n"
+                                         "    margin: 20px 0px 20px 0px;\n"
+                                         "    background: transparent;\n"
+                                         "}\n"
+                                         "QScrollBar::handle:horizontal {\n"
+                                         "    background: #52595d;\n"
+                                         "    border-style: transparent;\n"
+                                         "    border-radius: 4px;\n"
+                                         "    min-width: 25px;\n"
+                                         "}\n"
+                                         "QScrollBar::handle:horizontal:hover {\n"
+                                         "    background: #58a492;\n"
+                                         "    border-style: transparent;\n"
+                                         "    border-radius: 4px;\n"
+                                         "    min-width: 25px;\n"
+                                         "}\n"
+                                         "QScrollBar::handle:vertical {\n"
+                                         "    background: #52595d;\n"
+                                         "    border-style: transparent;\n"
+                                         "    border-radius: 4px;\n"
+                                         "    min-height: 25px;\n"
+                                         "}\n"
+                                         "QScrollBar::handle:vertical:hover {\n"
+                                         "    background: #58a492;\n"
+                                         "    border-style: transparent;\n"
+                                         "    border-radius: 4px;\n"
+                                         "    min-height: 25px;\n"
+                                         "}\n"
+                                         "QScrollBar::add-line:horizontal {\n"
+                                         "   border: 2px transparent grey;\n"
+                                         "   border-top-right-radius: 4px;\n"
+                                         "   border-bottom-right-radius: 4px;\n"
+                                         "   background: #15433a;\n"
+                                         "   width: 20px;\n"
+                                         "   subcontrol-position: right;\n"
+                                         "   subcontrol-origin: margin;\n"
+                                         "}\n"
+                                         "QScrollBar::add-line:horizontal:pressed {\n"
+                                         "   border: 2px transparent grey;\n"
+                                         "   border-top-right-radius: 4px;\n"
+                                         "   border-bottom-right-radius: 4px;\n"
+                                         "   background: rgb(181,181,181);\n"
+                                         "   width: 20px;\n"
+                                         "   subcontrol-position: right;\n"
+                                         "   subcontrol-origin: margin;\n"
+                                         "}\n"
+                                         "QScrollBar::add-line:vertical {\n"
+                                         "   border: 2px transparent grey;\n"
+                                         "   border-bottom-left-radius: 4px;\n"
+                                         "   border-bottom-right-radius: 4px;\n"
+                                         "   background: #15433a;\n"
+                                         "   height: 20px;\n"
+                                         "   subcontrol-position: bottom;\n"
+                                         "   subcontrol-origin: margin;\n"
+                                         "}\n"
+                                         "QScrollBar::add-line:vertical:pressed {\n"
+                                         "   border: 2px transparent grey;\n"
+                                         "   border-bottom-left-radius: 4px;\n"
+                                         "   border-bottom-right-radius: 4px;\n"
+                                         "   background: rgb(181,181,181);\n"
+                                         "   height: 20px;\n"
+                                         "   subcontrol-position: bottom;\n"
+                                         "   subcontrol-origin: margin;\n"
+                                         "}\n"
+                                         "QScrollBar::sub-line:horizontal {\n"
+                                         "   border: 2px transparent grey;\n"
+                                         "   border-top-left-radius: 4px;\n"
+                                         "   border-bottom-left-radius: 4px;\n"
+                                         "   background: #15433a;\n"
+                                         "   width: 20px;\n"
+                                         "   subcontrol-position: left;\n"
+                                         "   subcontrol-origin: margin;\n"
+                                         "}\n"
+                                         "QScrollBar::sub-line:horizontal:pressed {\n"
+                                         "   border: 2px transparent grey;\n"
+                                         "   border-top-left-radius: 4px;\n"
+                                         "   border-bottom-left-radius: 4px;\n"
+                                         "   background: rgb(181,181,181);\n"
+                                         "   width: 20px;\n"
+                                         "   subcontrol-position: left;\n"
+                                         "   subcontrol-origin: margin;\n"
+                                         "}\n"
+                                         "QScrollBar::sub-line:vertical {\n"
+                                         "   border: 2px transparent grey;\n"
+                                         "   border-top-left-radius: 4px;\n"
+                                         "   border-top-right-radius: 4px;\n"
+                                         "   background: #15433a;\n"
+                                         "   height: 20px;\n"
+                                         "   subcontrol-position: top;\n"
+                                         "   subcontrol-origin: margin;\n"
+                                         "}\n"
+                                         "QScrollBar::sub-line:vertical:pressed {\n"
+                                         "   border: 2px transparent grey;\n"
+                                         "   border-top-left-radius: 4px;\n"
+                                         "   border-top-right-radius: 4px;\n"
+                                         "   background: rgb(181,181,181);\n"
+                                         "   height: 20px;\n"
+                                         "   subcontrol-position: top;\n"
+                                         "   subcontrol-origin: margin;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
+                                         "   background: none;\n"
+                                         "}\n"
+                                         "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+                                         "   background: none;\n"
+                                         "}")
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.centralwidget)
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -1135,21 +1111,29 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.sideBar_frame.sizePolicy().hasHeightForWidth())
         self.sideBar_frame.setSizePolicy(sizePolicy)
         self.sideBar_frame.setMinimumSize(QtCore.QSize(350, 0))
-        self.sideBar_frame.setStyleSheet("background-color: rgb(22, 24, 25);\n"
-"\n"
-"QLineEdit QMenu {\n"
-"background-color: white;\n"
-"}\n"
-"\n"
-"QLineEdit QMenu::item {\n"
-"color: black;\n"
-"}\n"
-"\n"
-"QLineEdit QMenu::item::selected { \n"
-"color: rgb(255, 0, 0)\n"
-"}\n"
-"\n"
-"")
+        self.sideBar_frame.setStyleSheet("QFrame {\n"
+                                         "background-color: rgb(22, 24, 25);\n"
+                                         "}\n"
+                                         "\n"
+                                         "QLineEdit QMenu {\n"
+                                         "background-color: white;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QLineEdit QMenu::item {\n"
+                                         "color: black;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QLineEdit QMenu::item::selected { \n"
+                                         "color: rgb(255, 0, 0)\n"
+                                         "}\n"
+                                         "\n"
+                                         "QToolTip { \n"
+                                         "    background-color: white; \n"
+                                         "    color: black; \n"
+                                         "    border: black solid 1px;\n"
+                                         "}\n"
+                                         "\n"
+                                         "")
         self.sideBar_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sideBar_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sideBar_frame.setObjectName("sideBar_frame")
@@ -1164,24 +1148,26 @@ class Ui_MainWindow(object):
         self.closeSideBar_toolButton = QtWidgets.QToolButton(self.sideBar_frame)
         self.closeSideBar_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.closeSideBar_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: solid;\n"
-"border-width: 0px;\n"
-"border-color: transparent;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"border-width: 2px;\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"border-width: 4px;\n"
-"}")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icons/assets/png/icons8-macos-close-96.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.closeSideBar_toolButton.setIcon(icon)
+                                                   "background:transparent;\n"
+                                                   "border-style: solid;\n"
+                                                   "border-width: 0px;\n"
+                                                   "border-color: transparent;\n"
+                                                   "padding: 4px;\n"
+                                                   "padding-left: 10px;\n"
+                                                   "padding-right: 10px;\n"
+                                                   "}\n"
+                                                   "\n"
+                                                   "QToolButton:hover {\n"
+                                                   "border-width: 2px;\n"
+                                                   "}\n"
+                                                   "\n"
+                                                   "QToolButton:pressed {\n"
+                                                   "border-width: 4px;\n"
+                                                   "}")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/icons/assets/png/icons8-macos-close-96.png"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
+        self.closeSideBar_toolButton.setIcon(icon1)
         self.closeSideBar_toolButton.setIconSize(QtCore.QSize(25, 25))
         self.closeSideBar_toolButton.setObjectName("closeSideBar_toolButton")
         self.collapse_horizontalLayout.addWidget(self.closeSideBar_toolButton)
@@ -1190,31 +1176,35 @@ class Ui_MainWindow(object):
         self.collapse_toolButton = QtWidgets.QToolButton(self.sideBar_frame)
         self.collapse_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.collapse_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: solid;\n"
-"border-width: 0px;\n"
-"border-color: transparent;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"border-width: 2px;\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"border-width: 4px;\n"
-"}")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/icons/assets/png/arrow-left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.collapse_toolButton.setIcon(icon1)
+                                               "background:transparent;\n"
+                                               "border-style: solid;\n"
+                                               "border-width: 0px;\n"
+                                               "border-color: transparent;\n"
+                                               "padding: 4px;\n"
+                                               "padding-left: 10px;\n"
+                                               "padding-right: 10px;\n"
+                                               "}\n"
+                                               "\n"
+                                               "QToolButton:hover {\n"
+                                               "border-width: 2px;\n"
+                                               "}\n"
+                                               "\n"
+                                               "QToolButton:pressed {\n"
+                                               "border-width: 4px;\n"
+                                               "}")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/icons/assets/png/arrow-left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.collapse_toolButton.setIcon(icon2)
         self.collapse_toolButton.setIconSize(QtCore.QSize(25, 25))
         self.collapse_toolButton.setObjectName("collapse_toolButton")
         self.collapse_horizontalLayout.addWidget(self.collapse_toolButton)
         self.verticalLayout.addLayout(self.collapse_horizontalLayout)
         self.frame_13 = QtWidgets.QFrame(self.sideBar_frame)
-        self.frame_13.setMinimumSize(QtCore.QSize(0, 50))
+        self.frame_13.setMinimumSize(QtCore.QSize(0, 60))
         self.frame_13.setAutoFillBackground(False)
+        self.frame_13.setStyleSheet("QMenu {\n"
+                                    "background-color: white;\n"
+                                    "}")
         self.frame_13.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_13.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_13.setObjectName("frame_13")
@@ -1231,14 +1221,30 @@ class Ui_MainWindow(object):
         font.setFamily("Verdana")
         font.setPointSize(11)
         self.search_lineEdit.setFont(font)
-        self.search_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 2px;\n"
-"border-radius: 20px;\n"
-"border-color: white;\n"
-"color: white;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 5px;")
+        self.search_lineEdit.setToolTip("")
+        self.search_lineEdit.setStyleSheet("QLineEdit {\n"
+                                           "background:transparent;\n"
+                                           "border-style: outset;\n"
+                                           "border-width: 2px;\n"
+                                           "border-radius: 20px;\n"
+                                           "border-color: white;\n"
+                                           "color: white;\n"
+                                           "padding: 4px;\n"
+                                           "padding-left: 10px;\n"
+                                           "padding-right: 5px;\n"
+                                           "}\n"
+                                           "\n"
+                                           "QMenu {\n"
+                                           "background-color: white; \n"
+                                           "color: black; \n"
+                                           "}\n"
+                                           "\n"
+                                           "QMenu:selected {\n"
+                                           "background-color: white; \n"
+                                           "color: black;\n"
+                                           "}\n"
+                                           "\n"
+                                           "")
         self.search_lineEdit.setInputMask("")
         self.search_lineEdit.setObjectName("search_lineEdit")
         self.verticalLayout_7.addWidget(self.search_lineEdit)
@@ -1250,7 +1256,8 @@ class Ui_MainWindow(object):
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
         self.searchField_gridLayout.addItem(spacerItem1, 0, 2, 1, 1)
         self.searchField_comboBox = QtWidgets.QComboBox(self.sideBar_frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.MinimumExpanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding,
+                                           QtWidgets.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.searchField_comboBox.sizePolicy().hasHeightForWidth())
@@ -1263,34 +1270,35 @@ class Ui_MainWindow(object):
         self.searchField_comboBox.setFont(font)
         self.searchField_comboBox.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.searchField_comboBox.setStyleSheet("QComboBox {\n"
-"border-style: outset;\n"
-"border: 3px solid rgb(120, 190, 72);\n"
-"padding-left: 7px\n"
-"}\n"
-"\n"
-"QComboBox::drop-down {\n"
-"    image: url(:/icons/assets/png/icons8-sort-down-96.png);\n"
-"    width: 22px;\n"
-"    height: 35px;\n"
-"    padding-right: 6px;\n"
-"    padding-top: 2px;\n"
-"    subcontrol-position: right;\n"
-"    subcontrol-origin:margin;\n"
-"}\n"
-"\n"
-"QComboBox::drop-down:hover {\n"
-"     width: 25px;\n"
-"    height: 38px;\n"
-"}\n"
-"\n"
-"QComboBox::drop-down:pressed {\n"
-"   padding-top: 5px;\n"
-"     width: 22px;\n"
-"    height: 35px;\n"
-"}\n"
-"\n"
-"\n"
-"")
+                                                "background:transparent;\n"
+                                                "border-style: outset;\n"
+                                                "border: 3px solid rgb(120, 190, 72);\n"
+                                                "padding-left: 7px\n"
+                                                "}\n"
+                                                "\n"
+                                                "QComboBox::drop-down {\n"
+                                                "    image: url(:/icons/assets/png/icons8-sort-down-96.png);\n"
+                                                "    width: 22px;\n"
+                                                "    height: 35px;\n"
+                                                "    padding-right: 6px;\n"
+                                                "    padding-top: 2px;\n"
+                                                "    subcontrol-position: right;\n"
+                                                "    subcontrol-origin:margin;\n"
+                                                "}\n"
+                                                "\n"
+                                                "QComboBox::drop-down:hover {\n"
+                                                "     width: 25px;\n"
+                                                "    height: 38px;\n"
+                                                "}\n"
+                                                "\n"
+                                                "QComboBox::drop-down:pressed {\n"
+                                                "   padding-top: 5px;\n"
+                                                "     width: 22px;\n"
+                                                "    height: 35px;\n"
+                                                "}\n"
+                                                "\n"
+                                                "\n"
+                                                "")
         self.searchField_comboBox.setEditable(False)
         self.searchField_comboBox.setObjectName("searchField_comboBox")
         self.searchField_comboBox.addItem("")
@@ -1301,7 +1309,8 @@ class Ui_MainWindow(object):
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.searchField_gridLayout.addItem(spacerItem2, 0, 0, 1, 1)
         self.search_toolButton = QtWidgets.QToolButton(self.sideBar_frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.MinimumExpanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding,
+                                           QtWidgets.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.search_toolButton.sizePolicy().hasHeightForWidth())
@@ -1314,26 +1323,27 @@ class Ui_MainWindow(object):
         self.search_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.search_toolButton.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.search_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-radius: 25px;\n"
-"border-color: rgb(120, 190, 72);\n"
-"padding: 2px;\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"background-color: rgb(120, 190, 72)\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"border-width: 4px;\n"
-"background-color: rgb(120, 190, 72);\n"
-"border-color: white;\n"
-"}")
+                                             "background:transparent;\n"
+                                             "border-style: solid;\n"
+                                             "border-width: 2px;\n"
+                                             "border-radius: 25px;\n"
+                                             "border-color: rgb(120, 190, 72);\n"
+                                             "padding: 2px;\n"
+                                             "}\n"
+                                             "\n"
+                                             "QToolButton:hover {\n"
+                                             "background-color: rgb(120, 190, 72)\n"
+                                             "}\n"
+                                             "\n"
+                                             "QToolButton:pressed {\n"
+                                             "border-width: 4px;\n"
+                                             "background-color: rgb(120, 190, 72);\n"
+                                             "border-color: white;\n"
+                                             "}")
         self.search_toolButton.setText("")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/icons/assets/png/magnify.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.search_toolButton.setIcon(icon2)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/icons/assets/png/magnify.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.search_toolButton.setIcon(icon3)
         self.search_toolButton.setIconSize(QtCore.QSize(25, 25))
         self.search_toolButton.setToolButtonStyle(QtCore.Qt.ToolButtonIconOnly)
         self.search_toolButton.setObjectName("search_toolButton")
@@ -1341,10 +1351,19 @@ class Ui_MainWindow(object):
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.searchField_gridLayout.addItem(spacerItem3, 0, 4, 1, 1)
         self.verticalLayout.addLayout(self.searchField_gridLayout)
-        spacerItem4 = QtWidgets.QSpacerItem(20, 50, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
+        spacerItem4 = QtWidgets.QSpacerItem(20, 50, QtWidgets.QSizePolicy.Minimum,
+                                            QtWidgets.QSizePolicy.MinimumExpanding)
         self.verticalLayout.addItem(spacerItem4)
         spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem5)
+        self.toolTipToggle_frame = QtWidgets.QFrame(self.sideBar_frame)
+        self.toolTipToggle_frame.setMinimumSize(QtCore.QSize(0, 20))
+        self.toolTipToggle_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.toolTipToggle_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.toolTipToggle_frame.setObjectName("toolTipToggle_frame")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.toolTipToggle_frame)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.verticalLayout.addWidget(self.toolTipToggle_frame)
         self.newEmp_toolButton = QtWidgets.QToolButton(self.sideBar_frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1360,33 +1379,34 @@ class Ui_MainWindow(object):
         self.newEmp_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.newEmp_toolButton.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.newEmp_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: none;\n"
-"color: white;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"border-width: 2px;\n"
-"border-radius: 20px;\n"
-"border-color: white;\n"
-"background-color: rgb(120, 190, 72);\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"border-style: outset;\n"
-"border-width: 3px;\n"
-"border-color: white;\n"
-"background-color: rgb(120, 190, 72);\n"
-"}")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/icons/assets/png/plus.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.newEmp_toolButton.setIcon(icon3)
+                                             "background:transparent;\n"
+                                             "border-style: none;\n"
+                                             "color: white;\n"
+                                             "padding: 4px;\n"
+                                             "padding-left: 10px;\n"
+                                             "padding-right: 10px;\n"
+                                             "}\n"
+                                             "\n"
+                                             "QToolButton:hover {\n"
+                                             "border-width: 2px;\n"
+                                             "border-radius: 20px;\n"
+                                             "border-color: white;\n"
+                                             "background-color: rgb(120, 190, 72);\n"
+                                             "}\n"
+                                             "\n"
+                                             "QToolButton:pressed {\n"
+                                             "border-style: outset;\n"
+                                             "border-width: 3px;\n"
+                                             "border-color: white;\n"
+                                             "background-color: rgb(120, 190, 72);\n"
+                                             "}")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/icons/assets/png/plus.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.newEmp_toolButton.setIcon(icon4)
         self.newEmp_toolButton.setIconSize(QtCore.QSize(25, 25))
         self.newEmp_toolButton.setToolButtonStyle(QtCore.Qt.ToolButtonTextBesideIcon)
         self.newEmp_toolButton.setObjectName("newEmp_toolButton")
-        self.verticalLayout.addWidget(self.newEmp_toolButton, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.verticalLayout.addWidget(self.newEmp_toolButton, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
         self.report_toolButton = QtWidgets.QToolButton(self.sideBar_frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1402,33 +1422,34 @@ class Ui_MainWindow(object):
         self.report_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.report_toolButton.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.report_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: none;\n"
-"color: white;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"border-width: 2px;\n"
-"border-radius: 20px;\n"
-"border-color: white;\n"
-"background-color: rgb(120, 190, 72);\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"border-style: outset;\n"
-"border-width: 3px;\n"
-"border-color: white;\n"
-"background-color: rgb(120, 190, 72);\n"
-"}")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/icons/assets/png/report.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.report_toolButton.setIcon(icon4)
+                                             "background:transparent;\n"
+                                             "border-style: none;\n"
+                                             "color: white;\n"
+                                             "padding: 4px;\n"
+                                             "padding-left: 10px;\n"
+                                             "padding-right: 10px;\n"
+                                             "}\n"
+                                             "\n"
+                                             "QToolButton:hover {\n"
+                                             "border-width: 2px;\n"
+                                             "border-radius: 20px;\n"
+                                             "border-color: white;\n"
+                                             "background-color: rgb(120, 190, 72);\n"
+                                             "}\n"
+                                             "\n"
+                                             "QToolButton:pressed {\n"
+                                             "border-style: outset;\n"
+                                             "border-width: 3px;\n"
+                                             "border-color: white;\n"
+                                             "background-color: rgb(120, 190, 72);\n"
+                                             "}")
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/icons/assets/png/report.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.report_toolButton.setIcon(icon5)
         self.report_toolButton.setIconSize(QtCore.QSize(25, 25))
         self.report_toolButton.setToolButtonStyle(QtCore.Qt.ToolButtonTextBesideIcon)
         self.report_toolButton.setObjectName("report_toolButton")
-        self.verticalLayout.addWidget(self.report_toolButton, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.verticalLayout.addWidget(self.report_toolButton, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
         self.info_toolButton = QtWidgets.QToolButton(self.sideBar_frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1444,33 +1465,34 @@ class Ui_MainWindow(object):
         self.info_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.info_toolButton.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.info_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: none;\n"
-"color: white;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"border-width: 2px;\n"
-"border-radius: 20px;\n"
-"border-color: white;\n"
-"background-color: rgb(120, 190, 72);\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"border-style: outset;\n"
-"border-width: 3px;\n"
-"border-color: white;\n"
-"background-color: rgb(120, 190, 72);\n"
-"}")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/icons/assets/png/user-info.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.info_toolButton.setIcon(icon5)
+                                           "background:transparent;\n"
+                                           "border-style: none;\n"
+                                           "color: white;\n"
+                                           "padding: 4px;\n"
+                                           "padding-left: 10px;\n"
+                                           "padding-right: 10px;\n"
+                                           "}\n"
+                                           "\n"
+                                           "QToolButton:hover {\n"
+                                           "border-width: 2px;\n"
+                                           "border-radius: 20px;\n"
+                                           "border-color: white;\n"
+                                           "background-color: rgb(120, 190, 72);\n"
+                                           "}\n"
+                                           "\n"
+                                           "QToolButton:pressed {\n"
+                                           "border-style: outset;\n"
+                                           "border-width: 3px;\n"
+                                           "border-color: white;\n"
+                                           "background-color: rgb(120, 190, 72);\n"
+                                           "}")
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(":/icons/assets/png/user-info.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.info_toolButton.setIcon(icon6)
         self.info_toolButton.setIconSize(QtCore.QSize(25, 25))
         self.info_toolButton.setToolButtonStyle(QtCore.Qt.ToolButtonTextBesideIcon)
         self.info_toolButton.setObjectName("info_toolButton")
-        self.verticalLayout.addWidget(self.info_toolButton, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.verticalLayout.addWidget(self.info_toolButton, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
         self.userManual_toolButton = QtWidgets.QToolButton(self.sideBar_frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1486,36 +1508,38 @@ class Ui_MainWindow(object):
         self.userManual_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.userManual_toolButton.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.userManual_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: none;\n"
-"color: white;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"border-width: 2px;\n"
-"border-radius: 20px;\n"
-"border-color: white;\n"
-"background-color: rgb(120, 190, 72);\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"border-style: outset;\n"
-"border-width: 3px;\n"
-"border-color: white;\n"
-"background-color: rgb(120, 190, 72);\n"
-"}")
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(":/icons/assets/png/information.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.userManual_toolButton.setIcon(icon6)
+                                                 "background:transparent;\n"
+                                                 "border-style: none;\n"
+                                                 "color: white;\n"
+                                                 "padding: 4px;\n"
+                                                 "padding-left: 10px;\n"
+                                                 "padding-right: 10px;\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QToolButton:hover {\n"
+                                                 "border-width: 2px;\n"
+                                                 "border-radius: 20px;\n"
+                                                 "border-color: white;\n"
+                                                 "background-color: rgb(120, 190, 72);\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QToolButton:pressed {\n"
+                                                 "border-style: outset;\n"
+                                                 "border-width: 3px;\n"
+                                                 "border-color: white;\n"
+                                                 "background-color: rgb(120, 190, 72);\n"
+                                                 "}")
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap(":/icons/assets/png/information.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.userManual_toolButton.setIcon(icon7)
         self.userManual_toolButton.setIconSize(QtCore.QSize(25, 25))
         self.userManual_toolButton.setToolButtonStyle(QtCore.Qt.ToolButtonTextBesideIcon)
         self.userManual_toolButton.setObjectName("userManual_toolButton")
-        self.verticalLayout.addWidget(self.userManual_toolButton, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.verticalLayout.addWidget(self.userManual_toolButton, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
         spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem6)
-        spacerItem7 = QtWidgets.QSpacerItem(20, 60, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
+        spacerItem7 = QtWidgets.QSpacerItem(20, 60, QtWidgets.QSizePolicy.Minimum,
+                                            QtWidgets.QSizePolicy.MinimumExpanding)
         self.verticalLayout.addItem(spacerItem7)
         self.signOut_toolButton = QtWidgets.QToolButton(self.sideBar_frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
@@ -1532,30 +1556,30 @@ class Ui_MainWindow(object):
         self.signOut_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.signOut_toolButton.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.signOut_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: none;\n"
-"color: white;\n"
-"border-radius: 20px;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"    background-color: rgb(45, 96, 114);\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"border-width: 2px;\n"
-"border-color: purple;\n"
-"background-color: rgb(90, 160, 42)\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"border-style: outset;\n"
-"border-width: 3px;\n"
-"border-color: white;\n"
-"background-color: rgb(60, 130, 12)\n"
-"}")
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(":/icons/assets/png/logout.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.signOut_toolButton.setIcon(icon7)
+                                              "border-style: none;\n"
+                                              "color: white;\n"
+                                              "border-radius: 20px;\n"
+                                              "padding: 4px;\n"
+                                              "padding-left: 10px;\n"
+                                              "padding-right: 10px;\n"
+                                              "    background-color: rgb(45, 96, 114);\n"
+                                              "}\n"
+                                              "\n"
+                                              "QToolButton:hover {\n"
+                                              "border-width: 2px;\n"
+                                              "border-color: purple;\n"
+                                              "background-color: rgb(90, 160, 42)\n"
+                                              "}\n"
+                                              "\n"
+                                              "QToolButton:pressed {\n"
+                                              "border-style: outset;\n"
+                                              "border-width: 3px;\n"
+                                              "border-color: white;\n"
+                                              "background-color: rgb(60, 130, 12)\n"
+                                              "}")
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap(":/icons/assets/png/logout.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.signOut_toolButton.setIcon(icon8)
         self.signOut_toolButton.setIconSize(QtCore.QSize(25, 25))
         self.signOut_toolButton.setToolButtonStyle(QtCore.Qt.ToolButtonTextBesideIcon)
         self.signOut_toolButton.setObjectName("signOut_toolButton")
@@ -1564,12 +1588,12 @@ class Ui_MainWindow(object):
         self.verticalLayout.setStretch(2, 3)
         self.verticalLayout.setStretch(3, 1)
         self.verticalLayout.setStretch(4, 1)
-        self.verticalLayout.setStretch(5, 1)
         self.verticalLayout.setStretch(6, 1)
         self.verticalLayout.setStretch(7, 1)
         self.verticalLayout.setStretch(8, 1)
         self.verticalLayout.setStretch(9, 1)
         self.verticalLayout.setStretch(10, 1)
+        self.verticalLayout.setStretch(11, 1)
         self.horizontalLayout_3.addWidget(self.sideBar_frame)
         self.main_frame = QtWidgets.QFrame(self.centralwidget)
         self.main_frame.setMinimumSize(QtCore.QSize(1040, 0))
@@ -1594,24 +1618,24 @@ class Ui_MainWindow(object):
         self.hamburger_toolButton = QtWidgets.QToolButton(self.topBar_frame)
         self.hamburger_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.hamburger_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: solid;\n"
-"border-width: 0px;\n"
-"border-color: transparent;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"border-width: 2px;\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"border-width: 4px;\n"
-"}")
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(":/icons/assets/png/icons8-menu-96.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.hamburger_toolButton.setIcon(icon8)
+                                                "border-style: solid;\n"
+                                                "border-width: 0px;\n"
+                                                "border-color: transparent;\n"
+                                                "padding: 4px;\n"
+                                                "padding-left: 10px;\n"
+                                                "padding-right: 10px;\n"
+                                                "}\n"
+                                                "\n"
+                                                "QToolButton:hover {\n"
+                                                "border-width: 2px;\n"
+                                                "}\n"
+                                                "\n"
+                                                "QToolButton:pressed {\n"
+                                                "border-width: 4px;\n"
+                                                "}")
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap(":/icons/assets/png/icons8-menu-96.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.hamburger_toolButton.setIcon(icon9)
         self.hamburger_toolButton.setIconSize(QtCore.QSize(25, 25))
         self.hamburger_toolButton.setObjectName("hamburger_toolButton")
         self.horizontalLayout_2.addWidget(self.hamburger_toolButton)
@@ -1632,25 +1656,25 @@ class Ui_MainWindow(object):
         self.signOutTopBar_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.signOutTopBar_toolButton.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.signOutTopBar_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: none;\n"
-"color: white;\n"
-"border-radius: 20px;\n"
-"padding: 5px;\n"
-"background-color: rgb(45, 96, 114);\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"border-width: 2px;\n"
-"border-color: purple;\n"
-"background-color: rgb(90, 160, 42)\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"border-style: outset;\n"
-"border-width: 3px;\n"
-"border-color: white;\n"
-"background-color: rgb(60, 130, 12)\n"
-"}")
+                                                    "border-style: none;\n"
+                                                    "color: white;\n"
+                                                    "border-radius: 20px;\n"
+                                                    "padding: 5px;\n"
+                                                    "background-color: rgb(45, 96, 114);\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "QToolButton:hover {\n"
+                                                    "border-width: 2px;\n"
+                                                    "border-color: purple;\n"
+                                                    "background-color: rgb(90, 160, 42)\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "QToolButton:pressed {\n"
+                                                    "border-style: outset;\n"
+                                                    "border-width: 3px;\n"
+                                                    "border-color: white;\n"
+                                                    "background-color: rgb(60, 130, 12)\n"
+                                                    "}")
         self.signOutTopBar_toolButton.setIconSize(QtCore.QSize(25, 25))
         self.signOutTopBar_toolButton.setToolButtonStyle(QtCore.Qt.ToolButtonTextBesideIcon)
         self.signOutTopBar_toolButton.setObjectName("signOutTopBar_toolButton")
@@ -1658,23 +1682,23 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.topBar_frame)
         self.mainScreen_stackedWidget = QtWidgets.QStackedWidget(self.main_frame)
         self.mainScreen_stackedWidget.setStyleSheet("QComboBox QAbstractItemView {\n"
-"    background-color: white;\n"
-"    selection-background-color: rgb(36, 93, 56);\n"
-"    color: black;\n"
-"}\n"
-"\n"
-"\n"
-"QLineEdit QMenu {\n"
-"background-color: white;\n"
-"}\n"
-"\n"
-"QLineEdit QMenu::item {\n"
-"color: black;\n"
-"}\n"
-"\n"
-"QLineEdit QMenu::item::selected { \n"
-"background-color: rgb(36, 93, 56)\n"
-"}")
+                                                    "    background-color: white;\n"
+                                                    "    selection-background-color: rgb(36, 93, 56);\n"
+                                                    "    color: black;\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "\n"
+                                                    "QLineEdit QMenu {\n"
+                                                    "background-color: white;\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "QLineEdit QMenu::item {\n"
+                                                    "color: black;\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "QLineEdit QMenu::item::selected { \n"
+                                                    "background-color: rgb(36, 93, 56)\n"
+                                                    "}")
         self.mainScreen_stackedWidget.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.mainScreen_stackedWidget.setFrameShadow(QtWidgets.QFrame.Raised)
         self.mainScreen_stackedWidget.setObjectName("mainScreen_stackedWidget")
@@ -1687,41 +1711,10 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.searchScrollArea = QtWidgets.QWidget()
-        self.searchScrollArea.setGeometry(QtCore.QRect(0, 0, 617, 898))
+        self.searchScrollArea.setGeometry(QtCore.QRect(0, 0, 1016, 881))
         self.searchScrollArea.setObjectName("searchScrollArea")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.searchScrollArea)
         self.gridLayout_7.setObjectName("gridLayout_7")
-        self.emptyHeader_label = QtWidgets.QLabel(self.searchScrollArea)
-        self.emptyHeader_label.setMinimumSize(QtCore.QSize(175, 32))
-        self.emptyHeader_label.setMaximumSize(QtCore.QSize(175, 32))
-        self.emptyHeader_label.setStyleSheet("")
-        self.emptyHeader_label.setText("")
-        self.emptyHeader_label.setObjectName("emptyHeader_label")
-        self.gridLayout_7.addWidget(self.emptyHeader_label, 0, 0, 1, 1)
-        self.firstNameHeader_label = QtWidgets.QLabel(self.searchScrollArea)
-        self.firstNameHeader_label.setMinimumSize(QtCore.QSize(100, 32))
-        self.firstNameHeader_label.setMaximumSize(QtCore.QSize(250, 32))
-        font = QtGui.QFont()
-        font.setFamily("Verdana")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.firstNameHeader_label.setFont(font)
-        self.firstNameHeader_label.setStyleSheet("color: rgb(120, 190, 72);")
-        self.firstNameHeader_label.setObjectName("firstNameHeader_label")
-        self.gridLayout_7.addWidget(self.firstNameHeader_label, 0, 1, 1, 1)
-        self.lastNameHeader_label = QtWidgets.QLabel(self.searchScrollArea)
-        self.lastNameHeader_label.setMinimumSize(QtCore.QSize(100, 32))
-        self.lastNameHeader_label.setMaximumSize(QtCore.QSize(250, 32))
-        font = QtGui.QFont()
-        font.setFamily("Verdana")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lastNameHeader_label.setFont(font)
-        self.lastNameHeader_label.setStyleSheet("color: rgb(120, 190, 72);")
-        self.lastNameHeader_label.setObjectName("lastNameHeader_label")
-        self.gridLayout_7.addWidget(self.lastNameHeader_label, 0, 2, 1, 1)
         self.titleHeader_label = QtWidgets.QLabel(self.searchScrollArea)
         self.titleHeader_label.setMinimumSize(QtCore.QSize(100, 32))
         self.titleHeader_label.setMaximumSize(QtCore.QSize(250, 32))
@@ -1746,6 +1739,39 @@ class Ui_MainWindow(object):
         self.departmentHeader_label.setStyleSheet("color: rgb(120, 190, 72);")
         self.departmentHeader_label.setObjectName("departmentHeader_label")
         self.gridLayout_7.addWidget(self.departmentHeader_label, 0, 4, 1, 1)
+        self.emptyHeader_label = QtWidgets.QLabel(self.searchScrollArea)
+        self.emptyHeader_label.setMinimumSize(QtCore.QSize(175, 32))
+        self.emptyHeader_label.setMaximumSize(QtCore.QSize(175, 32))
+        self.emptyHeader_label.setStyleSheet("")
+        self.emptyHeader_label.setText("")
+        self.emptyHeader_label.setObjectName("emptyHeader_label")
+        self.gridLayout_7.addWidget(self.emptyHeader_label, 0, 0, 1, 1)
+        self.lastNameHeader_label = QtWidgets.QLabel(self.searchScrollArea)
+        self.lastNameHeader_label.setMinimumSize(QtCore.QSize(100, 32))
+        self.lastNameHeader_label.setMaximumSize(QtCore.QSize(250, 32))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lastNameHeader_label.setFont(font)
+        self.lastNameHeader_label.setStyleSheet("color: rgb(120, 190, 72);")
+        self.lastNameHeader_label.setObjectName("lastNameHeader_label")
+        self.gridLayout_7.addWidget(self.lastNameHeader_label, 0, 2, 1, 1)
+        self.firstNameHeader_label = QtWidgets.QLabel(self.searchScrollArea)
+        self.firstNameHeader_label.setMinimumSize(QtCore.QSize(100, 32))
+        self.firstNameHeader_label.setMaximumSize(QtCore.QSize(250, 32))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.firstNameHeader_label.setFont(font)
+        self.firstNameHeader_label.setStyleSheet("color: rgb(120, 190, 72);")
+        self.firstNameHeader_label.setObjectName("firstNameHeader_label")
+        self.gridLayout_7.addWidget(self.firstNameHeader_label, 0, 1, 1, 1)
+        spacerItem9 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_7.addItem(spacerItem9, 1, 1, 1, 1)
         self.scrollArea.setWidget(self.searchScrollArea)
         self.gridLayout_6.addWidget(self.scrollArea, 0, 1, 1, 1)
         self.mainScreen_stackedWidget.addWidget(self.searchResultsScreen_page0)
@@ -1774,10 +1800,11 @@ class Ui_MainWindow(object):
         self.frame_2.setObjectName("frame_2")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.frame_2)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        spacerItem9 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem9, 17, 3, 1, 1)
-        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem10, 4, 4, 1, 1)
+        spacerItem10 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem10, 17, 3, 1, 1)
+        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem11, 4, 4, 1, 1)
         self.email_label = QtWidgets.QLabel(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -1789,19 +1816,21 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setKerning(True)
         self.email_label.setFont(font)
-        self.email_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.email_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.email_label.setObjectName("email_label")
         self.gridLayout_2.addWidget(self.email_label, 3, 3, 1, 1)
-        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem11, 18, 3, 1, 1)
         spacerItem12 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem12, 0, 0, 1, 1)
+        self.gridLayout_2.addItem(spacerItem12, 18, 3, 1, 1)
         spacerItem13 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem13, 10, 4, 1, 1)
-        spacerItem14 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem14, 2, 3, 1, 1)
-        spacerItem15 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem15, 2, 2, 1, 1)
+        self.gridLayout_2.addItem(spacerItem13, 0, 0, 1, 1)
+        spacerItem14 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem14, 10, 4, 1, 1)
+        spacerItem15 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem15, 2, 3, 1, 1)
+        spacerItem16 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem16, 2, 2, 1, 1)
         self.department_lineEdit = QtWidgets.QLineEdit(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1815,13 +1844,13 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.department_lineEdit.setFont(font)
         self.department_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                               "border-width: 1.5px;\n"
+                                               "border-radius: 15px;\n"
+                                               "border-color: black;\n"
+                                               "padding: 4px;\n"
+                                               "padding-left: 10px;\n"
+                                               "padding-right: 10px;\n"
+                                               "background-color: rgb(255, 255, 255);")
         self.department_lineEdit.setMaxLength(30)
         self.department_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.department_lineEdit.setObjectName("department_lineEdit")
@@ -1839,13 +1868,13 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.title_lineEdit.setFont(font)
         self.title_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                          "border-width: 1.5px;\n"
+                                          "border-radius: 15px;\n"
+                                          "border-color: black;\n"
+                                          "padding: 4px;\n"
+                                          "padding-left: 10px;\n"
+                                          "padding-right: 10px;\n"
+                                          "background-color: rgb(255, 255, 255);")
         self.title_lineEdit.setMaxLength(30)
         self.title_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.title_lineEdit.setObjectName("title_lineEdit")
@@ -1861,7 +1890,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setKerning(True)
         self.lastName_label.setFont(font)
-        self.lastName_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.lastName_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.lastName_label.setObjectName("lastName_label")
         self.gridLayout_2.addWidget(self.lastName_label, 5, 1, 1, 1)
         self.addressOne_label = QtWidgets.QLabel(self.frame_2)
@@ -1875,17 +1904,19 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setKerning(True)
         self.addressOne_label.setFont(font)
-        self.addressOne_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.addressOne_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.addressOne_label.setObjectName("addressOne_label")
         self.gridLayout_2.addWidget(self.addressOne_label, 8, 1, 1, 1)
-        spacerItem16 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem16, 5, 4, 1, 1)
-        spacerItem17 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem17, 2, 4, 1, 1)
-        spacerItem18 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem18, 17, 4, 1, 1)
-        spacerItem19 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem19, 14, 4, 2, 1)
+        spacerItem17 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem17, 5, 4, 1, 1)
+        spacerItem18 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem18, 2, 4, 1, 1)
+        spacerItem19 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem19, 17, 4, 1, 1)
+        spacerItem20 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem20, 14, 4, 2, 1)
         self.phone_label = QtWidgets.QLabel(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -1897,17 +1928,18 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setKerning(True)
         self.phone_label.setFont(font)
-        self.phone_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.phone_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.phone_label.setObjectName("phone_label")
         self.gridLayout_2.addWidget(self.phone_label, 5, 3, 1, 1)
-        spacerItem20 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem20, 16, 4, 1, 1)
         spacerItem21 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem21, 10, 2, 1, 1)
+        self.gridLayout_2.addItem(spacerItem21, 16, 4, 1, 1)
         spacerItem22 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem22, 8, 2, 1, 1)
-        spacerItem23 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem23, 17, 0, 1, 1)
+        self.gridLayout_2.addItem(spacerItem22, 10, 2, 1, 1)
+        spacerItem23 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem23, 8, 2, 1, 1)
+        spacerItem24 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem24, 17, 0, 1, 1)
         self.startDate_label = QtWidgets.QLabel(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -1919,7 +1951,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setKerning(True)
         self.startDate_label.setFont(font)
-        self.startDate_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.startDate_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.startDate_label.setObjectName("startDate_label")
         self.gridLayout_2.addWidget(self.startDate_label, 12, 3, 1, 1)
         self.state_lineEdit = QtWidgets.QLineEdit(self.frame_2)
@@ -1935,19 +1967,19 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.state_lineEdit.setFont(font)
         self.state_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                          "border-width: 1.5px;\n"
+                                          "border-radius: 15px;\n"
+                                          "border-color: black;\n"
+                                          "padding: 4px;\n"
+                                          "padding-left: 10px;\n"
+                                          "padding-right: 10px;\n"
+                                          "background-color: rgb(255, 255, 255);")
         self.state_lineEdit.setMaxLength(30)
         self.state_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.state_lineEdit.setObjectName("state_lineEdit")
         self.gridLayout_2.addWidget(self.state_lineEdit, 13, 1, 1, 1)
-        spacerItem24 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem24, 12, 4, 1, 1)
+        spacerItem25 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem25, 12, 4, 1, 1)
         self.city_label = QtWidgets.QLabel(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -1959,13 +1991,13 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setKerning(True)
         self.city_label.setFont(font)
-        self.city_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.city_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.city_label.setObjectName("city_label")
         self.gridLayout_2.addWidget(self.city_label, 10, 1, 1, 1)
-        spacerItem25 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem25, 4, 2, 1, 1)
         spacerItem26 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem26, 18, 0, 1, 1)
+        self.gridLayout_2.addItem(spacerItem26, 4, 2, 1, 1)
+        spacerItem27 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem27, 18, 0, 1, 1)
         self.saveGeneral_toolButton = QtWidgets.QToolButton(self.frame_2)
         self.saveGeneral_toolButton.setMinimumSize(QtCore.QSize(75, 30))
         font = QtGui.QFont()
@@ -1976,46 +2008,46 @@ class Ui_MainWindow(object):
         self.saveGeneral_toolButton.setFont(font)
         self.saveGeneral_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.saveGeneral_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"background-color: rgb(120, 190, 72);\n"
-"color: white;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"padding-top: 6px;\n"
-"background-color: rgb(120, 190, 72);\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"padding-top: 8px;\n"
-"background-color: rgb(90, 160, 42);\n"
-"}\n"
-"\n"
-"QToolButton:disabled {\n"
-"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-radius: 15px;\n"
-"border-color: rgba(0, 0, 0, 70);;\n"
-"background-color: rgba(120, 190, 72, 70);\n"
-"color: rgba(255, 255, 255, 70);;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}")
+                                                  "border-style: solid;\n"
+                                                  "border-width: 2px;\n"
+                                                  "border-radius: 15px;\n"
+                                                  "border-color: black;\n"
+                                                  "background-color: rgb(120, 190, 72);\n"
+                                                  "color: white;\n"
+                                                  "padding: 4px;\n"
+                                                  "padding-left: 10px;\n"
+                                                  "padding-right: 10px;\n"
+                                                  "}\n"
+                                                  "\n"
+                                                  "QToolButton:hover {\n"
+                                                  "padding-top: 6px;\n"
+                                                  "background-color: rgb(120, 190, 72);\n"
+                                                  "}\n"
+                                                  "\n"
+                                                  "QToolButton:pressed {\n"
+                                                  "padding-top: 8px;\n"
+                                                  "background-color: rgb(90, 160, 42);\n"
+                                                  "}\n"
+                                                  "\n"
+                                                  "QToolButton:disabled {\n"
+                                                  "border-style: solid;\n"
+                                                  "border-width: 2px;\n"
+                                                  "border-radius: 15px;\n"
+                                                  "border-color: rgba(0, 0, 0, 70);;\n"
+                                                  "background-color: rgba(120, 190, 72, 70);\n"
+                                                  "color: rgba(255, 255, 255, 70);;\n"
+                                                  "padding: 4px;\n"
+                                                  "padding-left: 10px;\n"
+                                                  "padding-right: 10px;\n"
+                                                  "}")
         self.saveGeneral_toolButton.setObjectName("saveGeneral_toolButton")
         self.gridLayout_2.addWidget(self.saveGeneral_toolButton, 18, 2, 1, 1, QtCore.Qt.AlignHCenter)
-        spacerItem27 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem27, 9, 2, 1, 1)
         spacerItem28 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem28, 13, 4, 1, 1)
+        self.gridLayout_2.addItem(spacerItem28, 9, 2, 1, 1)
         spacerItem29 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem29, 4, 0, 1, 1)
+        self.gridLayout_2.addItem(spacerItem29, 13, 4, 1, 1)
+        spacerItem30 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem30, 4, 0, 1, 1)
         self.editGeneral_toolButton_3 = QtWidgets.QToolButton(self.frame_2)
         self.editGeneral_toolButton_3.setMinimumSize(QtCore.QSize(65, 25))
         font = QtGui.QFont()
@@ -2026,21 +2058,16 @@ class Ui_MainWindow(object):
         self.editGeneral_toolButton_3.setFont(font)
         self.editGeneral_toolButton_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.editGeneral_toolButton_3.setStyleSheet("QToolButton {\n"
-"border-style: solid;\n"
-"border-width: 3px;\n"
-"border-radius: 15px;\n"
-"border-color: transparent;\n"
-"color: transparent;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}")
+                                                    "background-color: transparent;\n"
+                                                    "color: transparent;\n"
+                                                    "border-color:transparent;\n"
+                                                    "}")
         self.editGeneral_toolButton_3.setObjectName("editGeneral_toolButton_3")
         self.gridLayout_2.addWidget(self.editGeneral_toolButton_3, 1, 0, 1, 1)
-        spacerItem30 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem30, 18, 1, 1, 1)
         spacerItem31 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem31, 13, 0, 1, 1)
+        self.gridLayout_2.addItem(spacerItem31, 18, 1, 1, 1)
+        spacerItem32 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem32, 13, 0, 1, 1)
         self.employeeIdGeneral_label = QtWidgets.QLabel(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2049,7 +2076,7 @@ class Ui_MainWindow(object):
         self.employeeIdGeneral_label.setSizePolicy(sizePolicy)
         self.employeeIdGeneral_label.setMinimumSize(QtCore.QSize(270, 15))
         self.employeeIdGeneral_label.setMaximumSize(QtCore.QSize(350, 16777215))
-        self.employeeIdGeneral_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.employeeIdGeneral_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.employeeIdGeneral_label.setObjectName("employeeIdGeneral_label")
         self.gridLayout_2.addWidget(self.employeeIdGeneral_label, 0, 2, 1, 1)
         self.editGeneral_toolButton = QtWidgets.QToolButton(self.frame_2)
@@ -2062,78 +2089,84 @@ class Ui_MainWindow(object):
         self.editGeneral_toolButton.setFont(font)
         self.editGeneral_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.editGeneral_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"background-color: rgb(120, 190, 72);\n"
-"color: white;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"padding-top: 6px;\n"
-"background-color: rgb(120, 190, 72);\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"padding-top: 8px;\n"
-"background-color: rgb(90, 160, 42);\n"
-"}\n"
-"\n"
-"QToolButton:disabled {\n"
-"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-radius: 15px;\n"
-"border-color: rgba(0, 0, 0, 70);;\n"
-"background-color: rgba(120, 190, 72, 70);\n"
-"color: rgba(255, 255, 255, 70);;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}")
+                                                  "border-style: solid;\n"
+                                                  "border-width: 2px;\n"
+                                                  "border-radius: 15px;\n"
+                                                  "border-color: black;\n"
+                                                  "background-color: rgb(120, 190, 72);\n"
+                                                  "color: white;\n"
+                                                  "padding: 4px;\n"
+                                                  "padding-left: 10px;\n"
+                                                  "padding-right: 10px;\n"
+                                                  "}\n"
+                                                  "\n"
+                                                  "QToolButton:hover {\n"
+                                                  "padding-top: 6px;\n"
+                                                  "background-color: rgb(120, 190, 72);\n"
+                                                  "}\n"
+                                                  "\n"
+                                                  "QToolButton:pressed {\n"
+                                                  "padding-top: 8px;\n"
+                                                  "background-color: rgb(90, 160, 42);\n"
+                                                  "}\n"
+                                                  "\n"
+                                                  "QToolButton:disabled {\n"
+                                                  "border-style: solid;\n"
+                                                  "border-width: 2px;\n"
+                                                  "border-radius: 15px;\n"
+                                                  "border-color: rgba(0, 0, 0, 70);;\n"
+                                                  "background-color: rgba(120, 190, 72, 70);\n"
+                                                  "color: rgba(255, 255, 255, 70);;\n"
+                                                  "padding: 4px;\n"
+                                                  "padding-left: 10px;\n"
+                                                  "padding-right: 10px;\n"
+                                                  "}")
         self.editGeneral_toolButton.setObjectName("editGeneral_toolButton")
         self.gridLayout_2.addWidget(self.editGeneral_toolButton, 1, 4, 1, 1)
-        spacerItem32 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem32, 5, 2, 1, 1)
         spacerItem33 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem33, 0, 1, 1, 1)
+        self.gridLayout_2.addItem(spacerItem33, 5, 2, 1, 1)
         spacerItem34 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem34, 1, 3, 1, 1)
+        self.gridLayout_2.addItem(spacerItem34, 0, 1, 1, 1)
         spacerItem35 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem35, 11, 0, 1, 1)
-        spacerItem36 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem36, 7, 0, 1, 1)
-        spacerItem37 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem37, 7, 3, 1, 1)
-        spacerItem38 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem38, 6, 4, 1, 1)
+        self.gridLayout_2.addItem(spacerItem35, 1, 3, 1, 1)
+        spacerItem36 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem36, 11, 0, 1, 1)
+        spacerItem37 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem37, 7, 0, 1, 1)
+        spacerItem38 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem38, 7, 3, 1, 1)
         spacerItem39 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem39, 0, 3, 1, 1)
+        self.gridLayout_2.addItem(spacerItem39, 6, 4, 1, 1)
         spacerItem40 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem40, 9, 0, 1, 1)
+        self.gridLayout_2.addItem(spacerItem40, 0, 3, 1, 1)
         spacerItem41 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem41, 14, 2, 1, 1)
-        spacerItem42 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem42, 7, 4, 1, 1)
-        spacerItem43 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem43, 16, 2, 1, 1)
+        self.gridLayout_2.addItem(spacerItem41, 9, 0, 1, 1)
+        spacerItem42 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem42, 14, 2, 1, 1)
+        spacerItem43 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem43, 7, 4, 1, 1)
         spacerItem44 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem44, 0, 4, 1, 1)
+        self.gridLayout_2.addItem(spacerItem44, 16, 2, 1, 1)
         spacerItem45 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem45, 18, 4, 1, 1)
-        spacerItem46 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem46, 2, 1, 1, 1)
-        spacerItem47 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem47, 10, 0, 1, 1)
+        self.gridLayout_2.addItem(spacerItem45, 0, 4, 1, 1)
+        spacerItem46 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem46, 18, 4, 1, 1)
+        spacerItem47 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem47, 2, 1, 1, 1)
         spacerItem48 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem48, 1, 1, 1, 1)
-        spacerItem49 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem49, 2, 0, 1, 1)
-        spacerItem50 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem50, 7, 1, 1, 1)
+        self.gridLayout_2.addItem(spacerItem48, 10, 0, 1, 1)
+        spacerItem49 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem49, 1, 1, 1, 1)
+        spacerItem50 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem50, 2, 0, 1, 1)
+        spacerItem51 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem51, 7, 1, 1, 1)
         self.addressOne_lineEdit = QtWidgets.QLineEdit(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -2147,13 +2180,13 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.addressOne_lineEdit.setFont(font)
         self.addressOne_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                               "border-width: 1.5px;\n"
+                                               "border-radius: 15px;\n"
+                                               "border-color: black;\n"
+                                               "padding: 4px;\n"
+                                               "padding-left: 10px;\n"
+                                               "padding-right: 10px;\n"
+                                               "background-color: rgb(255, 255, 255);")
         self.addressOne_lineEdit.setMaxLength(30)
         self.addressOne_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.addressOne_lineEdit.setObjectName("addressOne_lineEdit")
@@ -2171,19 +2204,20 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.city_lineEdit.setFont(font)
         self.city_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                         "border-width: 1.5px;\n"
+                                         "border-radius: 15px;\n"
+                                         "border-color: black;\n"
+                                         "padding: 4px;\n"
+                                         "padding-left: 10px;\n"
+                                         "padding-right: 10px;\n"
+                                         "background-color: rgb(255, 255, 255);")
         self.city_lineEdit.setMaxLength(30)
         self.city_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.city_lineEdit.setObjectName("city_lineEdit")
         self.gridLayout_2.addWidget(self.city_lineEdit, 11, 1, 1, 1)
-        spacerItem51 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem51, 17, 1, 1, 1)
+        spacerItem52 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem52, 17, 1, 1, 1)
         self.startDate_dateEdit = QtWidgets.QDateEdit(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -2199,41 +2233,41 @@ class Ui_MainWindow(object):
         self.startDate_dateEdit.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.startDate_dateEdit.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.startDate_dateEdit.setStyleSheet("QDateEdit {\n"
-"border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"color: black;\n"
-"padding: 4px;\n"
-"padding-left: 50px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);\n"
-"}\n"
-"\n"
-"QDateEdit::drop-down {\n"
-"    image: url(:/icons/assets/png/drop-down-black.png);\n"
-"    width: 22px;\n"
-"    height: 35px;\n"
-"    padding-right: 6px;\n"
-"    padding-top: 2px;\n"
-"    subcontrol-position: right;\n"
-"    subcontrol-origin:margin;\n"
-"}\n"
-"\n"
-"QDateEdit::drop-down:hover {\n"
-"     width: 25px;\n"
-"    height: 38px;\n"
-"}")
+                                              "border-style: outset;\n"
+                                              "border-width: 1.5px;\n"
+                                              "border-radius: 15px;\n"
+                                              "border-color: black;\n"
+                                              "color: black;\n"
+                                              "padding: 4px;\n"
+                                              "padding-left: 50px;\n"
+                                              "padding-right: 10px;\n"
+                                              "background-color: rgb(255, 255, 255);\n"
+                                              "}\n"
+                                              "\n"
+                                              "QDateEdit::drop-down {\n"
+                                              "    image: url(:/icons/assets/png/drop-down-black.png);\n"
+                                              "    width: 22px;\n"
+                                              "    height: 35px;\n"
+                                              "    padding-right: 6px;\n"
+                                              "    padding-top: 2px;\n"
+                                              "    subcontrol-position: right;\n"
+                                              "    subcontrol-origin:margin;\n"
+                                              "}\n"
+                                              "\n"
+                                              "QDateEdit::drop-down:hover {\n"
+                                              "     width: 25px;\n"
+                                              "    height: 38px;\n"
+                                              "}")
         self.startDate_dateEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.startDate_dateEdit.setButtonSymbols(QtWidgets.QAbstractSpinBox.UpDownArrows)
         self.startDate_dateEdit.setMinimumTime(QtCore.QTime(0, 0, 0))
         self.startDate_dateEdit.setCalendarPopup(True)
         self.startDate_dateEdit.setObjectName("startDate_dateEdit")
         self.gridLayout_2.addWidget(self.startDate_dateEdit, 13, 3, 1, 1)
-        spacerItem52 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem52, 12, 2, 1, 1)
         spacerItem53 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem53, 11, 4, 1, 1)
+        self.gridLayout_2.addItem(spacerItem53, 12, 2, 1, 1)
+        spacerItem54 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem54, 11, 4, 1, 1)
         self.state_label = QtWidgets.QLabel(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2245,11 +2279,11 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setKerning(True)
         self.state_label.setFont(font)
-        self.state_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.state_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.state_label.setObjectName("state_label")
         self.gridLayout_2.addWidget(self.state_label, 12, 1, 1, 1)
-        spacerItem54 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem54, 8, 4, 1, 1)
+        spacerItem55 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem55, 8, 4, 1, 1)
         self.zip_label = QtWidgets.QLabel(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2261,11 +2295,11 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setKerning(True)
         self.zip_label.setFont(font)
-        self.zip_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.zip_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.zip_label.setObjectName("zip_label")
         self.gridLayout_2.addWidget(self.zip_label, 14, 1, 1, 1)
-        spacerItem55 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem55, 14, 0, 2, 1)
+        spacerItem56 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem56, 14, 0, 2, 1)
         self.email_lineEdit = QtWidgets.QLineEdit(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -2279,19 +2313,19 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.email_lineEdit.setFont(font)
         self.email_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                          "border-width: 1.5px;\n"
+                                          "border-radius: 15px;\n"
+                                          "border-color: black;\n"
+                                          "padding: 4px;\n"
+                                          "padding-left: 10px;\n"
+                                          "padding-right: 10px;\n"
+                                          "background-color: rgb(255, 255, 255);")
         self.email_lineEdit.setMaxLength(30)
         self.email_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.email_lineEdit.setObjectName("email_lineEdit")
         self.gridLayout_2.addWidget(self.email_lineEdit, 4, 3, 1, 1)
-        spacerItem56 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem56, 12, 0, 1, 1)
+        spacerItem57 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem57, 12, 0, 1, 1)
         self.department_label = QtWidgets.QLabel(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -2303,7 +2337,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setKerning(True)
         self.department_label.setFont(font)
-        self.department_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.department_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.department_label.setObjectName("department_label")
         self.gridLayout_2.addWidget(self.department_label, 8, 3, 1, 1)
         self.employeeIdGeneral_lineEdit = QtWidgets.QLineEdit(self.frame_2)
@@ -2320,19 +2354,20 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.employeeIdGeneral_lineEdit.setFont(font)
         self.employeeIdGeneral_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                                      "border-width: 1.5px;\n"
+                                                      "border-radius: 15px;\n"
+                                                      "border-color: black;\n"
+                                                      "padding: 4px;\n"
+                                                      "padding-left: 10px;\n"
+                                                      "padding-right: 10px;\n"
+                                                      "background-color: rgb(255, 255, 255);")
         self.employeeIdGeneral_lineEdit.setMaxLength(30)
         self.employeeIdGeneral_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.employeeIdGeneral_lineEdit.setObjectName("employeeIdGeneral_lineEdit")
         self.gridLayout_2.addWidget(self.employeeIdGeneral_lineEdit, 1, 2, 1, 1)
-        spacerItem57 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem57, 17, 2, 1, 1)
+        spacerItem58 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem58, 17, 2, 1, 1)
         self.lastName_lineEdit = QtWidgets.QLineEdit(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -2346,13 +2381,13 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.lastName_lineEdit.setFont(font)
         self.lastName_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                             "border-width: 1.5px;\n"
+                                             "border-radius: 15px;\n"
+                                             "border-color: black;\n"
+                                             "padding: 4px;\n"
+                                             "padding-left: 10px;\n"
+                                             "padding-right: 10px;\n"
+                                             "background-color: rgb(255, 255, 255);")
         self.lastName_lineEdit.setMaxLength(30)
         self.lastName_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.lastName_lineEdit.setObjectName("lastName_lineEdit")
@@ -2370,13 +2405,13 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.firstName_lineEdit.setFont(font)
         self.firstName_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                              "border-width: 1.5px;\n"
+                                              "border-radius: 15px;\n"
+                                              "border-color: black;\n"
+                                              "padding: 4px;\n"
+                                              "padding-left: 10px;\n"
+                                              "padding-right: 10px;\n"
+                                              "background-color: rgb(255, 255, 255);")
         self.firstName_lineEdit.setMaxLength(30)
         self.firstName_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.firstName_lineEdit.setObjectName("firstName_lineEdit")
@@ -2394,21 +2429,21 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.zip_lineEdit.setFont(font)
         self.zip_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                        "border-width: 1.5px;\n"
+                                        "border-radius: 15px;\n"
+                                        "border-color: black;\n"
+                                        "padding: 4px;\n"
+                                        "padding-left: 10px;\n"
+                                        "padding-right: 10px;\n"
+                                        "background-color: rgb(255, 255, 255);")
         self.zip_lineEdit.setMaxLength(30)
         self.zip_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.zip_lineEdit.setObjectName("zip_lineEdit")
         self.gridLayout_2.addWidget(self.zip_lineEdit, 16, 1, 1, 1)
-        spacerItem58 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem58, 8, 0, 1, 1)
         spacerItem59 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem59, 5, 0, 1, 1)
+        self.gridLayout_2.addItem(spacerItem59, 8, 0, 1, 1)
+        spacerItem60 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem60, 5, 0, 1, 1)
         self.title_label = QtWidgets.QLabel(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2420,25 +2455,25 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setKerning(True)
         self.title_label.setFont(font)
-        self.title_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.title_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.title_label.setObjectName("title_label")
         self.gridLayout_2.addWidget(self.title_label, 10, 3, 1, 1)
-        spacerItem60 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem60, 6, 0, 1, 1)
         spacerItem61 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem61, 16, 3, 1, 1)
+        self.gridLayout_2.addItem(spacerItem61, 6, 0, 1, 1)
         spacerItem62 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem62, 9, 4, 1, 1)
+        self.gridLayout_2.addItem(spacerItem62, 16, 3, 1, 1)
         spacerItem63 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem63, 11, 2, 1, 1)
+        self.gridLayout_2.addItem(spacerItem63, 9, 4, 1, 1)
         spacerItem64 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem64, 14, 3, 1, 1)
+        self.gridLayout_2.addItem(spacerItem64, 11, 2, 1, 1)
         spacerItem65 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem65, 13, 2, 1, 1)
+        self.gridLayout_2.addItem(spacerItem65, 14, 3, 1, 1)
         spacerItem66 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem66, 6, 2, 1, 1)
+        self.gridLayout_2.addItem(spacerItem66, 13, 2, 1, 1)
         spacerItem67 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem67, 16, 0, 1, 1)
+        self.gridLayout_2.addItem(spacerItem67, 6, 2, 1, 1)
+        spacerItem68 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem68, 16, 0, 1, 1)
         self.firstName_label = QtWidgets.QLabel(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2450,11 +2485,12 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setKerning(True)
         self.firstName_label.setFont(font)
-        self.firstName_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.firstName_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.firstName_label.setObjectName("firstName_label")
         self.gridLayout_2.addWidget(self.firstName_label, 3, 1, 1, 1)
-        spacerItem68 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout_2.addItem(spacerItem68, 7, 2, 1, 1)
+        spacerItem69 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout_2.addItem(spacerItem69, 7, 2, 1, 1)
         self.phone_lineEdit = QtWidgets.QLineEdit(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -2468,13 +2504,13 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.phone_lineEdit.setFont(font)
         self.phone_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                          "border-width: 1.5px;\n"
+                                          "border-radius: 15px;\n"
+                                          "border-color: black;\n"
+                                          "padding: 4px;\n"
+                                          "padding-left: 10px;\n"
+                                          "padding-right: 10px;\n"
+                                          "background-color: rgb(255, 255, 255);")
         self.phone_lineEdit.setInputMethodHints(QtCore.Qt.ImhDigitsOnly)
         self.phone_lineEdit.setMaxLength(30)
         self.phone_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
@@ -2504,7 +2540,7 @@ class Ui_MainWindow(object):
         self.frame_8.setMinimumSize(QtCore.QSize(270, 45))
         self.frame_8.setMaximumSize(QtCore.QSize(350, 16777215))
         self.frame_8.setStyleSheet("background-color: none;\n"
-"")
+                                   "")
         self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_8.setObjectName("frame_8")
@@ -2533,26 +2569,26 @@ class Ui_MainWindow(object):
         self.userAccess_comboBox.setFont(font)
         self.userAccess_comboBox.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.userAccess_comboBox.setStyleSheet("QComboBox {\n"
-"background-color: rgb(41, 46, 50);\n"
-"border-style: outset;\n"
-"border: 3px solid rgb(120, 190, 72);\n"
-"padding-left: 7px\n"
-"}\n"
-"\n"
-"QComboBox::drop-down {\n"
-"    image: url(:/icons/assets/png/icons8-sort-down-96.png);\n"
-"    width: 22px;\n"
-"    height: 35px;\n"
-"    padding-right: 6px;\n"
-"    padding-top: 2px;\n"
-"    subcontrol-position: right;\n"
-"    subcontrol-origin:margin;\n"
-"}\n"
-"\n"
-"QComboBox::drop-down:hover {\n"
-"     width: 25px;\n"
-"    height: 38px;\n"
-"}")
+                                               "background-color: rgb(41, 46, 50);\n"
+                                               "border-style: outset;\n"
+                                               "border: 3px solid rgb(120, 190, 72);\n"
+                                               "padding-left: 7px\n"
+                                               "}\n"
+                                               "\n"
+                                               "QComboBox::drop-down {\n"
+                                               "    image: url(:/icons/assets/png/icons8-sort-down-96.png);\n"
+                                               "    width: 22px;\n"
+                                               "    height: 35px;\n"
+                                               "    padding-right: 6px;\n"
+                                               "    padding-top: 2px;\n"
+                                               "    subcontrol-position: right;\n"
+                                               "    subcontrol-origin:margin;\n"
+                                               "}\n"
+                                               "\n"
+                                               "QComboBox::drop-down:hover {\n"
+                                               "     width: 25px;\n"
+                                               "    height: 38px;\n"
+                                               "}")
         self.userAccess_comboBox.setObjectName("userAccess_comboBox")
         self.userAccess_comboBox.addItem("")
         self.userAccess_comboBox.setItemText(0, "")
@@ -2560,23 +2596,24 @@ class Ui_MainWindow(object):
         self.userAccess_comboBox.addItem("")
         self.userAccess_comboBox.addItem("")
         self.horizontalLayout_7.addWidget(self.userAccess_comboBox)
-        spacerItem69 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_7.addItem(spacerItem69)
-        self.gridLayout.addWidget(self.frame_8, 11, 1, 2, 1)
         spacerItem70 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem70, 23, 1, 1, 1)
+        self.horizontalLayout_7.addItem(spacerItem70)
+        self.gridLayout.addWidget(self.frame_8, 11, 1, 2, 1)
         spacerItem71 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem71, 13, 1, 1, 1)
+        self.gridLayout.addItem(spacerItem71, 23, 1, 1, 1)
         spacerItem72 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem72, 18, 0, 1, 1)
-        spacerItem73 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout.addItem(spacerItem73, 2, 2, 1, 1)
-        spacerItem74 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem74, 11, 2, 1, 1)
+        self.gridLayout.addItem(spacerItem72, 13, 1, 1, 1)
+        spacerItem73 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem73, 18, 0, 1, 1)
+        spacerItem74 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout.addItem(spacerItem74, 2, 2, 1, 1)
         spacerItem75 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem75, 1, 3, 1, 1)
+        self.gridLayout.addItem(spacerItem75, 11, 2, 1, 1)
         spacerItem76 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem76, 0, 1, 1, 1)
+        self.gridLayout.addItem(spacerItem76, 1, 3, 1, 1)
+        spacerItem77 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem77, 0, 1, 1, 1)
         self.birthDay_dateEdit = QtWidgets.QDateEdit(self.frame_4)
         self.birthDay_dateEdit.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
@@ -2593,43 +2630,43 @@ class Ui_MainWindow(object):
         self.birthDay_dateEdit.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.birthDay_dateEdit.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.birthDay_dateEdit.setStyleSheet("QDateEdit {\n"
-"border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"color: black;\n"
-"padding: 4px;\n"
-"padding-left: 50px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);\n"
-"}\n"
-"\n"
-"QDateEdit::drop-down {\n"
-"    image: url(:/icons/assets/png/drop-down-black.png);\n"
-"    width: 22px;\n"
-"    height: 35px;\n"
-"    padding-right: 6px;\n"
-"    padding-top: 2px;\n"
-"    subcontrol-position: right;\n"
-"    subcontrol-origin:margin;\n"
-"}\n"
-"\n"
-"QDateEdit::drop-down:hover {\n"
-"     width: 25px;\n"
-"    height: 38px;\n"
-"}\n"
-"\n"
-"QDateEdit: disabled {\n"
-"    color: color: #808086;\n"
-"}")
+                                             "border-style: outset;\n"
+                                             "border-width: 1.5px;\n"
+                                             "border-radius: 15px;\n"
+                                             "border-color: black;\n"
+                                             "color: black;\n"
+                                             "padding: 4px;\n"
+                                             "padding-left: 50px;\n"
+                                             "padding-right: 10px;\n"
+                                             "background-color: rgb(255, 255, 255);\n"
+                                             "}\n"
+                                             "\n"
+                                             "QDateEdit::drop-down {\n"
+                                             "    image: url(:/icons/assets/png/drop-down-black.png);\n"
+                                             "    width: 22px;\n"
+                                             "    height: 35px;\n"
+                                             "    padding-right: 6px;\n"
+                                             "    padding-top: 2px;\n"
+                                             "    subcontrol-position: right;\n"
+                                             "    subcontrol-origin:margin;\n"
+                                             "}\n"
+                                             "\n"
+                                             "QDateEdit::drop-down:hover {\n"
+                                             "     width: 25px;\n"
+                                             "    height: 38px;\n"
+                                             "}\n"
+                                             "\n"
+                                             "QDateEdit: disabled {\n"
+                                             "    color: gray;\n"
+                                             "}")
         self.birthDay_dateEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.birthDay_dateEdit.setButtonSymbols(QtWidgets.QAbstractSpinBox.UpDownArrows)
         self.birthDay_dateEdit.setMinimumTime(QtCore.QTime(0, 0, 0))
         self.birthDay_dateEdit.setCalendarPopup(True)
         self.birthDay_dateEdit.setObjectName("birthDay_dateEdit")
         self.gridLayout.addWidget(self.birthDay_dateEdit, 7, 1, 1, 1)
-        spacerItem77 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem77, 21, 1, 1, 1)
+        spacerItem78 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem78, 21, 1, 1, 1)
         self.birthDay_label = QtWidgets.QLabel(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2642,16 +2679,16 @@ class Ui_MainWindow(object):
         font.setKerning(True)
         self.birthDay_label.setFont(font)
         self.birthDay_label.setStyleSheet("background-color: none;\n"
-"")
-        self.birthDay_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+                                          "")
+        self.birthDay_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.birthDay_label.setObjectName("birthDay_label")
         self.gridLayout.addWidget(self.birthDay_label, 6, 1, 1, 1)
-        spacerItem78 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem78, 18, 4, 1, 1)
         spacerItem79 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem79, 23, 3, 1, 1)
+        self.gridLayout.addItem(spacerItem79, 18, 4, 1, 1)
         spacerItem80 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem80, 21, 4, 1, 1)
+        self.gridLayout.addItem(spacerItem80, 23, 3, 1, 1)
+        spacerItem81 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem81, 21, 4, 1, 1)
         self.mailAddressZip_lineEdit = QtWidgets.QLineEdit(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -2665,23 +2702,24 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.mailAddressZip_lineEdit.setFont(font)
         self.mailAddressZip_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                                   "border-width: 1.5px;\n"
+                                                   "border-radius: 15px;\n"
+                                                   "border-color: black;\n"
+                                                   "padding: 4px;\n"
+                                                   "padding-left: 10px;\n"
+                                                   "padding-right: 10px;\n"
+                                                   "background-color: rgb(255, 255, 255);")
         self.mailAddressZip_lineEdit.setMaxLength(30)
         self.mailAddressZip_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.mailAddressZip_lineEdit.setObjectName("mailAddressZip_lineEdit")
         self.gridLayout.addWidget(self.mailAddressZip_lineEdit, 21, 3, 1, 1)
-        spacerItem81 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem81, 5, 0, 1, 1)
-        spacerItem82 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout.addItem(spacerItem82, 2, 3, 1, 1)
-        spacerItem83 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem83, 6, 4, 1, 1)
+        spacerItem82 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem82, 5, 0, 1, 1)
+        spacerItem83 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout.addItem(spacerItem83, 2, 3, 1, 1)
+        spacerItem84 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem84, 6, 4, 1, 1)
         self.routingNum_label = QtWidgets.QLabel(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2694,22 +2732,24 @@ class Ui_MainWindow(object):
         font.setKerning(True)
         self.routingNum_label.setFont(font)
         self.routingNum_label.setStyleSheet("background-color: none;\n"
-"")
-        self.routingNum_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+                                            "")
+        self.routingNum_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.routingNum_label.setObjectName("routingNum_label")
         self.gridLayout.addWidget(self.routingNum_label, 4, 3, 1, 1)
-        spacerItem84 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem84, 14, 2, 1, 1)
         spacerItem85 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem85, 17, 4, 1, 1)
+        self.gridLayout.addItem(spacerItem85, 14, 2, 1, 1)
         spacerItem86 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem86, 15, 1, 1, 1)
-        spacerItem87 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout.addItem(spacerItem87, 22, 2, 1, 1)
-        spacerItem88 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem88, 6, 0, 1, 1)
-        spacerItem89 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout.addItem(spacerItem89, 22, 1, 1, 1)
+        self.gridLayout.addItem(spacerItem86, 17, 4, 1, 1)
+        spacerItem87 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem87, 15, 1, 1, 1)
+        spacerItem88 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout.addItem(spacerItem88, 22, 2, 1, 1)
+        spacerItem89 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem89, 6, 0, 1, 1)
+        spacerItem90 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout.addItem(spacerItem90, 22, 1, 1, 1)
         self.editPersonal_toolButton = QtWidgets.QToolButton(self.frame_4)
         self.editPersonal_toolButton.setEnabled(True)
         self.editPersonal_toolButton.setMinimumSize(QtCore.QSize(65, 25))
@@ -2721,38 +2761,38 @@ class Ui_MainWindow(object):
         self.editPersonal_toolButton.setFont(font)
         self.editPersonal_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.editPersonal_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"background-color: rgb(120, 190, 72);\n"
-"color: white;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"padding-top: 6px;\n"
-"background-color: rgb(120, 190, 72);\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"padding-top: 8px;\n"
-"background-color: rgb(90, 160, 42);\n"
-"}\n"
-"\n"
-"QToolButton:disabled {\n"
-"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-radius: 15px;\n"
-"border-color: rgba(0, 0, 0, 70);;\n"
-"background-color: rgba(120, 190, 72, 70);\n"
-"color: rgba(255, 255, 255, 70);;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}")
+                                                   "border-style: solid;\n"
+                                                   "border-width: 2px;\n"
+                                                   "border-radius: 15px;\n"
+                                                   "border-color: black;\n"
+                                                   "background-color: rgb(120, 190, 72);\n"
+                                                   "color: white;\n"
+                                                   "padding: 4px;\n"
+                                                   "padding-left: 10px;\n"
+                                                   "padding-right: 10px;\n"
+                                                   "}\n"
+                                                   "\n"
+                                                   "QToolButton:hover {\n"
+                                                   "padding-top: 6px;\n"
+                                                   "background-color: rgb(120, 190, 72);\n"
+                                                   "}\n"
+                                                   "\n"
+                                                   "QToolButton:pressed {\n"
+                                                   "padding-top: 8px;\n"
+                                                   "background-color: rgb(90, 160, 42);\n"
+                                                   "}\n"
+                                                   "\n"
+                                                   "QToolButton:disabled {\n"
+                                                   "border-style: solid;\n"
+                                                   "border-width: 2px;\n"
+                                                   "border-radius: 15px;\n"
+                                                   "border-color: rgba(0, 0, 0, 70);;\n"
+                                                   "background-color: rgba(120, 190, 72, 70);\n"
+                                                   "color: rgba(255, 255, 255, 70);;\n"
+                                                   "padding: 4px;\n"
+                                                   "padding-left: 10px;\n"
+                                                   "padding-right: 10px;\n"
+                                                   "}")
         self.editPersonal_toolButton.setObjectName("editPersonal_toolButton")
         self.gridLayout.addWidget(self.editPersonal_toolButton, 1, 4, 1, 1)
         self.editGeneral_toolButton_4 = QtWidgets.QToolButton(self.frame_4)
@@ -2765,14 +2805,15 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.editGeneral_toolButton_4.setFont(font)
         self.editGeneral_toolButton_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.editGeneral_toolButton_4.setStyleSheet("background-color: transparent;\n"
-"color: transparent;\n"
-"border-color:transparent;\n"
-"")
+        self.editGeneral_toolButton_4.setStyleSheet("QToolButton {\n"
+                                                    "background-color: transparent;\n"
+                                                    "color: transparent;\n"
+                                                    "border-color:transparent;\n"
+                                                    "}")
         self.editGeneral_toolButton_4.setObjectName("editGeneral_toolButton_4")
         self.gridLayout.addWidget(self.editGeneral_toolButton_4, 1, 0, 1, 1)
-        spacerItem90 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem90, 6, 2, 1, 1)
+        spacerItem91 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem91, 6, 2, 1, 1)
         self.mailAddressState_label = QtWidgets.QLabel(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2785,22 +2826,23 @@ class Ui_MainWindow(object):
         font.setKerning(True)
         self.mailAddressState_label.setFont(font)
         self.mailAddressState_label.setStyleSheet("background-color: none;\n"
-"")
-        self.mailAddressState_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+                                                  "")
+        self.mailAddressState_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.mailAddressState_label.setObjectName("mailAddressState_label")
         self.gridLayout.addWidget(self.mailAddressState_label, 17, 3, 1, 1)
-        spacerItem91 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem91, 16, 4, 1, 1)
-        spacerItem92 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout.addItem(spacerItem92, 2, 1, 1, 1)
-        spacerItem93 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem93, 21, 0, 1, 1)
+        spacerItem92 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem92, 16, 4, 1, 1)
+        spacerItem93 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum,
+                                             QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout.addItem(spacerItem93, 2, 1, 1, 1)
         spacerItem94 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem94, 16, 0, 1, 1)
+        self.gridLayout.addItem(spacerItem94, 21, 0, 1, 1)
         spacerItem95 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem95, 7, 2, 1, 1)
+        self.gridLayout.addItem(spacerItem95, 16, 0, 1, 1)
         spacerItem96 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem96, 16, 1, 1, 1)
+        self.gridLayout.addItem(spacerItem96, 7, 2, 1, 1)
+        spacerItem97 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem97, 16, 1, 1, 1)
         self.mailAddressOne_label = QtWidgets.QLabel(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2813,20 +2855,20 @@ class Ui_MainWindow(object):
         font.setKerning(True)
         self.mailAddressOne_label.setFont(font)
         self.mailAddressOne_label.setStyleSheet("background-color: none;\n"
-"")
-        self.mailAddressOne_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+                                                "")
+        self.mailAddressOne_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.mailAddressOne_label.setObjectName("mailAddressOne_label")
         self.gridLayout.addWidget(self.mailAddressOne_label, 13, 3, 1, 1)
-        spacerItem97 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem97, 1, 1, 1, 1)
         spacerItem98 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem98, 15, 2, 1, 1)
+        self.gridLayout.addItem(spacerItem98, 1, 1, 1, 1)
         spacerItem99 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem99, 3, 1, 1, 1)
+        self.gridLayout.addItem(spacerItem99, 15, 2, 1, 1)
         spacerItem100 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem100, 18, 1, 1, 1)
+        self.gridLayout.addItem(spacerItem100, 3, 1, 1, 1)
         spacerItem101 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem101, 0, 4, 1, 1)
+        self.gridLayout.addItem(spacerItem101, 18, 1, 1, 1)
+        spacerItem102 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem102, 0, 4, 1, 1)
         self.mailAddressCity_lineEdit = QtWidgets.QLineEdit(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -2840,33 +2882,34 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.mailAddressCity_lineEdit.setFont(font)
         self.mailAddressCity_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                                    "border-width: 1.5px;\n"
+                                                    "border-radius: 15px;\n"
+                                                    "border-color: black;\n"
+                                                    "padding: 4px;\n"
+                                                    "padding-left: 10px;\n"
+                                                    "padding-right: 10px;\n"
+                                                    "background-color: rgb(255, 255, 255);")
         self.mailAddressCity_lineEdit.setMaxLength(30)
         self.mailAddressCity_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.mailAddressCity_lineEdit.setObjectName("mailAddressCity_lineEdit")
         self.gridLayout.addWidget(self.mailAddressCity_lineEdit, 16, 3, 1, 1)
-        spacerItem102 = QtWidgets.QSpacerItem(20, 50, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout.addItem(spacerItem102, 8, 3, 1, 1)
-        spacerItem103 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem103, 3, 0, 1, 1)
+        spacerItem103 = QtWidgets.QSpacerItem(20, 50, QtWidgets.QSizePolicy.Minimum,
+                                              QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout.addItem(spacerItem103, 8, 3, 1, 1)
         spacerItem104 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem104, 10, 0, 1, 1)
+        self.gridLayout.addItem(spacerItem104, 3, 0, 1, 1)
         spacerItem105 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem105, 21, 2, 1, 1)
+        self.gridLayout.addItem(spacerItem105, 10, 0, 1, 1)
         spacerItem106 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem106, 13, 2, 1, 1)
+        self.gridLayout.addItem(spacerItem106, 21, 2, 1, 1)
         spacerItem107 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem107, 4, 4, 1, 1)
+        self.gridLayout.addItem(spacerItem107, 13, 2, 1, 1)
         spacerItem108 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem108, 17, 0, 1, 1)
+        self.gridLayout.addItem(spacerItem108, 4, 4, 1, 1)
         spacerItem109 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem109, 19, 4, 1, 1)
+        self.gridLayout.addItem(spacerItem109, 17, 0, 1, 1)
+        spacerItem110 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem110, 19, 4, 1, 1)
         self.savePersonal_toolButton = QtWidgets.QToolButton(self.frame_4)
         self.savePersonal_toolButton.setEnabled(True)
         self.savePersonal_toolButton.setMinimumSize(QtCore.QSize(75, 30))
@@ -2878,38 +2921,38 @@ class Ui_MainWindow(object):
         self.savePersonal_toolButton.setFont(font)
         self.savePersonal_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.savePersonal_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"background-color: rgb(120, 190, 72);\n"
-"color: white;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"padding-top: 6px;\n"
-"background-color: rgb(120, 190, 72);\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"padding-top: 8px;\n"
-"background-color: rgb(90, 160, 42);\n"
-"}\n"
-"\n"
-"QToolButton:disabled {\n"
-"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-radius: 15px;\n"
-"border-color: rgba(0, 0, 0, 70);;\n"
-"background-color: rgba(120, 190, 72, 70);\n"
-"color: rgba(255, 255, 255, 70);;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}")
+                                                   "border-style: solid;\n"
+                                                   "border-width: 2px;\n"
+                                                   "border-radius: 15px;\n"
+                                                   "border-color: black;\n"
+                                                   "background-color: rgb(120, 190, 72);\n"
+                                                   "color: white;\n"
+                                                   "padding: 4px;\n"
+                                                   "padding-left: 10px;\n"
+                                                   "padding-right: 10px;\n"
+                                                   "}\n"
+                                                   "\n"
+                                                   "QToolButton:hover {\n"
+                                                   "padding-top: 6px;\n"
+                                                   "background-color: rgb(120, 190, 72);\n"
+                                                   "}\n"
+                                                   "\n"
+                                                   "QToolButton:pressed {\n"
+                                                   "padding-top: 8px;\n"
+                                                   "background-color: rgb(90, 160, 42);\n"
+                                                   "}\n"
+                                                   "\n"
+                                                   "QToolButton:disabled {\n"
+                                                   "border-style: solid;\n"
+                                                   "border-width: 2px;\n"
+                                                   "border-radius: 15px;\n"
+                                                   "border-color: rgba(0, 0, 0, 70);;\n"
+                                                   "background-color: rgba(120, 190, 72, 70);\n"
+                                                   "color: rgba(255, 255, 255, 70);;\n"
+                                                   "padding: 4px;\n"
+                                                   "padding-left: 10px;\n"
+                                                   "padding-right: 10px;\n"
+                                                   "}")
         self.savePersonal_toolButton.setObjectName("savePersonal_toolButton")
         self.gridLayout.addWidget(self.savePersonal_toolButton, 23, 2, 1, 1, QtCore.Qt.AlignHCenter)
         self.frame_5 = QtWidgets.QFrame(self.frame_4)
@@ -2921,15 +2964,15 @@ class Ui_MainWindow(object):
         self.frame_5.setMinimumSize(QtCore.QSize(270, 45))
         self.frame_5.setMaximumSize(QtCore.QSize(350, 16777215))
         self.frame_5.setStyleSheet("background-color: none;\n"
-"")
+                                   "")
         self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_5.setObjectName("frame_5")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.frame_5)
         self.horizontalLayout_4.setContentsMargins(-1, 4, -1, 4)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        spacerItem110 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem110)
+        spacerItem111 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem111)
         self.directDeposit_label = QtWidgets.QLabel(self.frame_5)
         self.directDeposit_label.setMinimumSize(QtCore.QSize(105, 0))
         font = QtGui.QFont()
@@ -2969,13 +3012,13 @@ class Ui_MainWindow(object):
         self.directDepositNo_radioButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.directDepositNo_radioButton.setObjectName("directDepositNo_radioButton")
         self.horizontalLayout_4.addWidget(self.directDepositNo_radioButton, 0, QtCore.Qt.AlignVCenter)
-        spacerItem111 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem111)
-        self.gridLayout.addWidget(self.frame_5, 3, 3, 1, 1)
         spacerItem112 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem112, 15, 0, 1, 1)
+        self.horizontalLayout_4.addItem(spacerItem112)
+        self.gridLayout.addWidget(self.frame_5, 3, 3, 1, 1)
         spacerItem113 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem113, 12, 0, 1, 1)
+        self.gridLayout.addItem(spacerItem113, 15, 0, 1, 1)
+        spacerItem114 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem114, 12, 0, 1, 1)
         self.mailAddressCity_label = QtWidgets.QLabel(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2988,8 +3031,8 @@ class Ui_MainWindow(object):
         font.setKerning(True)
         self.mailAddressCity_label.setFont(font)
         self.mailAddressCity_label.setStyleSheet("background-color: none;\n"
-"")
-        self.mailAddressCity_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+                                                 "")
+        self.mailAddressCity_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.mailAddressCity_label.setObjectName("mailAddressCity_label")
         self.gridLayout.addWidget(self.mailAddressCity_label, 15, 3, 1, 1)
         self.mailAddressZip_label = QtWidgets.QLabel(self.frame_4)
@@ -3004,12 +3047,12 @@ class Ui_MainWindow(object):
         font.setKerning(True)
         self.mailAddressZip_label.setFont(font)
         self.mailAddressZip_label.setStyleSheet("background-color: none;\n"
-"")
-        self.mailAddressZip_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+                                                "")
+        self.mailAddressZip_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.mailAddressZip_label.setObjectName("mailAddressZip_label")
         self.gridLayout.addWidget(self.mailAddressZip_label, 19, 3, 1, 1)
-        spacerItem114 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem114, 16, 2, 1, 1)
+        spacerItem115 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem115, 16, 2, 1, 1)
         self.routingNum_lineEdit = QtWidgets.QLineEdit(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -3023,29 +3066,30 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.routingNum_lineEdit.setFont(font)
         self.routingNum_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                               "border-width: 1.5px;\n"
+                                               "border-radius: 15px;\n"
+                                               "border-color: black;\n"
+                                               "padding: 4px;\n"
+                                               "padding-left: 10px;\n"
+                                               "padding-right: 10px;\n"
+                                               "background-color: rgb(255, 255, 255);")
         self.routingNum_lineEdit.setMaxLength(30)
         self.routingNum_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.routingNum_lineEdit.setObjectName("routingNum_lineEdit")
         self.gridLayout.addWidget(self.routingNum_lineEdit, 5, 3, 1, 1)
-        spacerItem115 = QtWidgets.QSpacerItem(20, 50, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout.addItem(spacerItem115, 8, 1, 1, 1)
-        spacerItem116 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem116, 19, 2, 1, 1)
+        spacerItem116 = QtWidgets.QSpacerItem(20, 50, QtWidgets.QSizePolicy.Minimum,
+                                              QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout.addItem(spacerItem116, 8, 1, 1, 1)
         spacerItem117 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem117, 8, 2, 1, 1)
+        self.gridLayout.addItem(spacerItem117, 19, 2, 1, 1)
         spacerItem118 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem118, 5, 2, 1, 1)
+        self.gridLayout.addItem(spacerItem118, 8, 2, 1, 1)
         spacerItem119 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem119, 12, 4, 1, 1)
+        self.gridLayout.addItem(spacerItem119, 5, 2, 1, 1)
         spacerItem120 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem120, 15, 4, 1, 1)
+        self.gridLayout.addItem(spacerItem120, 12, 4, 1, 1)
+        spacerItem121 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem121, 15, 4, 1, 1)
         self.employeeIdPersonal_lineEdit = QtWidgets.QLineEdit(self.frame_4)
         self.employeeIdPersonal_lineEdit.setEnabled(False)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
@@ -3060,31 +3104,31 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.employeeIdPersonal_lineEdit.setFont(font)
         self.employeeIdPersonal_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                                       "border-width: 1.5px;\n"
+                                                       "border-radius: 15px;\n"
+                                                       "border-color: black;\n"
+                                                       "padding: 4px;\n"
+                                                       "padding-left: 10px;\n"
+                                                       "padding-right: 10px;\n"
+                                                       "background-color: rgb(255, 255, 255);")
         self.employeeIdPersonal_lineEdit.setMaxLength(30)
         self.employeeIdPersonal_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.employeeIdPersonal_lineEdit.setObjectName("employeeIdPersonal_lineEdit")
         self.gridLayout.addWidget(self.employeeIdPersonal_lineEdit, 1, 2, 1, 1)
-        spacerItem121 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem121, 0, 3, 1, 1)
         spacerItem122 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem122, 23, 4, 1, 1)
+        self.gridLayout.addItem(spacerItem122, 0, 3, 1, 1)
         spacerItem123 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem123, 10, 4, 1, 1)
+        self.gridLayout.addItem(spacerItem123, 23, 4, 1, 1)
         spacerItem124 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem124, 0, 0, 1, 1)
+        self.gridLayout.addItem(spacerItem124, 10, 4, 1, 1)
         spacerItem125 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem125, 5, 4, 1, 1)
+        self.gridLayout.addItem(spacerItem125, 0, 0, 1, 1)
         spacerItem126 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem126, 17, 2, 1, 1)
+        self.gridLayout.addItem(spacerItem126, 5, 4, 1, 1)
         spacerItem127 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem127, 14, 1, 1, 1)
+        self.gridLayout.addItem(spacerItem127, 17, 2, 1, 1)
+        spacerItem128 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem128, 14, 1, 1, 1)
         self.frame_7 = QtWidgets.QFrame(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -3095,14 +3139,14 @@ class Ui_MainWindow(object):
         self.frame_7.setMaximumSize(QtCore.QSize(350, 16777215))
         self.frame_7.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.frame_7.setStyleSheet("background-color: none;\n"
-"")
+                                   "")
         self.frame_7.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_7.setObjectName("frame_7")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.frame_7)
         self.gridLayout_3.setObjectName("gridLayout_3")
-        spacerItem128 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_3.addItem(spacerItem128, 2, 2, 1, 1)
+        spacerItem129 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_3.addItem(spacerItem129, 2, 2, 1, 1)
         self.payTypeCommision_radioButton = QtWidgets.QRadioButton(self.frame_7)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -3157,13 +3201,13 @@ class Ui_MainWindow(object):
         self.payTypeHourly_radioButton.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.payTypeHourly_radioButton.setObjectName("payTypeHourly_radioButton")
         self.gridLayout_3.addWidget(self.payTypeHourly_radioButton, 1, 1, 1, 1)
-        spacerItem129 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_3.addItem(spacerItem129, 2, 0, 1, 1)
-        self.gridLayout.addWidget(self.frame_7, 9, 1, 2, 1)
         spacerItem130 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem130, 7, 4, 1, 1)
+        self.gridLayout_3.addItem(spacerItem130, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.frame_7, 9, 1, 2, 1)
         spacerItem131 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem131, 7, 0, 1, 1)
+        self.gridLayout.addItem(spacerItem131, 7, 4, 1, 1)
+        spacerItem132 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem132, 7, 0, 1, 1)
         self.employeeIdPersonal_label = QtWidgets.QLabel(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -3173,8 +3217,8 @@ class Ui_MainWindow(object):
         self.employeeIdPersonal_label.setMinimumSize(QtCore.QSize(200, 15))
         self.employeeIdPersonal_label.setMaximumSize(QtCore.QSize(350, 14))
         self.employeeIdPersonal_label.setStyleSheet("background-color: none;\n"
-"")
-        self.employeeIdPersonal_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+                                                    "")
+        self.employeeIdPersonal_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.employeeIdPersonal_label.setObjectName("employeeIdPersonal_label")
         self.gridLayout.addWidget(self.employeeIdPersonal_label, 0, 2, 1, 1)
         self.mailAddressState_lineEdit = QtWidgets.QLineEdit(self.frame_4)
@@ -3190,25 +3234,25 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.mailAddressState_lineEdit.setFont(font)
         self.mailAddressState_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                                     "border-width: 1.5px;\n"
+                                                     "border-radius: 15px;\n"
+                                                     "border-color: black;\n"
+                                                     "padding: 4px;\n"
+                                                     "padding-left: 10px;\n"
+                                                     "padding-right: 10px;\n"
+                                                     "background-color: rgb(255, 255, 255);")
         self.mailAddressState_lineEdit.setMaxLength(30)
         self.mailAddressState_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.mailAddressState_lineEdit.setObjectName("mailAddressState_lineEdit")
         self.gridLayout.addWidget(self.mailAddressState_lineEdit, 18, 3, 1, 1)
-        spacerItem132 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem132, 13, 0, 1, 1)
         spacerItem133 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem133, 18, 2, 1, 1)
+        self.gridLayout.addItem(spacerItem133, 13, 0, 1, 1)
         spacerItem134 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem134, 10, 2, 1, 1)
+        self.gridLayout.addItem(spacerItem134, 18, 2, 1, 1)
         spacerItem135 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem135, 2, 4, 1, 1)
+        self.gridLayout.addItem(spacerItem135, 10, 2, 1, 1)
+        spacerItem136 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem136, 2, 4, 1, 1)
         self.accountNum_label = QtWidgets.QLabel(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -3221,8 +3265,8 @@ class Ui_MainWindow(object):
         font.setKerning(True)
         self.accountNum_label.setFont(font)
         self.accountNum_label.setStyleSheet("background-color: none;\n"
-"")
-        self.accountNum_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+                                            "")
+        self.accountNum_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.accountNum_label.setObjectName("accountNum_label")
         self.gridLayout.addWidget(self.accountNum_label, 6, 3, 1, 1)
         self.accountNum_lineEdit = QtWidgets.QLineEdit(self.frame_4)
@@ -3238,19 +3282,19 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.accountNum_lineEdit.setFont(font)
         self.accountNum_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                               "border-width: 1.5px;\n"
+                                               "border-radius: 15px;\n"
+                                               "border-color: black;\n"
+                                               "padding: 4px;\n"
+                                               "padding-left: 10px;\n"
+                                               "padding-right: 10px;\n"
+                                               "background-color: rgb(255, 255, 255);")
         self.accountNum_lineEdit.setMaxLength(30)
         self.accountNum_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.accountNum_lineEdit.setObjectName("accountNum_lineEdit")
         self.gridLayout.addWidget(self.accountNum_lineEdit, 7, 3, 1, 1)
-        spacerItem136 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem136, 13, 4, 1, 1)
+        spacerItem137 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem137, 13, 4, 1, 1)
         self.mailAddressOne_lineEdit = QtWidgets.QLineEdit(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -3264,23 +3308,23 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.mailAddressOne_lineEdit.setFont(font)
         self.mailAddressOne_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                                   "border-width: 1.5px;\n"
+                                                   "border-radius: 15px;\n"
+                                                   "border-color: black;\n"
+                                                   "padding: 4px;\n"
+                                                   "padding-left: 10px;\n"
+                                                   "padding-right: 10px;\n"
+                                                   "background-color: rgb(255, 255, 255);")
         self.mailAddressOne_lineEdit.setMaxLength(30)
         self.mailAddressOne_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.mailAddressOne_lineEdit.setObjectName("mailAddressOne_lineEdit")
         self.gridLayout.addWidget(self.mailAddressOne_lineEdit, 14, 3, 1, 1)
-        spacerItem137 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem137, 14, 0, 1, 1)
         spacerItem138 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem138, 3, 2, 1, 1)
+        self.gridLayout.addItem(spacerItem138, 14, 0, 1, 1)
         spacerItem139 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem139, 17, 1, 1, 1)
+        self.gridLayout.addItem(spacerItem139, 3, 2, 1, 1)
+        spacerItem140 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem140, 17, 1, 1, 1)
         self.mailAddressRadio_label = QtWidgets.QLabel(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -3294,8 +3338,8 @@ class Ui_MainWindow(object):
         font.setPointSize(9)
         self.mailAddressRadio_label.setFont(font)
         self.mailAddressRadio_label.setStyleSheet("background-color: none;\n"
-"padding: 1px;\n"
-"")
+                                                  "padding: 1px;\n"
+                                                  "")
         self.mailAddressRadio_label.setAlignment(QtCore.Qt.AlignCenter)
         self.mailAddressRadio_label.setObjectName("mailAddressRadio_label")
         self.gridLayout.addWidget(self.mailAddressRadio_label, 10, 3, 1, 1)
@@ -3312,13 +3356,13 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.ssn_lineEdit.setFont(font)
         self.ssn_lineEdit.setStyleSheet("border-style: outset;\n"
-"border-width: 1.5px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"background-color: rgb(255, 255, 255);")
+                                        "border-width: 1.5px;\n"
+                                        "border-radius: 15px;\n"
+                                        "border-color: black;\n"
+                                        "padding: 4px;\n"
+                                        "padding-left: 10px;\n"
+                                        "padding-right: 10px;\n"
+                                        "background-color: rgb(255, 255, 255);")
         self.ssn_lineEdit.setMaxLength(30)
         self.ssn_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.ssn_lineEdit.setObjectName("ssn_lineEdit")
@@ -3333,7 +3377,7 @@ class Ui_MainWindow(object):
         self.frame_10.setMaximumSize(QtCore.QSize(350, 16777215))
         self.frame_10.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.frame_10.setStyleSheet("background-color: none;\n"
-"")
+                                    "")
         self.frame_10.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_10.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_10.setObjectName("frame_10")
@@ -3357,8 +3401,8 @@ class Ui_MainWindow(object):
         self.mailAddressYes_radioButton.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.mailAddressYes_radioButton.setObjectName("mailAddressYes_radioButton")
         self.gridLayout_5.addWidget(self.mailAddressYes_radioButton, 0, 1, 1, 1, QtCore.Qt.AlignHCenter)
-        spacerItem140 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_5.addItem(spacerItem140, 0, 5, 1, 1)
+        spacerItem141 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_5.addItem(spacerItem141, 0, 5, 1, 1)
         self.mailAddressNo_radioButton = QtWidgets.QRadioButton(self.frame_10)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -3373,8 +3417,8 @@ class Ui_MainWindow(object):
         self.mailAddressNo_radioButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.mailAddressNo_radioButton.setObjectName("mailAddressNo_radioButton")
         self.gridLayout_5.addWidget(self.mailAddressNo_radioButton, 0, 4, 1, 1, QtCore.Qt.AlignHCenter)
-        spacerItem141 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_5.addItem(spacerItem141, 0, 0, 1, 1)
+        spacerItem142 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_5.addItem(spacerItem142, 0, 0, 1, 1)
         self.gridLayout.addWidget(self.frame_10, 11, 3, 2, 1)
         self.ssn_label = QtWidgets.QLabel(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
@@ -3388,20 +3432,21 @@ class Ui_MainWindow(object):
         font.setKerning(True)
         self.ssn_label.setFont(font)
         self.ssn_label.setStyleSheet("background-color: none;\n"
-"")
-        self.ssn_label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+                                     "")
+        self.ssn_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
         self.ssn_label.setObjectName("ssn_label")
         self.gridLayout.addWidget(self.ssn_label, 4, 1, 1, 1)
-        spacerItem142 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.gridLayout.addItem(spacerItem142, 22, 3, 1, 1)
-        spacerItem143 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem143, 19, 1, 1, 1)
+        spacerItem143 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum,
+                                              QtWidgets.QSizePolicy.MinimumExpanding)
+        self.gridLayout.addItem(spacerItem143, 22, 3, 1, 1)
         spacerItem144 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem144, 19, 0, 1, 1)
+        self.gridLayout.addItem(spacerItem144, 19, 1, 1, 1)
         spacerItem145 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem145, 14, 4, 1, 1)
+        self.gridLayout.addItem(spacerItem145, 19, 0, 1, 1)
         spacerItem146 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem146, 23, 0, 1, 1)
+        self.gridLayout.addItem(spacerItem146, 14, 4, 1, 1)
+        spacerItem147 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem147, 23, 0, 1, 1)
         self.verticalLayout_4.addWidget(self.frame_4)
         self.userInfo_tabWidget.addTab(self.personalTab, "")
         self.horizontalLayout.addWidget(self.userInfo_tabWidget)
@@ -3410,8 +3455,8 @@ class Ui_MainWindow(object):
         self.reportsScreen_page2.setObjectName("reportsScreen_page2")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.reportsScreen_page2)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-        spacerItem147 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_6.addItem(spacerItem147)
+        spacerItem148 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_6.addItem(spacerItem148)
         self.reports_label = QtWidgets.QLabel(self.reportsScreen_page2)
         font = QtGui.QFont()
         font.setFamily("Verdana")
@@ -3431,7 +3476,7 @@ class Ui_MainWindow(object):
         font.setFamily("Verdana")
         font.setPointSize(14)
         self.reportType_label.setFont(font)
-        self.reportType_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.reportType_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.reportType_label.setObjectName("reportType_label")
         self.horizontalLayout_8.addWidget(self.reportType_label)
         self.frame_9 = QtWidgets.QFrame(self.frame_6)
@@ -3476,12 +3521,13 @@ class Ui_MainWindow(object):
         self.archivedEmployeeReport_checkBox.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.archivedEmployeeReport_checkBox.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.archivedEmployeeReport_checkBox.setStyleSheet("QCheckBox::indicator {\n"
-"    height: 14px;\n"
-"    width: 14px;\n"
-"}\n"
-"           ")
+                                                           "    height: 14px;\n"
+                                                           "    width: 14px;\n"
+                                                           "}\n"
+                                                           "           ")
         self.archivedEmployeeReport_checkBox.setObjectName("archivedEmployeeReport_checkBox")
-        self.horizontalLayout_9.addWidget(self.archivedEmployeeReport_checkBox, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.horizontalLayout_9.addWidget(self.archivedEmployeeReport_checkBox, 0,
+                                          QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
         self.verticalLayout_6.addWidget(self.frame_11)
         self.frame_12 = QtWidgets.QFrame(self.reportsScreen_page2)
         self.frame_12.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -3507,43 +3553,43 @@ class Ui_MainWindow(object):
         self.generateReport_toolButton.setFont(font)
         self.generateReport_toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.generateReport_toolButton.setStyleSheet("QToolButton {\n"
-"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-radius: 15px;\n"
-"border-color: black;\n"
-"background-color: rgb(120, 190, 72);\n"
-"color: white;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}\n"
-"\n"
-"QToolButton:hover {\n"
-"padding-top: 6px;\n"
-"background-color: rgb(120, 190, 72);\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"padding-top: 8px;\n"
-"background-color: rgb(90, 160, 42);\n"
-"}\n"
-"\n"
-"QToolButton:disabled {\n"
-"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-radius: 15px;\n"
-"border-color: rgba(0, 0, 0, 70);;\n"
-"background-color: rgba(120, 190, 72, 70);\n"
-"color: rgba(255, 255, 255, 70);;\n"
-"padding: 4px;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"}")
+                                                     "border-style: solid;\n"
+                                                     "border-width: 2px;\n"
+                                                     "border-radius: 15px;\n"
+                                                     "border-color: black;\n"
+                                                     "background-color: rgb(120, 190, 72);\n"
+                                                     "color: white;\n"
+                                                     "padding: 4px;\n"
+                                                     "padding-left: 10px;\n"
+                                                     "padding-right: 10px;\n"
+                                                     "}\n"
+                                                     "\n"
+                                                     "QToolButton:hover {\n"
+                                                     "padding-top: 6px;\n"
+                                                     "background-color: rgb(120, 190, 72);\n"
+                                                     "}\n"
+                                                     "\n"
+                                                     "QToolButton:pressed {\n"
+                                                     "padding-top: 8px;\n"
+                                                     "background-color: rgb(90, 160, 42);\n"
+                                                     "}\n"
+                                                     "\n"
+                                                     "QToolButton:disabled {\n"
+                                                     "border-style: solid;\n"
+                                                     "border-width: 2px;\n"
+                                                     "border-radius: 15px;\n"
+                                                     "border-color: rgba(0, 0, 0, 70);;\n"
+                                                     "background-color: rgba(120, 190, 72, 70);\n"
+                                                     "color: rgba(255, 255, 255, 70);;\n"
+                                                     "padding: 4px;\n"
+                                                     "padding-left: 10px;\n"
+                                                     "padding-right: 10px;\n"
+                                                     "}")
         self.generateReport_toolButton.setObjectName("generateReport_toolButton")
         self.horizontalLayout_10.addWidget(self.generateReport_toolButton)
         self.verticalLayout_6.addWidget(self.frame_12, 0, QtCore.Qt.AlignHCenter)
-        spacerItem148 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_6.addItem(spacerItem148)
+        spacerItem149 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_6.addItem(spacerItem149)
         self.verticalLayout_6.setStretch(0, 1)
         self.verticalLayout_6.setStretch(1, 1)
         self.verticalLayout_6.setStretch(2, 1)
@@ -3587,10 +3633,10 @@ class Ui_MainWindow(object):
         self.signOut_toolButton.setText(_translate("MainWindow", "  Sign Out"))
         self.hamburger_toolButton.setText(_translate("MainWindow", "..."))
         self.signOutTopBar_toolButton.setText(_translate("MainWindow", "Sign Out"))
-        self.firstNameHeader_label.setText(_translate("MainWindow", "First"))
-        self.lastNameHeader_label.setText(_translate("MainWindow", "Last"))
         self.titleHeader_label.setText(_translate("MainWindow", "Title"))
         self.departmentHeader_label.setText(_translate("MainWindow", "Department"))
+        self.lastNameHeader_label.setText(_translate("MainWindow", "Last"))
+        self.firstNameHeader_label.setText(_translate("MainWindow", "First"))
         self.email_label.setText(_translate("MainWindow", "Email"))
         self.lastName_label.setText(_translate("MainWindow", "Last Name"))
         self.addressOne_label.setText(_translate("MainWindow", "Street Address 1"))
@@ -3606,7 +3652,8 @@ class Ui_MainWindow(object):
         self.department_label.setText(_translate("MainWindow", "Department"))
         self.title_label.setText(_translate("MainWindow", "Title"))
         self.firstName_label.setText(_translate("MainWindow", "First Name"))
-        self.userInfo_tabWidget.setTabText(self.userInfo_tabWidget.indexOf(self.generalTab), _translate("MainWindow", "General"))
+        self.userInfo_tabWidget.setTabText(self.userInfo_tabWidget.indexOf(self.generalTab),
+                                           _translate("MainWindow", "General"))
         self.userAccess_label.setText(_translate("MainWindow", "User Access:   "))
         self.userAccess_comboBox.setItemText(1, _translate("MainWindow", "General"))
         self.userAccess_comboBox.setItemText(2, _translate("MainWindow", "Manager"))
@@ -3629,11 +3676,13 @@ class Ui_MainWindow(object):
         self.payTypeHourly_radioButton.setText(_translate("MainWindow", "Hourly"))
         self.employeeIdPersonal_label.setText(_translate("MainWindow", "Employee ID"))
         self.accountNum_label.setText(_translate("MainWindow", "Account Number"))
-        self.mailAddressRadio_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Mailing Address is Same as Home Address:</p></body></html>"))
+        self.mailAddressRadio_label.setText(_translate("MainWindow",
+                                                       "<html><head/><body><p align=\"center\">Mailing Address is Same as Home Address:</p></body></html>"))
         self.mailAddressYes_radioButton.setText(_translate("MainWindow", "Yes   "))
         self.mailAddressNo_radioButton.setText(_translate("MainWindow", "No"))
         self.ssn_label.setText(_translate("MainWindow", "Social Security Number"))
-        self.userInfo_tabWidget.setTabText(self.userInfo_tabWidget.indexOf(self.personalTab), _translate("MainWindow", "Personal"))
+        self.userInfo_tabWidget.setTabText(self.userInfo_tabWidget.indexOf(self.personalTab),
+                                           _translate("MainWindow", "Personal"))
         self.reports_label.setText(_translate("MainWindow", "Reports:"))
         self.reportType_label.setText(_translate("MainWindow", "Report Type:   "))
         self.reportTypePay_radioButton.setText(_translate("MainWindow", "Pay Report"))
