@@ -2253,7 +2253,7 @@ background-color: rgb(36, 93, 56)
           <enum>QFrame::Raised</enum>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="searchResultsScreen_page0">
           <layout class="QGridLayout" name="gridLayout_6" columnstretch="0,0">
@@ -7178,7 +7178,7 @@ background-color: rgb(255, 255, 255);</string>
                  </font>
                 </property>
                 <property name="text">
-                 <string>Generate .CSV Report:      </string>
+                 <string>Generate Report:      </string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>

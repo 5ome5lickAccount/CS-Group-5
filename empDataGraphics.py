@@ -3602,7 +3602,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.mainScreen_stackedWidget.setCurrentIndex(1)
+        self.mainScreen_stackedWidget.setCurrentIndex(2)
         self.userInfo_tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.firstName_lineEdit, self.lastName_lineEdit)
@@ -3688,6 +3688,6 @@ class Ui_MainWindow(object):
         self.reportTypePay_radioButton.setText(_translate("MainWindow", "Pay Report"))
         self.reportTypeFull_radioButton.setText(_translate("MainWindow", "Employee Database"))
         self.archivedEmployeeReport_checkBox.setText(_translate("MainWindow", "Include Archived Employees:    "))
-        self.generateReport_label.setText(_translate("MainWindow", "Generate .CSV Report:      "))
+        self.generateReport_label.setText(_translate("MainWindow", "Generate Report:      "))
         self.generateReport_toolButton.setText(_translate("MainWindow", "Generate"))
         self.topBar_frame.hide()
