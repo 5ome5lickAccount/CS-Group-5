@@ -445,20 +445,26 @@ def update_employee(new_emp):
     update_file()
     return True
 
+def validate_ssn(ssn_fields):
+    ssn = ssn_fields.split('-')
+    if len(ssn) != 3:
+        return False
+    if len(ssn[0]) != 3:
+        return False
+    elif len(ssn[1]) != 2:
+        return False
+    elif len(ssn[2]) != 4:
+        return False
+    return True
+
+def no_duplicate_ssn(ssn):
+    for i in employees:
+        if i.ssn == ssn:
+            return False
+    return True
+'''
 def validate_fields(emp):
     problem_fields = []
-    
-    def validate_ssn(ssn_fields):
-        ssn = ssn_fields.split('-')
-        if len(ssn) != 3:
-            return False
-        if len(ssn[0]) != 3:
-            return False
-        elif len(ssn[1]) != 2:
-            return False
-        elif len(ssn[2]) != 4:
-            return False
-        return True
 
     def validate_no_commas(emp): #Confirms no commas are found # No special characters#Numbers only have numbers potential dashes,slashes
         bad_fields = []
@@ -498,7 +504,7 @@ def validate_fields(emp):
     problems_fields += validate_no_commas(emp)
 
     return problem_fields
-
+'''
 def login(id, password):
     if str(id) in employees_by_id.keys():
         if employees_by_id[str(id)].password == password:
