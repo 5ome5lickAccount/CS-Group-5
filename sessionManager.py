@@ -38,7 +38,7 @@ class SessionManager():
         self.ui.newEmp_toolButton.clicked.connect(self.activateNewEmployeeInfoScreen)
         self.ui.report_toolButton.clicked.connect(self.activateReportScreen)
         self.ui.info_toolButton.clicked.connect(self.activateMyInfoScreen)
-        self.ui.userManual_toolButton.clicked.connect(self.userManualRedirect)
+        self.ui.userManual_toolButton.clicked.connect(self.userManualBrowserRedirect)
         self.ui.editGeneral_toolButton.clicked.connect(self.infoScreen.startEdit)
         self.ui.editPersonal_toolButton.clicked.connect(self.infoScreen.startEdit)
         self.ui.saveGeneral_toolButton.clicked.connect(self.saveEmployee)
@@ -230,5 +230,5 @@ class SessionManager():
             newEmp.classification = ""
         return newEmp
 
-    def userManualRedirect(self):
+    def userManualBrowserRedirect(self):
         webbrowser.open('https://docs.google.com/document/d/1tuYUhP0-9qnt8aXrz6CanJ9qF00_n1Px6lyqnzwAAn8/edit?usp=sharing', 0, True)
