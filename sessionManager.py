@@ -1,3 +1,4 @@
+import webbrowser
 from infoScreenInterface import InfoScreenInterface
 from reportScreenInterface import ReportScreenManager
 from searchScreenInterface import SearchManager
@@ -25,7 +26,6 @@ class SessionManager():
         self.infoScreen = InfoScreenInterface(self.ui, self.currentUser)
         self.reportScreen = ReportScreenManager(self.ui)
         self.sideBarManager = SideBarMgr(self.ui)
-        # self.infoScreen.enableTooltips()
         self.reportScreen.enableTooltips()
         self.connectButtons()
         self.firstLogin()
@@ -38,18 +38,14 @@ class SessionManager():
         self.ui.newEmp_toolButton.clicked.connect(self.activateNewEmployeeInfoScreen)
         self.ui.report_toolButton.clicked.connect(self.activateReportScreen)
         self.ui.info_toolButton.clicked.connect(self.activateMyInfoScreen)
-        # self.ui.userManual_toolButton.clicked.connect(lambda: sideBarButtonClick())
+        self.ui.userManual_toolButton.clicked.connect(self.userManualRedirect)
         self.ui.editGeneral_toolButton.clicked.connect(self.infoScreen.startEdit)
         self.ui.editPersonal_toolButton.clicked.connect(self.infoScreen.startEdit)
         self.ui.saveGeneral_toolButton.clicked.connect(self.saveEmployee)
         self.ui.savePersonal_toolButton.clicked.connect(self.saveEmployee)
         self.ui.generateReport_toolButton.clicked.connect(self.infoScreen.generateReport)
-        
-        '''self.ui.signOut_toolButton.clicked.connect(self.checkForSaveDataOnSignOut)
-        self.ui.signOutTopBar_toolButton.clicked.connect(self.checkForSaveDataOnSignOut)
 
-    def checkForSaveDataOnSignOut(self):
-        self.saveCheck()'''
+
 
     def saveEmployee(self):
         newEmp = self.getUpdatedEmployee()
@@ -233,3 +229,6 @@ class SessionManager():
         else:
             newEmp.classification = ""
         return newEmp
+
+    def userManualRedirect(self):
+        webbrowser.open('https://docs.google.com/document/d/1tuYUhP0-9qnt8aXrz6CanJ9qF00_n1Px6lyqnzwAAn8/edit?usp=sharing', 0, True)

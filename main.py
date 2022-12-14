@@ -31,6 +31,7 @@ class LoginWindow(QtWidgets.QMainWindow):
         userName = self.loginUi.employeeIdLogin_lineEdit.text()
         password = self.loginUi.passwordLogin_lineEdit.text()
         self.activeUser = login(userName, password)
+        #self.activeUser = login("688997", "836Protoss$")
 
         if self.activeUser is not False:
             self.proceedWithLogin()
