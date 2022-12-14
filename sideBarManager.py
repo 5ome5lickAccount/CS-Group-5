@@ -251,10 +251,10 @@ class SideBarMgr():
         self.ui.signOutTopBar_toolButton.setToolTip("")
 
     def enableTooltips(self):
-        self.ui.closeSideBar_toolButton.setToolTip("Close the side bar")
-        self.ui.collapse_toolButton.setToolTip("Colapse the side bar")
-        self.ui.search_lineEdit.setToolTip("Type employee information for search here")
-        self.ui.searchField_comboBox.setToolTip("Select the empoloyee information type")
+        self.ui.closeSideBar_toolButton.setToolTip("Close the sidebar")
+        self.ui.collapse_toolButton.setToolTip("Toggle the sidebar")
+        self.ui.search_lineEdit.setToolTip("Type employee information to search for here")
+        self.ui.searchField_comboBox.setToolTip("Select the type of employee information to search for")
         self.ui.search_toolButton.setToolTip("Click to search for the employee information entered above")
         self.toggle.setToolTip("Turn hover tips on/off")
         self.ui.newEmp_toolButton.setToolTip("Create a new employee")
@@ -262,6 +262,6 @@ class SideBarMgr():
         self.ui.info_toolButton.setToolTip("Click to view your employee information")
         self.ui.userManual_toolButton.setToolTip("Click to view the program manual")
         self.ui.signOut_toolButton.setToolTip("Log out of your account")
-        self.ui.hamburger_toolButton.setToolTip("Reopen the side bar")
+        self.ui.hamburger_toolButton.setToolTip("Reopen the sidebar")
         self.ui.signOutTopBar_toolButton.setToolTip("Sign out of your account")
 
