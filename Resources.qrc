@@ -1,0 +1,21 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>assets/png/logo-color.png</file>
+    <file>assets/png/logo-white.png</file>
+    <file>assets/png/logo-no-background.png</file>
+    <file>assets/png/drop-down-black.png</file>
+    <file>assets/png/icons8-sort-down-96.png</file>
+    <file>assets/png/UVUMonogramGreen-0005.png</file>
+    <file>assets/png/logout.png</file>
+    <file>assets/png/arrow-left.png</file>
+    <file>assets/png/arrow-right.png</file>
+    <file>assets/png/information.png</file>
+    <file>assets/png/icons8-macos-close-96.png</file>
+    <file>assets/png/icons8-menu-96.png</file>
+    <file>assets/png/magnify.png</file>
+    <file>assets/png/plus.png</file>
+    <file>assets/png/report.png</file>
+    <file>assets/png/user-info.png</file>
+    <file>assets/png/view-info.png</file>
+  </qresource>
+</RCC>
