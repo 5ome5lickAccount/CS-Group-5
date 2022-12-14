@@ -2,7 +2,9 @@ from infoScreenInterface import InfoScreenInterface
 from reportScreenInterface import ReportScreenManager
 from searchScreenInterface import SearchManager
 from sideBarManager import SideBarMgr
-from payroll import backendSearcher, Employee, update_employee, add_employee
+from payroll import backendSearcher, Employee, update_employee, add_employee, validate_ssn, no_duplicate_ssn
+from errorWindow import Error_Form
+from PyQt5 import QtWidgets
 
 class SessionManager():
     def __init__(self):
@@ -52,12 +54,20 @@ class SessionManager():
     def saveEmployee(self):
         newEmp = self.getUpdatedEmployee()
         if not update_employee(newEmp):
-            add_employee(newEmp)
-            self.viewNewEmployee(newEmp)
-        self.createOriginalData()
-        self.infoScreen.disableInfoInputs()
-        if newEmp.employeeId == self.infoScreen.activeUser.employeeId: 
-            self.infoScreen.activeUser = newEmp
+            if not validate_ssn(newEmp.ssn) or not no_duplicate_ssn(newEmp.ssn):
+                self.Form = Error_Form()
+                self.Pop_up = QtWidgets.QWidget()
+                displayText = "\nThere exists an employee with that SSN, or SSN is improperly typed in, Make sure it is in ###-##-#### form.\n"            
+                self.Form.setupUi(self.Pop_up, displayText)
+                self.Pop_up.show()
+            else:
+                add_employee(newEmp)
+                self.viewNewEmployee(newEmp)
+        else:
+            self.createOriginalData()
+            self.infoScreen.disableInfoInputs()
+            if newEmp.employeeId == self.infoScreen.activeUser.employeeId: 
+                self.infoScreen.activeUser = newEmp
     
     def viewNewEmployee(self, selectedUser):
         self.infoScreen.otherUserInfoScreenActivate(selectedUser)
